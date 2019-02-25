@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "382651623717",
+    "firebase_url": "https://vetnetwork2.firebaseio.com",
+    "project_id": "vetnetwork2",
+    "storage_bucket": "vetnetwork2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382651623717:android:d492a3fb4d4cf333",
+        "android_client_info": {
+          "package_name": "com.vetdevelopers.vetnetwork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382651623717-lnrp49darcjnaok64249p078ehgp2sjk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vetdevelopers.vetnetwork",
+            "certificate_hash": "4e6da5494fb612b719db6fec8f1b3ffa4f638542"
+          }
+        },
+        {
+          "client_id": "382651623717-gqan85v7mjat872ktcteud9m555j8c0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoKE25_M0Uvlq2Vl7livnsEOqbylaJ1e0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382651623717-gqan85v7mjat872ktcteud9m555j8c0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

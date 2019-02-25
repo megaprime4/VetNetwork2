@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#1fbbbe</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="regTextColor">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!--profile colors-->
+    <color name="gradEnd">#78ffd6</color>
+    <color name="gradStart">#007991</color>
+    <color name="headings">#3797CF</color>
+
+    <!--setting colors-->
+    <color name="red">#FF2400</color>
+</resources>
