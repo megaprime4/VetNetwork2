@@ -57,7 +57,7 @@ public class WelcomeActivity extends AppCompatActivity
             else
             {
                 //System.out.println("shared preference value : " + value);
-                Intent intent = new Intent(WelcomeActivity.this,NavProfileActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         }

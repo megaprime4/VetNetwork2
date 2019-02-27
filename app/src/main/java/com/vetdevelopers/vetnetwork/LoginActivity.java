@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -30,26 +28,6 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,8 +43,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     private TextView popupTextView;
     private Button popupOKButton;
 
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
     String PhpJsonResponse = "";
 
     //autologin - part : 1
@@ -83,7 +59,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        firebaseAuth = FirebaseAuth.getInstance();
         //updateUI(firebaseAuth);
 
 
@@ -97,6 +72,8 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
         password = (EditText) findViewById(R.id.login_password);
         needAccount = (TextView) findViewById(R.id.login_needAccount_textView);
         signInButton = (Button) findViewById(R.id.login_signInButton);
+
+
         //autologin - part : 2
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -185,9 +162,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                     }
                                     else if (response.contains("sql error"))
                                     {
-                                        /*popupTextView.setText(response);
-                                        mDialog.show();*/
-
                                         Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
                                     }
 
@@ -197,24 +171,12 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
 
                                         try
                                         {
-                                        /*firebaseAuth.signInWithEmailAndPassword
-                                                (userID.getText().toString().trim(),password.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                                if(task.isSuccessful())
-                                                {
-                                                    firebaseUser=firebaseAuth.getCurrentUser();
-                                                }
-                                            }
-                                        });*/
-
-                                            //PhpJsonResponse = response;
-                                            //writeJson();
                                             BundleFunctions bundleFunctions = new BundleFunctions();
-                                            Intent profileIntent = new Intent(LoginActivity.this, NavProfileActivity.class);
+                                            Intent profileIntent = new Intent(LoginActivity.this, ProfileActivity.class);
                                             profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
+                                            profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(profileIntent);
-
+                                            finish();
                                         }
                                         catch (Exception e)
                                         {

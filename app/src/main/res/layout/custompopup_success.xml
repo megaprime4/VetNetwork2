@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:text="Not available"
             android:layout_margin="20dp"
             android:textAlignment="center"
             android:textColor="@color/white"

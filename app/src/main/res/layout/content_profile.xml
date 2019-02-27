@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".NavProfileActivity"
-    tools:showIn="@layout/app_bar_nav_profile"
+    tools:context=".ProfileActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,7 +14,7 @@
         android:orientation="vertical"
         android:background="@drawable/grad_profile">
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/profile_settingImageView"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -24,11 +23,11 @@
             android:layout_marginTop="15dp"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_settings_white_24dp" />
+            android:src="@drawable/ic_settings_white_24dp" />-->
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="55dp" />
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/profile_name"
@@ -286,7 +285,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account status"
+                    android:text="Account Status"
                     android:textColor="@color/headings"
                     android:textSize="18sp"
                     android:textStyle="bold" />

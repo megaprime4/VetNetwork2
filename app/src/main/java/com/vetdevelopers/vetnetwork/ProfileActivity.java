@@ -4,49 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import org.apache.commons.io.IOUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-public class NavProfileActivity extends AppCompatActivity
+public class ProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
     private TextView name, address, email, phone, bvcRegNumber, university, designation, bvaNumber, bvaDesignation, accountStatus;
-    private ImageView settingButton;
-
-    private FirebaseAuth firebaseAuth;
-
-
-    String jsonString;
 
     String Name = "";
     String ID = "";
@@ -78,9 +46,7 @@ public class NavProfileActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nav_profile);
-
-        firebaseAuth = FirebaseAuth.getInstance();
+        setContentView(R.layout.activity_profile);
 
         name = (TextView) findViewById(R.id.profile_name);
         address = (TextView) findViewById(R.id.profile_address);
@@ -92,17 +58,6 @@ public class NavProfileActivity extends AppCompatActivity
         bvaNumber = (TextView) findViewById(R.id.profile_bvaNumber);
         bvaDesignation = (TextView) findViewById(R.id.profile_bvaDesignation);
         accountStatus = (TextView) findViewById(R.id.profile_accountStatus);
-
-        settingButton = (ImageView) findViewById(R.id.profile_settingImageView);  ///this is an imageView but its working as button
-        settingButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent settingIntent = new Intent(NavProfileActivity.this, ProfileSettingActivity.class);
-                startActivity(settingIntent);
-            }
-        });
 
         Bundle bundle = new Bundle();
 
@@ -213,7 +168,6 @@ public class NavProfileActivity extends AppCompatActivity
         System.out.println(".........................................." + User_Request);
         System.out.println(".........................................." + User_Type);
         System.out.println(".........................................." + Admin_Email);
-        System.out.println(jsonString);
         //System.out.println(dd);
         ///debug purpose
 
@@ -240,7 +194,7 @@ public class NavProfileActivity extends AppCompatActivity
         accountStatus.setText(User_Request);
 
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.profile_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -258,65 +212,41 @@ public class NavProfileActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.nav_profile, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
-        {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
+    public boolean onNavigationItemSelected(MenuItem menuItem)
     {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        int id = menuItem.getItemId();
 
-        if (id == R.id.nav_camera)
+        if (id == R.id.nav_profile)
         {
             // Handle the camera action
         }
-        else if (id == R.id.nav_gallery)
+        else if (id == R.id.nav_search)
         {
 
         }
-        else if (id == R.id.nav_slideshow)
+        else if (id == R.id.nav_editProfile)
         {
-
+            Intent editProfileIntent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+            startActivity(editProfileIntent);
         }
-        else if (id == R.id.nav_manage)
-        {
-
-        }
-        else if (id == R.id.nav_share)
+        else if(id == R.id.nav_changePassword)
         {
 
         }
         else if (id == R.id.nav_logout)
         {
-            firebaseAuth.signOut();
+            //firebaseAuth.signOut();
             //stop auto login
             getApplicationContext().getSharedPreferences("prefs", 0).edit().clear().commit();
             //exit intent - clear previous flags of intent
             logoutUser();
+        }
+        else if (id == R.id.nav_deleteAccount)
+        {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -327,24 +257,10 @@ public class NavProfileActivity extends AppCompatActivity
 
     private void logoutUser()
     {
-        Intent startPageIntent = new Intent(NavProfileActivity.this, StartPageActivity.class);
+        Intent startPageIntent = new Intent(ProfileActivity.this, StartPageActivity.class);
         startPageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(startPageIntent);
         finish();
-    }
-
-    //welcome page er por profile asbey
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
-
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser(); //gets the current signed-in userID(unique)
-
-        if (currentUser == null)
-        {
-            //logoutUser();
-        }
     }
 
 }

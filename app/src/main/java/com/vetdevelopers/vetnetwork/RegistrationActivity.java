@@ -5,10 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,10 +28,6 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,9 +45,9 @@ public class RegistrationActivity extends AppCompatActivity
     private TextView popupTextView;
     private Button popupOKButton;
 
-    FirebaseAuth firebaseAuth;
-
     ProgressDialog progressDialog;
+
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,7 +55,10 @@ public class RegistrationActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        mToolbar = (Toolbar) findViewById(R.id.registration_page_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("Sign Up");
+
         progressDialog = new ProgressDialog(this);
 
         mDialog = new Dialog(this);  //custom popup window
@@ -122,11 +120,6 @@ public class RegistrationActivity extends AppCompatActivity
             public void onClick(View v)
             {
 
-                /*progressDialog.setTitle("Signing Up");
-                progressDialog.setMessage("Please wait...");
-                progressDialog.show();*/
-
-
                 final String UserType = userType_spinner.getSelectedItem().toString().trim();
                 final String Name = name.getText().toString().trim();
                 final String Email = email.getText().toString().trim();
@@ -159,6 +152,9 @@ public class RegistrationActivity extends AppCompatActivity
                 System.out.println(".........................................." + BVA_member);
                 System.out.println(".........................................." + BVANumber);
                 System.out.println(".........................................." + BVA_designation);
+                //debug purpose
+
+
 
                 registerAccount(UserType, Name, Email, Phone, BVC_number, Password,
                         RetypePassword, University, Designation, Posting_area,
@@ -189,51 +185,38 @@ public class RegistrationActivity extends AppCompatActivity
                                  final String BVANumber, final String BVA_designation)
     {
         //data input checking
-        if (UserType.equals("Select"))
-        {
+        if (UserType.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please select user type!", Toast.LENGTH_LONG).show();
         }
-        else if (Name.equals("") && Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select"))
-        {
+        else if (Name.equals("") && Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please enter Name, Email, Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
         }
-        else if (Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select"))
-        {
+        else if (Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please enter Email, Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
         }
-        else if (Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select"))
-        {
+        else if (Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please enter Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
         }
-        else if (Password.equals("") && RetypePassword.equals("") && University.equals("Select"))
-        {
+        else if (Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please enter Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
         }
-        else if (RetypePassword.equals("") && University.equals("Select"))
-        {
+        else if (RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please Re-enter Password & University!", Toast.LENGTH_LONG).show();
         }
-        else if (University.equals("Select"))
-        {
+        else if (University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please select University!", Toast.LENGTH_SHORT).show();
         }
-        else if (!Password.equals(RetypePassword))
-        {
+        else if (!Password.equals(RetypePassword)) {
             Toast.makeText(RegistrationActivity.this, "Password didn't match!", Toast.LENGTH_SHORT).show();
         }
-        else if (Patterns.EMAIL_ADDRESS.matcher(Email).matches() == false)
-        {
+        else if (Patterns.EMAIL_ADDRESS.matcher(Email).matches() == false) {
             Toast.makeText(RegistrationActivity.this, "E-mail address is not valid!", Toast.LENGTH_SHORT).show();
-        }
-        else if (Password.length() < 6)
-        {
-            Toast.makeText(RegistrationActivity.this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show();
-        }
-        else
+        } else
         {
 
-            progressDialog.setTitle("Signing Up");
-            progressDialog.setMessage("Please wait...");
+            progressDialog.setTitle("Please Wait");
+            progressDialog.setMessage("Creating a new account");
+            progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
 
@@ -246,31 +229,10 @@ public class RegistrationActivity extends AppCompatActivity
                         {
                             if (response.equals("Registration complete! Request sent to admin!"))
                             {
+                                progressDialog.dismiss();
                                 showokbutton();
                                 popupTextView.setText(response);
-
-
-                                ////initializing firebase auth
-                                firebaseAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                                {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task)
-                                    {
-
-                                        if (task.isSuccessful())
-                                        {
-                                            Toast.makeText(RegistrationActivity.this, "Firebase authentication successfully created!", Toast.LENGTH_SHORT).show();
-                                            progressDialog.dismiss();
-                                            mDialog.show();
-                                        }
-                                        else
-                                        {
-                                            Toast.makeText(RegistrationActivity.this, "Firebase authentication server error!", Toast.LENGTH_SHORT).show();
-                                            progressDialog.dismiss();
-                                            mDialog.show();
-                                        }
-                                    }
-                                });
+                                mDialog.show();
                             }
                             if (response.equals("Please check your e-mail!"))
                             {
