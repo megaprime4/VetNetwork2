@@ -16,10 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-public class EditProfileActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class EditProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar mToolbar;
 
@@ -29,6 +29,8 @@ public class EditProfileActivity extends AppCompatActivity
     private Button popupConfirmButton, msgPopupOKButton;
     private TextView msgPopupTextView;
 
+    private EditText name, email, phone, bvcNumber, postingArea, bvaNumber;
+    private Spinner university, district, division, bvaMember, bvaDesignation;
     private Button changeButton;
 
     SharedPreferences sharedPreferences;
@@ -38,7 +40,9 @@ public class EditProfileActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        mToolbar = (Toolbar) findViewById(R.id.setting_page_toolbar);
+        sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+
+        mToolbar = (Toolbar) findViewById(R.id.editProfile_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Profile Setting");
 
@@ -83,12 +87,35 @@ public class EditProfileActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.setting_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+        name = (EditText) findViewById(R.id.editProfile_name);
+        email = (EditText) findViewById(R.id.editProfile_email);
+        phone = (EditText) findViewById(R.id.editProfile_phone);
+        bvcNumber = (EditText) findViewById(R.id.editProfile_bvcNumber);
+        postingArea = (EditText) findViewById(R.id.editProfile_postingArea);
+        bvaNumber = (EditText) findViewById(R.id.editProfile_bva_number);
+
+        university = (Spinner) findViewById(R.id.editProfile_university_spinner);
+        district = (Spinner) findViewById(R.id.editProfile_district_spinner);
+        division = (Spinner) findViewById(R.id.editProfile_division_spinner);
+        bvaMember = (Spinner) findViewById(R.id.editProfile_bva_spinner);
+        bvaDesignation = (Spinner) findViewById(R.id.editProfile_bvaDesignation_spinner);
+
+
+        name.setText(sharedPreferences.getString("Name", ""));
+        email.setText(sharedPreferences.getString("Email", ""));
+        phone.setText(sharedPreferences.getString("Phone", ""));
+        bvcNumber.setText(sharedPreferences.getString("BVC_number", ""));
+
+        //spinner dataset...
+        //...code here...
+
+
     }
 
     private void checkPassword()
     {
         String password = popupGetPassword.getText().toString().trim();
-        sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
         String matchPassword = sharedPreferences.getString("Password", "");
 
         if(password.equals(matchPassword))
@@ -146,10 +173,7 @@ public class EditProfileActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_logout)
         {
-            //firebaseAuth.signOut();
-            //stop auto login
             getApplicationContext().getSharedPreferences("prefs", 0).edit().clear().commit();
-            //exit intent - clear previous flags of intent
             logoutUser();
         } else if (id == R.id.nav_deleteAccount) {
 
