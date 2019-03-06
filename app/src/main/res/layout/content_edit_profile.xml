@@ -78,7 +78,7 @@
                 android:editable="false"
                 android:linksClickable="false"
                 android:longClickable="false"
-                android:text="University"
+                android:text="University :"
                 android:textSize="18sp" />
 
             <Spinner

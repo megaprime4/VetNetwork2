@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     private TextView popupTextView;
     private Button popupOKButton;
 
-    String PhpJsonResponse = "";
 
     //autologin - part : 1
     private CheckBox rem_userpass;

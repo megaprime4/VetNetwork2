@@ -56,9 +56,32 @@ public class WelcomeActivity extends AppCompatActivity
             }
             else
             {
-                //System.out.println("shared preference value : " + value);
+
+                Thread thread = new Thread()
+                {
+                    @Override
+                    public void run()
+                    {
+                        try
+                        {
+                            sleep(1500);
+                        }
+                        catch (Exception ex)
+                        {
+                            ex.printStackTrace();
+                        }
+                        finally
+                        {
+                            Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                };
+                thread.start();
+
+                /*System.out.println("shared preference value : " + value);
                 Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         }
         catch (Exception e)
