@@ -142,4 +142,5 @@
     <string name="title_activity_nav_profile">NavProfileActivity</string>
     <string name="title_activity_profile_setting">ProfileSettingActivity</string>
     <string name="title_activity_test_fucking_nav">TestFuckingNavActivity</string>
+    <string name="title_activity_admin_profile">AdminProfileActivity</string>
 </resources>

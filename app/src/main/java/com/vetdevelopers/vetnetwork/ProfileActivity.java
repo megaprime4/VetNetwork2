@@ -8,7 +8,10 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity
@@ -42,11 +45,13 @@ public class ProfileActivity extends AppCompatActivity
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASS = "password";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
 
         name = (TextView) findViewById(R.id.profile_name);
         address = (TextView) findViewById(R.id.profile_address);
@@ -249,6 +254,7 @@ public class ProfileActivity extends AppCompatActivity
 
         }
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -262,5 +268,4 @@ public class ProfileActivity extends AppCompatActivity
         startActivity(startPageIntent);
         finish();
     }
-
 }
