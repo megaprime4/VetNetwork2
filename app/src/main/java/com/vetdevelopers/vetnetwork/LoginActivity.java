@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -171,11 +172,23 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                         try
                                         {
                                             BundleFunctions bundleFunctions = new BundleFunctions();
-                                            Intent profileIntent = new Intent(LoginActivity.this, ProfileActivity.class);
-                                            profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
-                                            profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(profileIntent);
-                                            finish();
+                                            if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Doctor"))
+                                            {
+                                                Intent profileIntent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                                profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
+                                                profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(profileIntent);
+                                                finish();
+                                            }
+                                            else if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Admin"))
+                                            {
+                                                Intent profileIntent = new Intent(LoginActivity.this, AdminProfileActivity.class);
+                                                profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
+                                                profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(profileIntent);
+                                                finish();
+                                            }
+
                                         }
                                         catch (Exception e)
                                         {

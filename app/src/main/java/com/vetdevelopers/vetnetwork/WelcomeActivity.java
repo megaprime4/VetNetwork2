@@ -16,6 +16,7 @@ public class WelcomeActivity extends AppCompatActivity
     private static final String KEY_REMEMBER = "remember";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASS = "password";
+    private static final String KEY_USER_TYPE = "User_Type";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -72,8 +73,16 @@ public class WelcomeActivity extends AppCompatActivity
                         }
                         finally
                         {
-                            Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
-                            startActivity(intent);
+                            if(sharedPreferences.getString(KEY_USER_TYPE,"").equals("Doctor"))
+                            {
+                                Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
+                                startActivity(intent);
+                            }
+                            else if(sharedPreferences.getString(KEY_USER_TYPE,"").equals("Admin"))
+                            {
+                                Intent intent = new Intent(WelcomeActivity.this, AdminProfileActivity.class);
+                                startActivity(intent);
+                            }
                         }
                     }
                 };

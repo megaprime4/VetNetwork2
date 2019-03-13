@@ -36,6 +36,9 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -315,15 +318,31 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                             try
                             {
                                 progressDialog.dismiss();
-                                BundleFunctions bundleFunctions = new BundleFunctions();
 
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                String u = jsonObject.getString("phone");
+                                Boolean r = sharedPreferences.getBoolean("remember",false);
+
+
+                                System.out.println("---------------------------------editprofile u (jasonobject) : " + u);
+                                System.out.println("---------------------------------editprofile r : "+r);
+
+                                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+                                editor = sharedPreferences.edit();
+
+                                BundleFunctions bundleFunctions = new BundleFunctions();
                                 getApplicationContext().getSharedPreferences("prefs", 0).edit().clear().commit();
 
-                                //-----------------autologin----------------//
 
-                                //code here....
+                                //editor.putBoolean(KEY_REMEMBER, r);
 
-                                //------------------------------------------//
+                                if(r)
+                                {
+                                    editor.putString(KEY_USERNAME, u);
+                                    editor.putBoolean(KEY_REMEMBER, r);
+                                    editor.apply();
+                                }
 
                                 Intent profileIntent = new Intent(EditProfileActivity.this, ProfileActivity.class);
                                 profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
