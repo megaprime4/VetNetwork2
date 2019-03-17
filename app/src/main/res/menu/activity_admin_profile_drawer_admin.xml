@@ -39,21 +39,12 @@
 
 
 
-    <item android:title="Admin Panel">
+    <item android:title="Control">
         <menu>
             <item
-                android:id="@+id/nav_admin_userRequest"
+                android:id="@+id/nav_adminPanel"
                 android:icon="@drawable/ic_verified_user_white_24dp"
-                android:title="User Request" />
-            <item
-                android:id="@+id/nav_admin_changeEmail"
-                android:icon="@drawable/ic_email_white_24dp"
-                android:title="Change Email" />
-            <item
-                android:id="@+id/nav_admin_deleteUserAccount"
-                android:icon="@drawable/ic_delete_sweep_white_24dp"
-                android:title="Delete User Account"
-                />
+                android:title="Admin Panel" />
         </menu>
     </item>
 

@@ -180,20 +180,26 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                                 startActivity(profileIntent);
                                                 finish();
                                             }
-                                            else if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Admin"))
+                                            else if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Admin") ||
+                                                    bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("pending"))
                                             {
-                                                Intent profileIntent = new Intent(LoginActivity.this, AdminProfileActivity.class);
-                                                profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
-                                                profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                startActivity(profileIntent);
-                                                finish();
+                                                if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Admin")) {
+                                                    Intent profileIntent = new Intent(LoginActivity.this, AdminProfileActivity.class);
+                                                    profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
+                                                    profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    startActivity(profileIntent);
+                                                    finish();
+                                                } else if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("pending")) {
+                                                    popupTextView.setText("Please activate your admin account!");
+                                                    mDialog.show();
+                                                }
                                             }
 
                                         }
                                         catch (Exception e)
                                         {
                                             e.printStackTrace();
-                                            System.out.println("-----------LoginActivity : --------string response error occured ------------!!!");
+                                            System.out.println("-----------LoginActivity : --------string response error occured------------!!!");
                                         }
                                     }
                                 }

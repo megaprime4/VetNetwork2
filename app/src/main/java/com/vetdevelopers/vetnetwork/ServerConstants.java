@@ -12,6 +12,7 @@ public class ServerConstants
     public static final String KEY_NAME = "name";
     public static final String KEY_USER_ID = "id";
     public static final String KEY_EMAIL = "email";
+    public static final String KEY_ADMIN_EMAIL = "admin_email";
     public static final String KEY_PHONE = "phone";
     public static final String KEY_PREV_PHONE = "prevPhone";
     public static final String KEY_BVC_REG = "bvc_reg";
@@ -28,5 +29,4 @@ public class ServerConstants
     public static final String KEY_RAND_CODE = "rand_code";
     public static final String KEY_USER_REQUEST = "user_request";
     public static final String KEY_USER_TYPE = "user_type";
-    public static final String KEY_ADMIN_EMAIL = "admin_email";
 }

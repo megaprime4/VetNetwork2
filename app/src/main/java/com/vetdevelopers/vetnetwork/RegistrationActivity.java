@@ -45,6 +45,8 @@ public class RegistrationActivity extends AppCompatActivity
     private TextView popupTextView;
     private Button popupOKButton;
 
+    public String AdminEmail = "vet.developers@gmail.com";
+
     ProgressDialog progressDialog;
 
     Toolbar mToolbar;
@@ -156,7 +158,7 @@ public class RegistrationActivity extends AppCompatActivity
 
 
 
-                registerAccount(UserType, Name, Email, Phone, BVC_number, Password,
+                registerAccount(UserType, Name, Email, AdminEmail, Phone, BVC_number, Password,
                         RetypePassword, University, Designation, Posting_area,
                         District, Division, BVA_member, BVANumber, BVA_designation);
 
@@ -178,7 +180,7 @@ public class RegistrationActivity extends AppCompatActivity
 
     } //onCreate
 
-    private void registerAccount(final String UserType, final String Name, final String Email, final String Phone,
+    private void registerAccount(final String UserType, final String Name, final String Email, final String AdminEmail, final String Phone,
                                  final String BVC_number, final String Password, final String RetypePassword,
                                  final String University, final String Designation, final String Posting_area,
                                  final String District, final String Division, final String BVA_member,
@@ -311,6 +313,7 @@ public class RegistrationActivity extends AppCompatActivity
                     params.put(ServerConstants.KEY_USER_TYPE, UserType);
                     params.put(ServerConstants.KEY_NAME, Name);
                     params.put(ServerConstants.KEY_EMAIL, Email);
+                    params.put(ServerConstants.KEY_ADMIN_EMAIL, AdminEmail);
                     params.put(ServerConstants.KEY_PHONE, Phone);
                     params.put(ServerConstants.KEY_BVC_REG, BVC_number);
                     params.put(ServerConstants.KEY_PASSWORD, Password);
@@ -336,7 +339,6 @@ public class RegistrationActivity extends AppCompatActivity
             };
 
             MySingleton.getInstance(RegistrationActivity.this).addToRequestQueue(stringRequest);
-
 
         }
     }
