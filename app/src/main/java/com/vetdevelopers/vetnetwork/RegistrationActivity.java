@@ -2,7 +2,9 @@ package com.vetdevelopers.vetnetwork;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -47,6 +49,12 @@ public class RegistrationActivity extends AppCompatActivity {
     private Dialog mDialog;
     private TextView popupTextView;
     private Button popupOKButton;
+
+    private static final String PREF_NAME = "prefs";
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    //sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+    //editor = sharedPreferences.edit();
 
     String mail = "";
 
@@ -157,6 +165,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 System.out.println(".........................................admin email = " + AdminEmail);
 
                 ///destroy here...
+                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                editor.remove("admin_email_verify");
+                editor.apply();
+                System.out.println("this is cleared : "+sharedPreferences.getString("admin_email_verify","key cleared"));
 
                 if (getAdminEmail == true) {
                     registerAccount(UserType, Name, Email, AdminEmail, Phone, BVC_number, Password,
@@ -221,9 +234,15 @@ public class RegistrationActivity extends AppCompatActivity {
                             JSONArray jsonArray = new JSONArray(response);
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
                             AdminEmail[0] = jsonObject.getString("admin_email");
+                            //set email
+                            sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+                            editor = sharedPreferences.edit();
+                            editor.putString("admin_email_verify", AdminEmail[0]);
+                            editor.apply();
+
                             mail = AdminEmail[0];
                             System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
-                            System.out.println("-----------------------------------------------admin email[1] = " + mail);
+                            System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify",""));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -267,8 +286,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         getAdminEmail = true;
-        System.out.println("-------------------------------------------------------mail = " + mail);
-        return mail;
+
+        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+
+        System.out.println("-------------------------------------------------------mail (sharedPreferences)= " + sharedPreferences.getString("admin_email_verify",""));
+        return sharedPreferences.getString("admin_email_verify","");
     }
 
     private void registerAccount(final String UserType, final String Name, final String Email, final String AdminEmail, final String Phone,
