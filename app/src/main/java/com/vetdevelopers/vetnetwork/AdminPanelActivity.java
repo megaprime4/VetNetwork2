@@ -148,7 +148,8 @@ public class AdminPanelActivity extends AppCompatActivity
 
     private void changeEmail()
     {
-        //volley code
+        String newAdminEmail = getEmail.getText().toString().trim();
+
         msgPopupTextView.setText("Email changed!");
         mDialogMsg.show();
     }

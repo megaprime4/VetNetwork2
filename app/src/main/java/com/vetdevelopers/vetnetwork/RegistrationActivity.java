@@ -29,11 +29,14 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistrationActivity extends AppCompatActivity
-{
+public class RegistrationActivity extends AppCompatActivity {
 
     private EditText name, email, phone, password, retypePassword, bvc_number, designation, posting_area, bvaNumber;
     private Spinner userType_spinner, university_spinner, district_spinner, division_spinner, bva_member_spinner, bva_designation_spinner;
@@ -45,15 +48,16 @@ public class RegistrationActivity extends AppCompatActivity
     private TextView popupTextView;
     private Button popupOKButton;
 
-    public String AdminEmail = "vet.developers@gmail.com";
+    String mail = "";
 
     ProgressDialog progressDialog;
 
     Toolbar mToolbar;
 
+    private boolean getAdminEmail = false;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
@@ -94,33 +98,25 @@ public class RegistrationActivity extends AppCompatActivity
 
         signUpButton = (Button) findViewById(R.id.reg_signupButton);
 
-        bva_member_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
+        bva_member_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                if (bva_member_spinner.getSelectedItem().toString().equals("No") || bva_member_spinner.getSelectedItem().toString().equals("Select"))
-                {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (bva_member_spinner.getSelectedItem().toString().equals("No") || bva_member_spinner.getSelectedItem().toString().equals("Select")) {
                     hideSlot1();
-                }
-                else
-                {
+                } else {
                     showSlot1();
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+            public void onNothingSelected(AdapterView<?> parent) {
                 hideSlot1();
             }
         });
 
-        signUpButton.setOnClickListener(new View.OnClickListener()
-        {
+        signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
 
                 final String UserType = userType_spinner.getSelectedItem().toString().trim();
                 final String Name = name.getText().toString().trim();
@@ -157,21 +153,27 @@ public class RegistrationActivity extends AppCompatActivity
                 //debug purpose
 
 
+                String AdminEmail = getAdminEamil(); //get the latest admin email from the server
+                System.out.println(".........................................admin email = " + AdminEmail);
 
-                registerAccount(UserType, Name, Email, AdminEmail, Phone, BVC_number, Password,
-                        RetypePassword, University, Designation, Posting_area,
-                        District, Division, BVA_member, BVANumber, BVA_designation);
+                ///destroy here...
+
+                if (getAdminEmail == true) {
+                    registerAccount(UserType, Name, Email, AdminEmail, Phone, BVC_number, Password,
+                            RetypePassword, University, Designation, Posting_area,
+                            District, Division, BVA_member, BVANumber, BVA_designation);
+                } else {
+                    Toast.makeText(RegistrationActivity.this, "Admin email getting error!", Toast.LENGTH_SHORT).show();
+                }
 
 
             } //onClick
 
         }); //onCLick method
 
-        popupOKButton.setOnClickListener(new View.OnClickListener()
-        {
+        popupOKButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 mDialog.dismiss();
                 Intent startPageActivity = new Intent(RegistrationActivity.this, StartPageActivity.class);
                 startActivity(startPageActivity);
@@ -180,41 +182,120 @@ public class RegistrationActivity extends AppCompatActivity
 
     } //onCreate
 
+    private String getAdminEamil() {
+        final String[] AdminEmail = {""};
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.GET_ADMIN_EMAIL_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equals("Registration complete! Request sent to admin!")) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        } else if (response.equals("Please check your e-mail!")) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        } else if (response.equals("Connection failed!")) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        } else if (response.equals("sql (select) query error!-outer")) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        } else if (response.equals("Improper request method!")) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        } else if (response.equals("Invalid platform!")) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        } else if (response.equals("sql (select) query error!-inner")) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        } else if (response.equals("No row selected! Please debug!")) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+
+                        try {
+
+                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+                            AdminEmail[0] = jsonObject.getString("admin_email");
+                            mail = AdminEmail[0];
+                            System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
+                            System.out.println("-----------------------------------------------admin email[1] = " + mail);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            System.out.println("-----------------------json response error occured ------------!!!");
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error instanceof TimeoutError) {
+                    Toast.makeText(RegistrationActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                } else if (error instanceof NoConnectionError) {
+                    Toast.makeText(RegistrationActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                } else if (error instanceof AuthFailureError) {
+                    Toast.makeText(RegistrationActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(RegistrationActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(RegistrationActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                } else if (error instanceof ParseError) {
+                    Toast.makeText(RegistrationActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("User-Agent", "VetNetwork"); ////security purpose
+                return headers;
+            }
+        };
+
+        MySingleton.getInstance(RegistrationActivity.this).addToRequestQueue(stringRequest);
+
+
+        getAdminEmail = true;
+        System.out.println("-------------------------------------------------------mail = " + mail);
+        return mail;
+    }
+
     private void registerAccount(final String UserType, final String Name, final String Email, final String AdminEmail, final String Phone,
                                  final String BVC_number, final String Password, final String RetypePassword,
                                  final String University, final String Designation, final String Posting_area,
                                  final String District, final String Division, final String BVA_member,
-                                 final String BVANumber, final String BVA_designation)
-    {
+                                 final String BVANumber, final String BVA_designation) {
         //data input checking
         if (UserType.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please select user type!", Toast.LENGTH_LONG).show();
-        }
-        else if (Name.equals("") && Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
+        } else if (Name.equals("") && Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please enter Name, Email, Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
-        }
-        else if (Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
+        } else if (Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please enter Email, Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
-        }
-        else if (Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
+        } else if (Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please enter Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
-        }
-        else if (Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
+        } else if (Password.equals("") && RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please enter Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
-        }
-        else if (RetypePassword.equals("") && University.equals("Select")) {
+        } else if (RetypePassword.equals("") && University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please Re-enter Password & University!", Toast.LENGTH_LONG).show();
-        }
-        else if (University.equals("Select")) {
+        } else if (University.equals("Select")) {
             Toast.makeText(RegistrationActivity.this, "Please select University!", Toast.LENGTH_SHORT).show();
-        }
-        else if (!Password.equals(RetypePassword)) {
+        } else if (!Password.equals(RetypePassword)) {
             Toast.makeText(RegistrationActivity.this, "Password didn't match!", Toast.LENGTH_SHORT).show();
-        }
-        else if (Patterns.EMAIL_ADDRESS.matcher(Email).matches() == false) {
+        } else if (Patterns.EMAIL_ADDRESS.matcher(Email).matches() == false) {
             Toast.makeText(RegistrationActivity.this, "E-mail address is not valid!", Toast.LENGTH_SHORT).show();
-        } else
-        {
+        } else {
 
             progressDialog.setTitle("Please Wait");
             progressDialog.setMessage("Creating a new account");
@@ -224,48 +305,40 @@ public class RegistrationActivity extends AppCompatActivity
 
             //server operation (volley) start
             StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.REGISTER_URL,
-                    new Response.Listener<String>()
-                    {
+                    new Response.Listener<String>() {
                         @Override
-                        public void onResponse(String response)
-                        {
-                            if (response.equals("Registration complete! Request sent to admin!"))
-                            {
+                        public void onResponse(String response) {
+                            if (response.equals("Registration complete! Request sent to admin!")) {
                                 progressDialog.dismiss();
                                 showokbutton();
                                 popupTextView.setText(response);
                                 mDialog.show();
                             }
-                            if (response.equals("Please check your e-mail!"))
-                            {
+                            if (response.equals("Please check your e-mail!")) {
                                 progressDialog.dismiss();
                                 showokbutton();
                                 popupTextView.setText(response);
                                 mDialog.show();
                             }
-                            if (response.equals("Connection failed!"))
-                            {
+                            if (response.equals("Connection failed!")) {
                                 progressDialog.dismiss();
                                 hideokbutton();
                                 popupTextView.setText(response);
                                 mDialog.show();
                             }
-                            if (response.equals("Account already exists!"))
-                            {
+                            if (response.equals("Account already exists!")) {
                                 progressDialog.dismiss();
                                 hideokbutton();
                                 popupTextView.setText(response);
                                 mDialog.show();
                             }
-                            if (response.equals("Improper request method!"))
-                            {
+                            if (response.equals("Improper request method!")) {
                                 progressDialog.dismiss();
                                 hideokbutton();
                                 popupTextView.setText(response);
                                 mDialog.show();
                             }
-                            if (response.equals("Invalid platform!"))
-                            {
+                            if (response.equals("Invalid platform!")) {
                                 progressDialog.dismiss();
                                 hideokbutton();
                                 popupTextView.setText(response);
@@ -274,41 +347,26 @@ public class RegistrationActivity extends AppCompatActivity
                             //progressDialog.dismiss();
                             //mDialog.show();
                         }
-                    }, new Response.ErrorListener()
-            {
+                    }, new Response.ErrorListener() {
                 @Override
-                public void onErrorResponse(VolleyError error)
-                {
-                    if (error instanceof TimeoutError)
-                    {
+                public void onErrorResponse(VolleyError error) {
+                    if (error instanceof TimeoutError) {
                         Toast.makeText(RegistrationActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof NoConnectionError)
-                    {
+                    } else if (error instanceof NoConnectionError) {
                         Toast.makeText(RegistrationActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof AuthFailureError)
-                    {
+                    } else if (error instanceof AuthFailureError) {
                         Toast.makeText(RegistrationActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof NetworkError)
-                    {
+                    } else if (error instanceof NetworkError) {
                         Toast.makeText(RegistrationActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof ServerError)
-                    {
+                    } else if (error instanceof ServerError) {
                         Toast.makeText(RegistrationActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof ParseError)
-                    {
+                    } else if (error instanceof ParseError) {
                         Toast.makeText(RegistrationActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
                     }
                 }
-            })
-            {
+            }) {
                 @Override
-                protected Map<String, String> getParams()
-                {
+                protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put(ServerConstants.KEY_USER_TYPE, UserType);
                     params.put(ServerConstants.KEY_NAME, Name);
@@ -330,8 +388,7 @@ public class RegistrationActivity extends AppCompatActivity
                 }
 
                 @Override
-                public Map<String, String> getHeaders() throws AuthFailureError
-                {
+                public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> headers = new HashMap<String, String>();
                     headers.put("User-Agent", "VetNetwork"); ////security purpose
                     return headers;
@@ -344,26 +401,22 @@ public class RegistrationActivity extends AppCompatActivity
     }
 
 
-    public void hideokbutton()
-    {
+    public void hideokbutton() {
         popupOKButton.setVisibility(View.INVISIBLE);
     }
 
-    public void showokbutton()
-    {
+    public void showokbutton() {
         popupOKButton.setVisibility(View.VISIBLE);
     }
 
-    private void hideSlot1()
-    {
+    private void hideSlot1() {
         bvaNumber.setVisibility(View.INVISIBLE);
         linearLayout_bvaDesignation.setVisibility(View.INVISIBLE);
         bvaDesignation_textview.setVisibility(View.INVISIBLE);
         bva_designation_spinner.setVisibility(View.INVISIBLE);
     }
 
-    private void showSlot1()
-    {
+    private void showSlot1() {
         bvaNumber.setVisibility(View.VISIBLE);
         linearLayout_bvaDesignation.setVisibility(View.VISIBLE);
         bvaDesignation_textview.setVisibility(View.VISIBLE);
