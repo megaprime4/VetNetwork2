@@ -13,10 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".BrowseActivity"></activity>
+        <activity android:name=".SearchActivity" />
         <activity
             android:name=".AdminPanelActivity"
             android:label="@string/title_activity_admin_control_panel"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdminProfileActivity"
             android:label="@string/title_activity_admin_profile"

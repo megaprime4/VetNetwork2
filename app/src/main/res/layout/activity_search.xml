@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SearchActivity">
+
+    <LinearLayout
+        android:id="@+id/linear_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/grad_profile">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Search"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/search_name"
+        android:layout_below="@+id/linear_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/ic_person_white_24dp"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColorHint="#fff" />
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_below="@+id/search_name"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f9d7db" />
+
+    <EditText
+        android:id="@+id/search_phone"
+        android:layout_below="@+id/search_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/ic_phone_white_24dp"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="Phone"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColorHint="#fff" />
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_below="@+id/search_phone"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f9d7db" />
+
+    <EditText
+        android:id="@+id/search_postingArea"
+        android:layout_below="@+id/search_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/ic_place_white_24dp"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="Posting area"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColorHint="#fff"  />
+
+    <View
+        android:id="@+id/view_3"
+        android:layout_below="@+id/search_postingArea"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f9d7db" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout_2"
+        android:layout_below="@+id/view_3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/reg_district_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:editable="false"
+            android:linksClickable="false"
+            android:longClickable="false"
+            android:text="@string/district"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/reg_district_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:entries="@array/district" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_4"
+        android:layout_below="@+id/linear_layout_2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f9d7db" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout_3"
+        android:layout_below="@+id/linear_layout_2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/reg_division_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:editable="false"
+            android:linksClickable="false"
+            android:longClickable="false"
+            android:text="@string/division"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/reg_division_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:entries="@array/division" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_5"
+        android:layout_below="@+id/linear_layout_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f9d7db" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+
+        <Button
+            android:id="@+id/start_browseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style"
+            android:padding="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Search"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

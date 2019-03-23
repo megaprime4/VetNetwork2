@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class StartPageActivity extends AppCompatActivity
 {
 
-    private Button signUpButton, signInButton, browseButton;
+    private Button signUpButton, signInButton, searchButton;
     private ImageView logo;
     //Dialog mDialog;
 
@@ -27,7 +27,7 @@ public class StartPageActivity extends AppCompatActivity
 
         signUpButton = (Button) findViewById(R.id.start_signUpButton);
         signInButton = (Button) findViewById(R.id.start_signInButton);
-        browseButton = (Button) findViewById(R.id.start_browseButton);
+        searchButton = (Button) findViewById(R.id.start_searchButton);
         logo = (ImageView) findViewById(R.id.login_logo);
 
         signUpButton.setOnClickListener(new View.OnClickListener()
@@ -39,6 +39,7 @@ public class StartPageActivity extends AppCompatActivity
                 startActivity(registrationIntent);
             }
         });
+
         signInButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -46,6 +47,14 @@ public class StartPageActivity extends AppCompatActivity
             {
                 Intent loginIntent = new Intent(StartPageActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
+            }
+        });
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchIntent = new Intent(StartPageActivity.this, SearchActivity.class);
+                startActivity(searchIntent);
             }
         });
     }

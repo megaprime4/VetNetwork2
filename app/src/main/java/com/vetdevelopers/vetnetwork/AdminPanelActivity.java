@@ -438,9 +438,10 @@ public class AdminPanelActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = menuItem.getItemId();
 
-        if (id == R.id.nav_profile)
+        if (id == R.id.nav_adminProfile)
         {
-            // Handle the camera action
+            Intent ProfileIntent = new Intent(AdminPanelActivity.this, AdminProfileActivity.class);
+            startActivity(ProfileIntent);
         }
         else if (id == R.id.nav_search)
         {
