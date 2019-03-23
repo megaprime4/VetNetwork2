@@ -35,6 +35,10 @@
         <item>Member</item>
     </string-array>
 
+    <string-array name="posting_area">
+        <item>Select</item>
+    </string-array>
+
     <string-array name="division">
         <item>Select</item>
         <item>Barishal</item>
