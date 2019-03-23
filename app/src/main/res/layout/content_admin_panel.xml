@@ -34,7 +34,7 @@
 
     <View
         android:layout_width="5dp"
-        android:layout_height="50dp"></View>
+        android:layout_height="10dp"></View>
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -76,18 +76,51 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="left">
+
+                            <EditText
+                                android:id="@+id/admin_panel_showCurrentEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Current email :"
+                                android:textSize="18sp"
+                                android:textStyle="normal"
+                                android:textColor="@color/yellow"
+                                android:editable="false"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"/>
+
+                            <TextView
+                                android:id="@+id/admin_panel_currentEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/yellow"
+                                android:textSize="18sp"
+                                android:textStyle="normal"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <EditText
                                 android:id="@+id/adminPanel_getEmail"
-                                android:layout_width="230dp"
+                                android:layout_width="270dp"
                                 android:layout_height="wrap_content"
                                 android:hint="Enter the new email here.."
-                                android:textSize="18sp"
-                                android:textColor="@color/white"/>
+                                android:inputType="textEmailAddress"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
 
                             <View
-                                android:layout_width="50dp"
+                                android:layout_width="10dp"
                                 android:layout_height="40dp"></View>
 
                             <Button
@@ -136,14 +169,14 @@
 
                             <EditText
                                 android:id="@+id/adminPanel_getUserID"
-                                android:layout_width="230dp"
+                                android:layout_width="270dp"
                                 android:layout_height="wrap_content"
                                 android:hint="Phone/BVC number/Email"
                                 android:textSize="18sp"
                                 android:textColor="@color/white"/>
 
                             <View
-                                android:layout_width="50dp"
+                                android:layout_width="10dp"
                                 android:layout_height="40dp"></View>
 
                             <Button
@@ -211,5 +244,9 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <View
+        android:layout_width="5dp"
+        android:layout_height="10dp"></View>
 
 </LinearLayout>

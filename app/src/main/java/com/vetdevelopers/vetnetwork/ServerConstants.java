@@ -8,6 +8,7 @@ public class ServerConstants
     public static final String LOGIN_URL = DB_URL + "login.php";
     public static final String UPDATE_URL = DB_URL + "update (1).php";
     public static final String GET_ADMIN_EMAIL_URL = DB_URL + "get_admin_email.php";
+    public static final String UPDATE_CURRENT_ADMIN_EMAIL = DB_URL + "update_current_adminEmail.php";
 
 
     public static final String KEY_NAME = "name";

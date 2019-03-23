@@ -53,10 +53,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private static final String PREF_NAME = "prefs";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    //sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-    //editor = sharedPreferences.edit();
-
-    String mail = "";
 
     ProgressDialog progressDialog;
 
@@ -240,7 +236,6 @@ public class RegistrationActivity extends AppCompatActivity {
                             editor.putString("admin_email_verify", AdminEmail[0]);
                             editor.apply();
 
-                            mail = AdminEmail[0];
                             System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
                             System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify",""));
 
@@ -253,16 +248,22 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (error instanceof TimeoutError) {
+                    progressDialog.dismiss();
                     Toast.makeText(RegistrationActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof NoConnectionError) {
+                    progressDialog.dismiss();
                     Toast.makeText(RegistrationActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof AuthFailureError) {
+                    progressDialog.dismiss();
                     Toast.makeText(RegistrationActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof NetworkError) {
+                    progressDialog.dismiss();
                     Toast.makeText(RegistrationActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof ServerError) {
+                    progressDialog.dismiss();
                     Toast.makeText(RegistrationActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof ParseError) {
+                    progressDialog.dismiss();
                     Toast.makeText(RegistrationActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -286,10 +287,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         getAdminEmail = true;
-
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
-
         System.out.println("-------------------------------------------------------mail (sharedPreferences)= " + sharedPreferences.getString("admin_email_verify",""));
         return sharedPreferences.getString("admin_email_verify","");
     }
