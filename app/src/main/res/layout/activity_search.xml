@@ -99,8 +99,7 @@
             android:id="@+id/search_postingArea_spinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:entries="@array/posting_area"/>
+            android:layout_marginLeft="5dp" />
 
     </LinearLayout>
 
