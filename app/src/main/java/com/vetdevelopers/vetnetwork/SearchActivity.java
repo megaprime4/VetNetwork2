@@ -2,7 +2,6 @@ package com.vetdevelopers.vetnetwork;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +26,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -36,17 +34,9 @@ import java.util.Set;
 
 public class SearchActivity extends AppCompatActivity
 {
-    private Button search_searchButton;
-    private EditText search_name, search_phone;
-    private Spinner search_postingArea_spinner, search_district_spinner, search_division_spinner;
-    private String name = "", phone = "", postingArea = "", district = "", division = "",
-            POSTING_AREA = "posting_area";
-    public List<String> list = new ArrayList<String>(Arrays.asList("")); //variable vanish problem , but why?
-    //public Set<String> setEmpty = new HashSet<String>(Arrays.asList(""));
-
-    final String PREF_NAME = "prefs";
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private EditText name, phone;
+    private Spinner postingAreaSpinner, districtSpinner, divisionSpinner;
+    private Button searchButton;
 
 
     @Override
@@ -55,12 +45,168 @@ public class SearchActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        search_name = (EditText) findViewById(R.id.search_name);
-        search_phone = (EditText) findViewById(R.id.search_phone);
-        search_postingArea_spinner = (Spinner) findViewById(R.id.search_postingArea_spinner);
-        search_district_spinner = (Spinner) findViewById(R.id.search_district_spinner);
-        search_division_spinner = (Spinner) findViewById(R.id.search_division_spinner);
-        search_searchButton = (Button) findViewById(R.id.search_searchButton);
+
+        name = (EditText) findViewById(R.id.search_name);
+        phone = (EditText) findViewById(R.id.search_phone);
+
+        postingAreaSpinner = (Spinner) findViewById(R.id.search_postingArea_spinner);
+        districtSpinner = (Spinner) findViewById(R.id.search_district_spinner);
+        divisionSpinner = (Spinner) findViewById(R.id.search_division_spinner);
+
+        searchButton = (Button) findViewById(R.id.search_searchButton);
+
+        setPostingAreaSpinner();
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final String Name = name.getText().toString().trim();
+                final String Phone = phone.getText().toString().trim();
+                final String PostingArea = postingAreaSpinner.getSelectedItem().toString();
+                final String District = districtSpinner.getSelectedItem().toString();
+                final String Division = divisionSpinner.getSelectedItem().toString();
+
+                System.out.println("---------------------------------------------------" + Name);
+                System.out.println("---------------------------------------------------" + Phone);
+                System.out.println("---------------------------------------------------" + PostingArea);
+                System.out.println("---------------------------------------------------" + District);
+                System.out.println("---------------------------------------------------" + Division);
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_URL,
+                                new Response.Listener<String>()
+                                {
+                                    @Override
+                                    public void onResponse(String response)
+                                    {
+                                        if (response.contains("Connection failed!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Please check your ID & Password!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Improper request method!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Invalid platform!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("sql error"))
+                                        {
+                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+
+                                            //Bundle bundle1 = jsonStringToBundle(response);
+
+                                            ArrayList<String> arrayListName = new ArrayList<String>();
+                                            ArrayList<String> arrayListPhone = new ArrayList<String>();
+
+                                            System.out.println("this is response : " + response);
+                                            try
+                                            {
+                                                System.out.println("this is response : " + response);
+                                                JSONArray jsonArray = new JSONArray(response);
+                                                for (int i = 0; i < jsonArray.length(); i++)
+                                                {
+                                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                                    String outputName = jsonObject.getString("name");
+                                                    String outputPhone = jsonObject.getString("phone");
+
+                                                    arrayListName.add(outputName);
+                                                    arrayListPhone.add(outputPhone);
+                                                }
+
+                                                Intent browseIntent = new Intent(SearchActivity.this, BrowseActivity.class);
+                                                browseIntent.putStringArrayListExtra("name",arrayListName);
+                                                browseIntent.putStringArrayListExtra("phone",arrayListPhone);
+                                                startActivity(browseIntent);
+
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                //Toast.makeText(SearchActivity.this,"No result found",Toast.LENGTH_SHORT).show();
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }
+                                }, new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error)
+                            {
+                                if (error instanceof TimeoutError)
+                                {
+                                    Toast.makeText(SearchActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof NoConnectionError)
+                                {
+                                    Toast.makeText(SearchActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof AuthFailureError)
+                                {
+                                    Toast.makeText(SearchActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof NetworkError)
+                                {
+                                    Toast.makeText(SearchActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof ServerError)
+                                {
+                                    Toast.makeText(SearchActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof ParseError)
+                                {
+                                    Toast.makeText(SearchActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                {
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String, String> params = new HashMap<String, String>();
+
+                        params.put("name", Name);
+                        params.put("phone", Phone);
+                        params.put("postingArea", PostingArea);
+                        params.put("district", District);
+                        params.put("division", Division);
+                        return params;
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError
+                    {
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("User-Agent", "VetNetwork");  ////security purpose
+                        return headers;
+                    }
+                };
+
+                MySingleton.getInstance(SearchActivity.this).addToRequestQueue(stringRequest);
+
+            }
+        });
+    }
+
+    private void setPostingAreaSpinner()
+    {
+        //List<String> postingAreaList = new ArrayList<String>();
 
 
         StringRequest stringRequest = new StringRequest
@@ -103,41 +249,30 @@ public class SearchActivity extends AppCompatActivity
                                 else
                                 {
                                     Set<String> set1 = new HashSet<String>();
-                                    set1.add("Select");
+                                    //set1.add("Select");
                                     try
                                     {
                                         JSONArray jsonArray = new JSONArray(response);
                                         for (int i = 0; i < jsonArray.length(); i++)
                                         {
                                             JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                            String output = jsonObject.getString("posting_area");
+                                            String outputFromServer = jsonObject.getString("posting_area");
 
-                                            //debug : for each row - print the two output
-                                            //System.out.println("debug : " + (i + 1) + " " + output1);
-
-                                            //unique
-                                            if (!set1.contains(output) && !output.equals("N/A"))
-                                            {
-                                                set1.add(output);
-                                                list.add(output);
-                                            }
+                                            set1.add(outputFromServer);
                                         }
-                                        list.add(0, "Select");
+                                        List<String> postingAreaList = new ArrayList<String>();
+                                        postingAreaList.add(0, "Select");
+                                        postingAreaList.addAll(set1);
+
+                                        ArrayAdapter<String> postingAreaArrayAdapter = new ArrayAdapter<String>(SearchActivity.this,
+                                                android.R.layout.simple_spinner_item, postingAreaList);
+                                        postingAreaArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                        postingAreaSpinner.setAdapter(postingAreaArrayAdapter);
                                     }
                                     catch (Exception e)
                                     {
                                         e.printStackTrace();
                                     }
-
-                                    System.out.println("Initial set : " + set1);
-                                    //list.addAll(set);
-
-                                    sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                                    editor = sharedPreferences.edit();
-                                    editor.putStringSet("postingArea", set1);
-                                    editor.commit();
-
-                                    System.out.println("Initial pref : " + sharedPreferences.getStringSet("postingArea", null));
                                 }
                             }
                         }, new Response.ErrorListener()
@@ -189,176 +324,5 @@ public class SearchActivity extends AppCompatActivity
         };
 
         MySingleton.getInstance(SearchActivity.this).addToRequestQueue(stringRequest);
-
-        //getJSONFromVolley_1_2(ServerConstants.DOCTOR_POSTING_AREA);
-        Set<String> setEmpty = new HashSet<String>();
-        setEmpty.add("");
-        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        Set<String> set = sharedPreferences.getStringSet("postingArea", setEmpty);
-
-        System.out.println("Here is set : " + set);
-        System.out.println("List here : " + list);
-
-        ArrayAdapter<String> arrayAdapterDivision = new ArrayAdapter<>
-                (this, android.R.layout.simple_spinner_item, list);
-        arrayAdapterDivision.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        search_postingArea_spinner.setAdapter(arrayAdapterDivision);
-        //search_postingArea_spinner.setSelection(0);
-
-        search_searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-                name = search_name.getText().toString().trim();
-                phone = search_phone.getText().toString().trim();
-                postingArea = search_postingArea_spinner.getSelectedItem().toString();
-                district = search_district_spinner.getSelectedItem().toString();
-                division = search_division_spinner.getSelectedItem().toString();
-
-                System.out.println("debug now : " + name + " " + phone + " " + postingArea + " " +
-                        district + " " + division + " ");
-
-                StringRequest stringRequest1 = new StringRequest
-                        (Request.Method.POST, ServerConstants.SEARCH_URL,
-                                new Response.Listener<String>()
-                                {
-                                    @Override
-                                    public void onResponse(String response)
-                                    {
-                                        if (response.contains("Connection failed!"))
-                                        {
-                                            //popupTextView.setText(response);
-                                            //mDialog.show();
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else if (response.contains("Please check your ID & Password!"))
-                                        {
-                                            //popupTextView.setText(response);
-                                            //mDialog.show();
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else if (response.contains("Improper request method!"))
-                                        {
-                                            //popupTextView.setText(response);
-                                            //mDialog.show();
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else if (response.contains("Invalid platform!"))
-                                        {
-                                            //popupTextView.setText(response);
-                                            //mDialog.show();
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else if (response.contains("sql error"))
-                                        {
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-
-                                        //server data  retrieve code below...
-                                        else
-                                        {
-                                            //Bundle bundle1 = jsonStringToBundle(response);
-
-                                            ArrayList<String> arrayListName = new ArrayList<String>();
-                                            ArrayList<String> arrayListPhone = new ArrayList<String>();
-
-
-                                            try
-                                            {
-                                                System.out.println("this is response : "+response);
-                                                JSONArray jsonArray = new JSONArray(response);
-                                                for (int i = 0; i < jsonArray.length(); i++)
-                                                {
-                                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                                    String outputName = jsonObject.getString("name");
-                                                    String outputPhone = jsonObject.getString("phone");
-
-                                                    //debug : for each row - print the two output
-                                                    //System.out.println("debug : " + (i + 1) + " " + output1);
-
-                                                    //unique
-                                                    if (!arrayListName.contains(outputName) && !arrayListName.equals("N/A"))
-                                                    {
-                                                        arrayListName.add(outputName);
-                                                    }
-                                                    if (!arrayListPhone.contains(outputName) && !arrayListPhone.equals("N/A"))
-                                                    {
-                                                        arrayListPhone.add(outputPhone);
-                                                    }
-                                                }
-
-                                                Intent browseIntent = new Intent(SearchActivity.this, BrowseActivity.class);
-                                                browseIntent.putStringArrayListExtra("name",arrayListName);
-                                                browseIntent.putStringArrayListExtra("phone",arrayListPhone);
-                                                startActivity(browseIntent);
-
-                                            }
-                                            catch (Exception e)
-                                            {
-                                                Toast.makeText(SearchActivity.this,"No result found",Toast.LENGTH_LONG).show();
-                                                e.printStackTrace();
-                                            }
-
-                                        }
-                                    }
-                                }, new Response.ErrorListener()
-                        {
-                            @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
-                                if (error instanceof TimeoutError)
-                                {
-                                    Toast.makeText(SearchActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
-                                }
-                                else if (error instanceof NoConnectionError)
-                                {
-                                    Toast.makeText(SearchActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
-                                }
-                                else if (error instanceof AuthFailureError)
-                                {
-                                    Toast.makeText(SearchActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
-                                }
-                                else if (error instanceof NetworkError)
-                                {
-                                    Toast.makeText(SearchActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
-                                }
-                                else if (error instanceof ServerError)
-                                {
-                                    Toast.makeText(SearchActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
-                                }
-                                else if (error instanceof ParseError)
-                                {
-                                    Toast.makeText(SearchActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                {
-                    @Override
-                    protected Map<String, String> getParams()
-                    {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("name", name);
-                        params.put("phone", phone);
-                        params.put("postingArea", postingArea);
-                        params.put("district", district);
-                        params.put("division", division);
-                        return params;
-                    }
-
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError
-                    {
-                        Map<String, String> headers = new HashMap<String, String>();
-                        headers.put("User-Agent", "VetNetwork");  ////security purpose
-                        return headers;
-                    }
-                };
-
-                MySingleton.getInstance(SearchActivity.this).addToRequestQueue(stringRequest1);
-
-            }
-        });
     }
 }
