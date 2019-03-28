@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,14 +24,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -208,35 +205,6 @@ public class SearchActivity extends AppCompatActivity
         search_postingArea_spinner.setAdapter(arrayAdapterDivision);
         //search_postingArea_spinner.setSelection(0);
 
-        /*
-        //SET SELECTION AFTER YOU SET THE ADAPTER NOT BEFORE IT
-        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        search_postingArea_spinner.setSelection(sharedPreferences.getInt("spinnerSelection1", 0));
-        search_postingArea_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-
-            public void onItemSelected(AdapterView<?> arg0, View view, int position, long id)
-            {
-                int item = search_postingArea_spinner.getSelectedItemPosition();
-
-                String selected = arg0.getItemAtPosition(position).toString();
-                //Toast.makeText(this, "Selected item: " + selected, Toast.LENGTH_SHORT).show();
-                postingArea = selected;
-                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                editor = sharedPreferences.edit();
-                editor.putInt("spinnerSelection1", item);
-                editor.commit();
-
-            }
-
-            public void onNothingSelected(AdapterView<?> arg0)
-            {
-
-
-            }
-        });
-*/
         search_searchButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -321,10 +289,10 @@ public class SearchActivity extends AppCompatActivity
                                                     }
                                                 }
 
-                                                Intent intent = new Intent(SearchActivity.this, BrowseActivity.class);
-                                                intent.putStringArrayListExtra("name",arrayListName);
-                                                intent.putStringArrayListExtra("phone",arrayListPhone);
-                                                startActivity(intent);
+                                                Intent browseIntent = new Intent(SearchActivity.this, BrowseActivity.class);
+                                                browseIntent.putStringArrayListExtra("name",arrayListName);
+                                                browseIntent.putStringArrayListExtra("phone",arrayListPhone);
+                                                startActivity(browseIntent);
 
                                             }
                                             catch (Exception e)
@@ -332,9 +300,6 @@ public class SearchActivity extends AppCompatActivity
                                                 Toast.makeText(SearchActivity.this,"No result found",Toast.LENGTH_LONG).show();
                                                 e.printStackTrace();
                                             }
-
-
-
 
                                         }
                                     }
@@ -392,29 +357,6 @@ public class SearchActivity extends AppCompatActivity
                 };
 
                 MySingleton.getInstance(SearchActivity.this).addToRequestQueue(stringRequest1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             }
         });

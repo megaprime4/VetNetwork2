@@ -14,11 +14,10 @@ public class BrowseActivity extends AppCompatActivity
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    private List<ListItemForRecycleView1> listItems;
 
     ArrayList<String> arrayListName = new ArrayList<String>();
     ArrayList<String> arrayListPhone = new ArrayList<String>();
-
-    private List<ListItemForRecycleView1> listItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,13 +35,13 @@ public class BrowseActivity extends AppCompatActivity
 
         listItems = new ArrayList<>();
 
-        for(int i=0;i<arrayListName.size();i++)
+        for(int i=0; i<arrayListName.size(); i++)
         {
             ListItemForRecycleView1 listItem = new ListItemForRecycleView1(
                     arrayListName.get(i),arrayListPhone.get(i));
             listItems.add(listItem);
         }
-        adapter = new MyAdapterForRecycleView1(listItems,this);
+        adapter = new MyAdapterForRecycleView1(listItems, this);
         recyclerView.setAdapter(adapter);
     }
 }
