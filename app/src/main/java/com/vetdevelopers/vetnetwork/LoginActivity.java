@@ -1,6 +1,7 @@
 package com.vetdevelopers.vetnetwork;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -38,11 +40,14 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
 
     private EditText userID, password;
     private Button signInButton;
-    private TextView needAccount;
+    private TextView needAccount, forgotPassword;
 
-    private Dialog mDialog;
-    private TextView popupTextView;
-    private Button popupOKButton;
+    private Dialog mDialogMsg, mDialogEmail;
+    private TextView msgPopupTextView;
+    private EditText popupGetEmail;
+    private Button popupOKButton, popupConfirmButton;
+
+    ProgressDialog progressDialog;
 
 
     //autologin - part : 1
@@ -59,18 +64,33 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //updateUI(firebaseAuth);
 
+        progressDialog = new ProgressDialog(LoginActivity.this);
 
-        mDialog = new Dialog(this);  //custom popup window
-        mDialog.setContentView(R.layout.custompopup_success);
-        mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        popupTextView = (TextView) mDialog.findViewById(R.id.popup_textView);
-        popupOKButton = (Button) mDialog.findViewById(R.id.popup_OK_Button);
+        //custom popup
+        mDialogMsg = new Dialog(LoginActivity.this);
+        mDialogMsg.setContentView(R.layout.custompopup_success);
+        mDialogMsg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        msgPopupTextView = (TextView) mDialogMsg.findViewById(R.id.popup_textView);
+        popupOKButton = (Button) mDialogMsg.findViewById(R.id.popup_OK_Button);
+
+        mDialogEmail = new Dialog(LoginActivity.this);
+        mDialogEmail.setContentView(R.layout.custompopup_get_email);
+        mDialogEmail.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupGetEmail = (EditText) mDialogEmail.findViewById(R.id.getEmail);
+        popupConfirmButton = (Button) mDialogEmail.findViewById(R.id.getEmail_confirm_Button);
+        popupConfirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkEmail();
+            }
+        });
+        //custom popup
 
         userID = (EditText) findViewById(R.id.login_username);
         password = (EditText) findViewById(R.id.login_password);
         needAccount = (TextView) findViewById(R.id.login_needAccount_textView);
+        forgotPassword = (TextView) findViewById(R.id.login_forgotPassword_textView);
         signInButton = (Button) findViewById(R.id.login_signInButton);
 
 
@@ -133,7 +153,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                 else
                 {
 
-
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.LOGIN_URL,
                             new Response.Listener<String>()
                             {
@@ -142,23 +161,23 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                 {
                                     if (response.contains("Connection failed!"))
                                     {
-                                        popupTextView.setText(response);
-                                        mDialog.show();
+                                        msgPopupTextView.setText(response);
+                                        mDialogMsg.show();
                                     }
                                     else if (response.contains("Please check your ID & Password!"))
                                     {
-                                        popupTextView.setText(response);
-                                        mDialog.show();
+                                        msgPopupTextView.setText(response);
+                                        mDialogMsg.show();
                                     }
                                     else if (response.contains("Improper request method!"))
                                     {
-                                        popupTextView.setText(response);
-                                        mDialog.show();
+                                        msgPopupTextView.setText(response);
+                                        mDialogMsg.show();
                                     }
                                     else if (response.contains("Invalid platform!"))
                                     {
-                                        popupTextView.setText(response);
-                                        mDialog.show();
+                                        msgPopupTextView.setText(response);
+                                        mDialogMsg.show();
                                     }
                                     else if (response.contains("sql error"))
                                     {
@@ -190,8 +209,8 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                                     startActivity(profileIntent);
                                                     finish();
                                                 } else if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("pending")) {
-                                                    popupTextView.setText("Please activate your admin account!");
-                                                    mDialog.show();
+                                                    msgPopupTextView.setText("Please activate your admin account!");
+                                                    mDialogMsg.show();
                                                 }
                                             }
 
@@ -265,10 +284,130 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
             @Override
             public void onClick(View v)
             {
-                mDialog.dismiss();
+                mDialogMsg.dismiss();
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupGetEmail.setText("");
+                mDialogEmail.show();
             }
         });
     } //onCreate
+
+    private void checkEmail()
+    {
+        final String ForgotPassEmail = popupGetEmail.getText().toString().trim();
+        if (Patterns.EMAIL_ADDRESS.matcher(ForgotPassEmail).matches() == false) {
+            Toast.makeText(LoginActivity.this, "Email address isn't valid!", Toast.LENGTH_SHORT).show();
+        } else {
+
+            System.out.println("------------------------------------------ForgotPassEmail : " + ForgotPassEmail);
+
+            mDialogEmail.dismiss();
+
+            progressDialog.setTitle("Please Wait");
+            progressDialog.setMessage("Checking the email");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
+
+            //volley code
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.FORGOT_PASSWORD,
+                    new Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String response)
+                        {
+                            if (response.contains("Connection failed!")) {
+                                msgPopupTextView.setText(response);
+                                progressDialog.dismiss();
+                                mDialogMsg.show();
+                            }
+                            else if (response.contains("Invalid platform!")) {
+                                msgPopupTextView.setText(response);
+                                progressDialog.dismiss();
+                                mDialogMsg.show();
+                            }
+                            else if (response.contains("Improper request method!")) {
+                                msgPopupTextView.setText(response);
+                                progressDialog.dismiss();
+                                mDialogMsg.show();
+                            }
+                            else if (response.contains("SQL error!")) {
+                                msgPopupTextView.setText(response);
+                                progressDialog.dismiss();
+                                mDialogMsg.show();
+                            }
+                            else if (response.contains("This email is not registered!")) {
+                                msgPopupTextView.setText(response);
+                                progressDialog.dismiss();
+                                mDialogMsg.show();
+                            }
+                            else if(response.contains("Mail sending failed!")) {
+                                msgPopupTextView.setText(response);
+                                progressDialog.dismiss();
+                                mDialogMsg.show();
+                            }
+                            else if(response.contains("Please check your email!")){
+                                msgPopupTextView.setText(response);
+                                progressDialog.dismiss();
+                                mDialogMsg.show();
+                            }
+                        }
+                    }, new Response.ErrorListener()
+            {
+                @Override
+                public void onErrorResponse(VolleyError error)
+                {
+                    if (error instanceof TimeoutError) {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (error instanceof NoConnectionError) {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (error instanceof AuthFailureError) {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (error instanceof NetworkError) {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (error instanceof ServerError) {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (error instanceof ParseError) {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            })
+            {
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put(ServerConstants.KEY_EMAIL, ForgotPassEmail);
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError
+                {
+                    Map<String, String> headers = new HashMap<String, String>();
+                    headers.put("User-Agent", "VetNetwork");  ////security purpose
+                    return headers;
+                }
+            };
+
+            MySingleton.getInstance(LoginActivity.this).addToRequestQueue(stringRequest);
+        }
+    }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)

@@ -250,11 +250,6 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         }
         else
         {
-            /*progressDialog.setTitle("Please Wait");
-            progressDialog.setMessage("Changing your profile");
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();*/
-
             String prevPhone = sharedPreferences.getString("Phone", "");
 
             editProfle(name, email, phone, prevPhone, bvcRegNumber, university, postingArea,
@@ -266,10 +261,6 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                             final String postingArea, final String district, final String division, final String bvaMember,
                             final String bvaNumber, final String bvaDesignation)
     {
-        ////volley code here
-        /*mDialogPass.dismiss();
-        msgPopupTextView.setText("Account modified!");
-        mDialogMsg.show();*/
         progressDialog.setTitle("Please Wait");
         progressDialog.setMessage("Changing your profile");
         progressDialog.setCanceledOnTouchOutside(false);

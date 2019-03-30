@@ -11,6 +11,7 @@ public class ServerConstants
     public static final String UPDATE_CURRENT_ADMIN_EMAIL = DB_URL + "update_current_adminEmail.php";
     public static final String DOCTOR_POSTING_AREA = DB_URL + "doctor_posting_area.php";
     public static final String SEARCH_URL = DB_URL + "search.php";
+    public static final String FORGOT_PASSWORD = DB_URL + "forgotPassword.php";
 
 
 
