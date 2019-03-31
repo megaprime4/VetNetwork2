@@ -43,7 +43,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class EditProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+{
 
     private Toolbar mToolbar;
 
@@ -73,7 +74,8 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
     //String prevPhone = sharedPreferences.getString("Phone", "");
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
@@ -92,9 +94,11 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         mDialogPass.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popupGetPassword = (EditText) mDialogPass.findViewById(R.id.getPassword);
         popupConfirmButton = (Button) mDialogPass.findViewById(R.id.getPassword_confirm_Button);
-        popupConfirmButton.setOnClickListener(new View.OnClickListener() {
+        popupConfirmButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 checkPassword();
             }
         });
@@ -104,24 +108,26 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         mDialogMsg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         msgPopupTextView = (TextView) mDialogMsg.findViewById(R.id.popup_textView);
         msgPopupOKButton = (Button) mDialogMsg.findViewById(R.id.popup_OK_Button);
-        msgPopupOKButton.setOnClickListener(new View.OnClickListener() {
+        msgPopupOKButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 mDialogMsg.dismiss();
             }
         });
 
 
-
         changeButton = (Button) findViewById(R.id.editProfile_changeButton);
-        changeButton.setOnClickListener(new View.OnClickListener() {
+        changeButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 popupGetPassword.setText("");
                 mDialogPass.show();
             }
         });
-
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.setting_nav_view);
@@ -177,7 +183,8 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         int bvaDesignationIndex = Integer.parseInt("" + Arrays.asList(bvaDesignationArray).indexOf(sharedPreferences.getString("BVA_Designation", "0")));
         BVADesignation.setSelection(bvaDesignationIndex);
 
-        BVAMember.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        BVAMember.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
@@ -205,7 +212,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         String password = popupGetPassword.getText().toString().trim();
         String matchPassword = sharedPreferences.getString("Password", "");
 
-        if(password.equals(matchPassword))
+        if (password.equals(matchPassword))
         {
             mDialogPass.dismiss();
             checkData();
@@ -236,16 +243,20 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
 
 
         //checking data
-        if(TextUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(name))
+        {
             Toast.makeText(this, "Name cannot be empty!", Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(email)) {
+        else if (TextUtils.isEmpty(email))
+        {
             Toast.makeText(this, "Email cannot be empty!", Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(phone)) {
+        else if (TextUtils.isEmpty(phone))
+        {
             Toast.makeText(this, "Phone cannot be empty!", Toast.LENGTH_SHORT).show();
         }
-        else if(university.equals("Select")) {
+        else if (university.equals("Select"))
+        {
             Toast.makeText(this, "Please select your university!", Toast.LENGTH_SHORT).show();
         }
         else
@@ -272,32 +283,38 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                     @Override
                     public void onResponse(String response)
                     {
-                        if (response.contains("Connection failed!")) {
+                        if (response.contains("Connection failed!"))
+                        {
                             msgPopupTextView.setText(response);
                             progressDialog.dismiss();
                             mDialogMsg.show();
                         }
-                        else if (response.contains("Invalid platform!")) {
+                        else if (response.contains("Invalid platform!"))
+                        {
                             msgPopupTextView.setText(response);
                             progressDialog.dismiss();
                             mDialogMsg.show();
                         }
-                        else if (response.contains("Improper request method!")) {
+                        else if (response.contains("Improper request method!"))
+                        {
                             msgPopupTextView.setText(response);
                             progressDialog.dismiss();
                             mDialogMsg.show();
                         }
-                        else if (response.contains("sql (update) query error!")) {
+                        else if (response.contains("sql (update) query error!"))
+                        {
                             msgPopupTextView.setText(response);
                             progressDialog.dismiss();
                             mDialogMsg.show();
                         }
-                        else if (response.contains("sql (select) query error!")) {
+                        else if (response.contains("sql (select) query error!"))
+                        {
                             msgPopupTextView.setText(response);
                             progressDialog.dismiss();
                             mDialogMsg.show();
                         }
-                        else if(response.contains("No row selected! Please debug!")) {
+                        else if (response.contains("No row selected! Please debug!"))
+                        {
                             msgPopupTextView.setText(response);
                             progressDialog.dismiss();
                             mDialogMsg.show();
@@ -313,11 +330,11 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                                 JSONArray jsonArray = new JSONArray(response);
                                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                                 String u = jsonObject.getString("phone");
-                                Boolean r = sharedPreferences.getBoolean("remember",false);
+                                Boolean r = sharedPreferences.getBoolean("remember", false);
 
 
                                 System.out.println("---------------------------------editprofile u (jasonobject) : " + u);
-                                System.out.println("---------------------------------editprofile r : "+r);
+                                System.out.println("---------------------------------editprofile r : " + r);
 
                                 sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
                                 editor = sharedPreferences.edit();
@@ -328,7 +345,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
 
                                 //editor.putBoolean(KEY_REMEMBER, r);
 
-                                if(r)
+                                if (r)
                                 {
                                     editor.putString(KEY_USERNAME, u);
                                     editor.putBoolean(KEY_REMEMBER, r);
@@ -354,27 +371,33 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
             @Override
             public void onErrorResponse(VolleyError error)
             {
-                if (error instanceof TimeoutError) {
+                if (error instanceof TimeoutError)
+                {
                     progressDialog.dismiss();
                     Toast.makeText(EditProfileActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
                 }
-                else if (error instanceof NoConnectionError) {
+                else if (error instanceof NoConnectionError)
+                {
                     progressDialog.dismiss();
                     Toast.makeText(EditProfileActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
                 }
-                else if (error instanceof AuthFailureError) {
+                else if (error instanceof AuthFailureError)
+                {
                     progressDialog.dismiss();
                     Toast.makeText(EditProfileActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
                 }
-                else if (error instanceof NetworkError) {
+                else if (error instanceof NetworkError)
+                {
                     progressDialog.dismiss();
                     Toast.makeText(EditProfileActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
                 }
-                else if (error instanceof ServerError) {
+                else if (error instanceof ServerError)
+                {
                     progressDialog.dismiss();
                     Toast.makeText(EditProfileActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
                 }
-                else if (error instanceof ParseError) {
+                else if (error instanceof ParseError)
+                {
                     progressDialog.dismiss();
                     Toast.makeText(EditProfileActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
                 }
@@ -414,18 +437,23 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START))
+        {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        else
+        {
             super.onBackPressed();
         }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
+    public boolean onNavigationItemSelected(MenuItem menuItem)
+    {
         // Handle navigation view item clicks here.
         int id = menuItem.getItemId();
 
@@ -442,7 +470,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         {
 
         }
-        else if(id == R.id.nav_changePassword)
+        else if (id == R.id.nav_changePassword)
         {
 
         }
@@ -450,7 +478,9 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         {
             getApplicationContext().getSharedPreferences("prefs", 0).edit().clear().commit();
             logoutUser();
-        } else if (id == R.id.nav_deleteAccount) {
+        }
+        else if (id == R.id.nav_deleteAccount)
+        {
 
         }
 
@@ -472,6 +502,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         BVANumber.setVisibility(View.INVISIBLE);
         LinearLayout_BVADesignation.setVisibility(View.INVISIBLE);
     }
+
     private void showBVA()
     {
         BVANumber.setVisibility(View.VISIBLE);

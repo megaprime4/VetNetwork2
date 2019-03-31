@@ -13,7 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 
 public class AdminProfileActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener
+{
 
     private TextView name, address, email, phone, bvcRegNumber, university, designation, bvaNumber, bvaDesignation, accountStatus, navName, navEmail;
 
@@ -44,7 +45,8 @@ public class AdminProfileActivity extends AppCompatActivity
     private static final String KEY_PASS = "password";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_profile);
 
@@ -92,7 +94,6 @@ public class AdminProfileActivity extends AppCompatActivity
                 User_Request = bundle.getString("User_Request");
                 User_Type = bundle.getString("User_Type");
                 Admin_Email = bundle.getString("Admin_Email");
-
 
 
                 editor.putString("Name", Name);
@@ -206,18 +207,23 @@ public class AdminProfileActivity extends AppCompatActivity
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START))
+        {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        else
+        {
             super.onBackPressed();
         }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
+    public boolean onNavigationItemSelected(MenuItem menuItem)
+    {
         // Handle navigation view item clicks here.
         int id = menuItem.getItemId();
 
@@ -234,7 +240,7 @@ public class AdminProfileActivity extends AppCompatActivity
             Intent editProfileIntent = new Intent(AdminProfileActivity.this, EditProfileActivity.class);
             startActivity(editProfileIntent);
         }
-        else if(id == R.id.nav_changePassword)
+        else if (id == R.id.nav_changePassword)
         {
 
         }

@@ -58,9 +58,11 @@ public class SearchActivity extends AppCompatActivity
 
         setPostingAreaSpinner();
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
 
                 final String Name = name.getText().toString().trim();
                 final String Phone = phone.getText().toString().trim();
@@ -75,107 +77,107 @@ public class SearchActivity extends AppCompatActivity
                 System.out.println("---------------------------------------------------" + Division);
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_URL,
-                                new Response.Listener<String>()
-                                {
-                                    @Override
-                                    public void onResponse(String response)
-                                    {
-                                        if (response.contains("Connection failed!"))
-                                        {
-                                            //popupTextView.setText(response);
-                                            //mDialog.show();
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else if (response.contains("Please check your ID & Password!"))
-                                        {
-                                            //popupTextView.setText(response);
-                                            //mDialog.show();
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else if (response.contains("Improper request method!"))
-                                        {
-                                            //popupTextView.setText(response);
-                                            //mDialog.show();
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else if (response.contains("Invalid platform!"))
-                                        {
-                                            //popupTextView.setText(response);
-                                            //mDialog.show();
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else if (response.contains("sql error"))
-                                        {
-                                            Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
-                                        }
-                                        else
-                                        {
-
-                                            //Bundle bundle1 = jsonStringToBundle(response);
-
-                                            ArrayList<String> arrayListName = new ArrayList<String>();
-                                            ArrayList<String> arrayListPhone = new ArrayList<String>();
-
-                                            System.out.println("this is response : " + response);
-                                            try
-                                            {
-                                                System.out.println("this is response : " + response);
-                                                JSONArray jsonArray = new JSONArray(response);
-                                                for (int i = 0; i < jsonArray.length(); i++)
-                                                {
-                                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                                    String outputName = jsonObject.getString("name");
-                                                    String outputPhone = jsonObject.getString("phone");
-
-                                                    arrayListName.add(outputName);
-                                                    arrayListPhone.add(outputPhone);
-                                                }
-
-                                                Intent browseIntent = new Intent(SearchActivity.this, BrowseActivity.class);
-                                                browseIntent.putStringArrayListExtra("name",arrayListName);
-                                                browseIntent.putStringArrayListExtra("phone",arrayListPhone);
-                                                startActivity(browseIntent);
-
-                                            }
-                                            catch (Exception e)
-                                            {
-                                                //Toast.makeText(SearchActivity.this,"No result found",Toast.LENGTH_SHORT).show();
-                                                e.printStackTrace();
-                                            }
-
-                                        }
-                                    }
-                                }, new Response.ErrorListener()
+                        new Response.Listener<String>()
                         {
                             @Override
-                            public void onErrorResponse(VolleyError error)
+                            public void onResponse(String response)
                             {
-                                if (error instanceof TimeoutError)
+                                if (response.contains("Connection failed!"))
                                 {
-                                    Toast.makeText(SearchActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                                    //popupTextView.setText(response);
+                                    //mDialog.show();
+                                    Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                else if (error instanceof NoConnectionError)
+                                else if (response.contains("Please check your ID & Password!"))
                                 {
-                                    Toast.makeText(SearchActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                                    //popupTextView.setText(response);
+                                    //mDialog.show();
+                                    Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                else if (error instanceof AuthFailureError)
+                                else if (response.contains("Improper request method!"))
                                 {
-                                    Toast.makeText(SearchActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                                    //popupTextView.setText(response);
+                                    //mDialog.show();
+                                    Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                else if (error instanceof NetworkError)
+                                else if (response.contains("Invalid platform!"))
                                 {
-                                    Toast.makeText(SearchActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                                    //popupTextView.setText(response);
+                                    //mDialog.show();
+                                    Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                else if (error instanceof ServerError)
+                                else if (response.contains("sql error"))
                                 {
-                                    Toast.makeText(SearchActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SearchActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                else if (error instanceof ParseError)
+                                else
                                 {
-                                    Toast.makeText(SearchActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+
+                                    //Bundle bundle1 = jsonStringToBundle(response);
+
+                                    ArrayList<String> arrayListName = new ArrayList<String>();
+                                    ArrayList<String> arrayListPhone = new ArrayList<String>();
+
+                                    System.out.println("this is response : " + response);
+                                    try
+                                    {
+                                        System.out.println("this is response : " + response);
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        for (int i = 0; i < jsonArray.length(); i++)
+                                        {
+                                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                            String outputName = jsonObject.getString("name");
+                                            String outputPhone = jsonObject.getString("phone");
+
+                                            arrayListName.add(outputName);
+                                            arrayListPhone.add(outputPhone);
+                                        }
+
+                                        Intent browseIntent = new Intent(SearchActivity.this, BrowseActivity.class);
+                                        browseIntent.putStringArrayListExtra("name", arrayListName);
+                                        browseIntent.putStringArrayListExtra("phone", arrayListPhone);
+                                        startActivity(browseIntent);
+
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        //Toast.makeText(SearchActivity.this,"No result found",Toast.LENGTH_SHORT).show();
+                                        e.printStackTrace();
+                                    }
+
                                 }
                             }
-                        })
+                        }, new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        if (error instanceof TimeoutError)
+                        {
+                            Toast.makeText(SearchActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof NoConnectionError)
+                        {
+                            Toast.makeText(SearchActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof AuthFailureError)
+                        {
+                            Toast.makeText(SearchActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof NetworkError)
+                        {
+                            Toast.makeText(SearchActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof ServerError)
+                        {
+                            Toast.makeText(SearchActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof ParseError)
+                        {
+                            Toast.makeText(SearchActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
                 {
                     @Override
                     protected Map<String, String> getParams()

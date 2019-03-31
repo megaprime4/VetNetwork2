@@ -28,7 +28,7 @@ public class WelcomeActivity extends AppCompatActivity
             sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
             String value = "";
-            value=sharedPreferences.getString(KEY_USERNAME, "");
+            value = sharedPreferences.getString(KEY_USERNAME, "");
 
             if (value.equals(""))
             {
@@ -73,12 +73,12 @@ public class WelcomeActivity extends AppCompatActivity
                         }
                         finally
                         {
-                            if(sharedPreferences.getString(KEY_USER_TYPE,"").equals("Doctor"))
+                            if (sharedPreferences.getString(KEY_USER_TYPE, "").equals("Doctor"))
                             {
                                 Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
                                 startActivity(intent);
                             }
-                            else if(sharedPreferences.getString(KEY_USER_TYPE,"").equals("Admin"))
+                            else if (sharedPreferences.getString(KEY_USER_TYPE, "").equals("Admin"))
                             {
                                 Intent intent = new Intent(WelcomeActivity.this, AdminProfileActivity.class);
                                 startActivity(intent);

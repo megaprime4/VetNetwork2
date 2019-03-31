@@ -31,6 +31,7 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,9 +80,11 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
         mDialogEmail.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popupGetEmail = (EditText) mDialogEmail.findViewById(R.id.getEmail);
         popupConfirmButton = (Button) mDialogEmail.findViewById(R.id.getEmail_confirm_Button);
-        popupConfirmButton.setOnClickListener(new View.OnClickListener() {
+        popupConfirmButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 checkEmail();
             }
         });
@@ -191,7 +194,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                         try
                                         {
                                             BundleFunctions bundleFunctions = new BundleFunctions();
-                                            if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Doctor"))
+                                            if (bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Doctor"))
                                             {
                                                 Intent profileIntent = new Intent(LoginActivity.this, ProfileActivity.class);
                                                 profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
@@ -199,16 +202,19 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                                 startActivity(profileIntent);
                                                 finish();
                                             }
-                                            else if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Admin") ||
+                                            else if (bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Admin") ||
                                                     bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("pending"))
                                             {
-                                                if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Admin")) {
+                                                if (bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("Admin"))
+                                                {
                                                     Intent profileIntent = new Intent(LoginActivity.this, AdminProfileActivity.class);
                                                     profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
                                                     profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                     startActivity(profileIntent);
                                                     finish();
-                                                } else if(bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("pending")) {
+                                                }
+                                                else if (bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("pending"))
+                                                {
                                                     msgPopupTextView.setText("Please activate your admin account!");
                                                     mDialogMsg.show();
                                                 }
@@ -288,9 +294,11 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
             }
         });
 
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
+        forgotPassword.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 popupGetEmail.setText("");
                 mDialogEmail.show();
             }
@@ -300,9 +308,12 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     private void checkEmail()
     {
         final String ForgotPassEmail = popupGetEmail.getText().toString().trim();
-        if (Patterns.EMAIL_ADDRESS.matcher(ForgotPassEmail).matches() == false) {
+        if (Patterns.EMAIL_ADDRESS.matcher(ForgotPassEmail).matches() == false)
+        {
             Toast.makeText(LoginActivity.this, "Email address isn't valid!", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else
+        {
 
             System.out.println("------------------------------------------ForgotPassEmail : " + ForgotPassEmail);
 
@@ -320,37 +331,44 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                         @Override
                         public void onResponse(String response)
                         {
-                            if (response.contains("Connection failed!")) {
+                            if (response.contains("Connection failed!"))
+                            {
                                 msgPopupTextView.setText(response);
                                 progressDialog.dismiss();
                                 mDialogMsg.show();
                             }
-                            else if (response.contains("Invalid platform!")) {
+                            else if (response.contains("Invalid platform!"))
+                            {
                                 msgPopupTextView.setText(response);
                                 progressDialog.dismiss();
                                 mDialogMsg.show();
                             }
-                            else if (response.contains("Improper request method!")) {
+                            else if (response.contains("Improper request method!"))
+                            {
                                 msgPopupTextView.setText(response);
                                 progressDialog.dismiss();
                                 mDialogMsg.show();
                             }
-                            else if (response.contains("SQL error!")) {
+                            else if (response.contains("SQL error!"))
+                            {
                                 msgPopupTextView.setText(response);
                                 progressDialog.dismiss();
                                 mDialogMsg.show();
                             }
-                            else if (response.contains("This email is not registered!")) {
+                            else if (response.contains("This email is not registered!"))
+                            {
                                 msgPopupTextView.setText(response);
                                 progressDialog.dismiss();
                                 mDialogMsg.show();
                             }
-                            else if(response.contains("Mail sending failed!")) {
+                            else if (response.contains("Mail sending failed!"))
+                            {
                                 msgPopupTextView.setText(response);
                                 progressDialog.dismiss();
                                 mDialogMsg.show();
                             }
-                            else if(response.contains("Please check your email!")){
+                            else if (response.contains("Please check your email!"))
+                            {
                                 msgPopupTextView.setText(response);
                                 progressDialog.dismiss();
                                 mDialogMsg.show();
@@ -361,27 +379,33 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                 @Override
                 public void onErrorResponse(VolleyError error)
                 {
-                    if (error instanceof TimeoutError) {
+                    if (error instanceof TimeoutError)
+                    {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
                     }
-                    else if (error instanceof NoConnectionError) {
+                    else if (error instanceof NoConnectionError)
+                    {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
                     }
-                    else if (error instanceof AuthFailureError) {
+                    else if (error instanceof AuthFailureError)
+                    {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
                     }
-                    else if (error instanceof NetworkError) {
+                    else if (error instanceof NetworkError)
+                    {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
                     }
-                    else if (error instanceof ServerError) {
+                    else if (error instanceof ServerError)
+                    {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
                     }
-                    else if (error instanceof ParseError) {
+                    else if (error instanceof ParseError)
+                    {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
                     }

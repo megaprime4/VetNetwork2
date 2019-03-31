@@ -15,8 +15,6 @@ public class ServerConstants
     public static final String FORGOT_PASSWORD = DB_URL + "forgotPassword.php";
 
 
-
-
     public static final String KEY_NAME = "name";
     public static final String KEY_USER_ID = "id";
     public static final String KEY_EMAIL = "email";

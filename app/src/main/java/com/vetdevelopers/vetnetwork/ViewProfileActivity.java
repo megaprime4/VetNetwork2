@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class ViewProfileActivity extends AppCompatActivity {
+public class ViewProfileActivity extends AppCompatActivity
+{
     private TextView name, address, email, phone, bvcRegNumber, university, designation, bvaNumber, bvaDesignation, accountStatus;
 
     String Name = "";
@@ -30,9 +31,9 @@ public class ViewProfileActivity extends AppCompatActivity {
     String Admin_Email = "";
 
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
 
@@ -49,11 +50,13 @@ public class ViewProfileActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
 
-        try {
+        try
+        {
             String browseSearchedUserProfile = "false";
             browseSearchedUserProfile = getIntent().getStringExtra("browseSearchedUserProfile");
 
-            if (browseSearchedUserProfile.equals("true")) {
+            if (browseSearchedUserProfile.equals("true"))
+            {
                 //first time fetch
                 bundle = getIntent().getExtras();
 
@@ -77,10 +80,14 @@ public class ViewProfileActivity extends AppCompatActivity {
                 User_Type = bundle.getString("User_Type");
                 Admin_Email = bundle.getString("Admin_Email");
 
-            } else if (browseSearchedUserProfile.equals("false")) {
+            }
+            else if (browseSearchedUserProfile.equals("false"))
+            {
 
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
@@ -118,10 +125,13 @@ public class ViewProfileActivity extends AppCompatActivity {
         bvcRegNumber.setText(BVC_number);
         university.setText(University);
         designation.setText(Designation);
-        if (BVA_Member.equals("No")) {
+        if (BVA_Member.equals("No"))
+        {
             bvaNumber.setText("Not available");
             bvaDesignation.setText("Not available");
-        } else if (BVA_Member.equals("Yes")) {
+        }
+        else if (BVA_Member.equals("Yes"))
+        {
             bvaNumber.setText(BVA_Number);
             bvaDesignation.setText(BVA_Designation);
         }

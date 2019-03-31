@@ -50,9 +50,11 @@ public class StartPageActivity extends AppCompatActivity
             }
         });
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent searchIntent = new Intent(StartPageActivity.this, SearchActivity.class);
                 startActivity(searchIntent);
             }

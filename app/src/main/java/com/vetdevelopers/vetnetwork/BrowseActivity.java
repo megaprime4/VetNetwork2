@@ -30,7 +30,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BrowseActivity extends AppCompatActivity {
+public class BrowseActivity extends AppCompatActivity
+{
     private RecyclerView recyclerView;
     //private RecyclerView.Adapter adapter;
     private List<ListItemForRecycleView1> listItems;
@@ -44,10 +45,10 @@ public class BrowseActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse);
-
 
 
         Intent intent = getIntent();
@@ -60,7 +61,8 @@ public class BrowseActivity extends AppCompatActivity {
 
         listItems = new ArrayList<>();
 
-        for (int i = 0; i < arrayListName.size(); i++) {
+        for (int i = 0; i < arrayListName.size(); i++)
+        {
             ListItemForRecycleView1 listItem = new ListItemForRecycleView1(
                     arrayListName.get(i), arrayListPhone.get(i));
             listItems.add(listItem);
@@ -69,9 +71,11 @@ public class BrowseActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapterForRecycleView1);
 
 
-        myAdapterForRecycleView1.setOnItemClickListener(new MyAdapterForRecycleView1.OnItemClickListener() {
+        myAdapterForRecycleView1.setOnItemClickListener(new MyAdapterForRecycleView1.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(int position) {
+            public void onItemClick(int position)
+            {
 
                 System.out.println("ok");
 
