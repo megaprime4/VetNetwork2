@@ -2,7 +2,6 @@ package com.vetdevelopers.vetnetwork;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
@@ -39,8 +38,6 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
     List<ListItemForRecycleView1> listItems;
     OnItemClickListener mListener;
     Context context;
-    //SharedPreferences sharedPreferences;
-    //SharedPreferences.Editor editor;
 
 
     public interface OnItemClickListener
@@ -81,8 +78,6 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
                             listener.onItemClick(position);
 
                             System.out.println(mTextView2.getText().toString());
-                            //editor.putString("currentViewingProfile",mTextView2.getText().toString());
-                            //editor.apply();
 
 
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_FOR_DISPLAY_PROFILE,
@@ -93,26 +88,18 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
                                         {
                                             if (response.contains("Connection failed!"))
                                             {
-                                                //popupTextView.setText(response);
-                                                //mDialog.show();
                                                 Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                                             }
                                             else if (response.contains("Please check your ID & Password!"))
                                             {
-                                                //popupTextView.setText(response);
-                                                //mDialog.show();
                                                 Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                                             }
                                             else if (response.contains("Improper request method!"))
                                             {
-                                                //popupTextView.setText(response);
-                                                //mDialog.show();
                                                 Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                                             }
                                             else if (response.contains("Invalid platform!"))
                                             {
-                                                //popupTextView.setText(response);
-                                                //mDialog.show();
                                                 Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                                             }
                                             else if (response.contains("sql error"))
@@ -225,8 +212,6 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
     {
         this.listItems = listItems;
         this.context = context;
-        //this.sharedPreferences = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
-        //this.editor = this.sharedPreferences.edit();
     }
 
     @Override

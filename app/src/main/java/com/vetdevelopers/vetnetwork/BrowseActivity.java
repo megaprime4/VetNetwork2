@@ -40,9 +40,6 @@ public class BrowseActivity extends AppCompatActivity
     ArrayList<String> arrayListName = new ArrayList<String>();
     ArrayList<String> arrayListPhone = new ArrayList<String>();
 
-    String PREF_NAME = "prefs";
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
