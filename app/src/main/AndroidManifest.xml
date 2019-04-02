@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ChangePasswordActivity"></activity>
         <activity android:name=".BrowseActivity" />
         <activity android:name=".SearchActivity" />
         <activity
@@ -43,7 +44,7 @@
         <activity
             android:name=".RegistrationActivity"
             android:parentActivityName=".StartPageActivity" />
-        <activity android:name=".ViewProfileActivity"></activity>
+        <activity android:name=".ViewProfileActivity" />
     </application>
 
 </manifest>

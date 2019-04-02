@@ -242,7 +242,8 @@ public class AdminProfileActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_changePassword)
         {
-
+            Intent changePasswordIntent = new Intent(AdminProfileActivity.this, ChangePasswordActivity.class);
+            startActivity(changePasswordIntent);
         }
         else if (id == R.id.nav_logout)
         {

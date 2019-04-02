@@ -240,6 +240,8 @@ public class ProfileActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_changePassword)
         {
+            Intent changePasswordIntent = new Intent(ProfileActivity.this, ChangePasswordActivity.class);
+            startActivity(changePasswordIntent);
 
         }
         else if (id == R.id.nav_logout)

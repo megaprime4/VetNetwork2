@@ -515,7 +515,8 @@ public class AdminPanelActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_changePassword)
         {
-
+            Intent changePasswordIntent = new Intent(AdminPanelActivity.this, ChangePasswordActivity.class);
+            startActivity(changePasswordIntent);
         }
         else if (id == R.id.nav_logout)
         {
