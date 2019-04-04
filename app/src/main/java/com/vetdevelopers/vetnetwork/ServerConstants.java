@@ -14,6 +14,7 @@ public class ServerConstants
     public static final String SEARCH_FOR_DISPLAY_PROFILE = DB_URL + "searchForDisplayProfile.php";
     public static final String FORGOT_PASSWORD = DB_URL + "forgotPassword.php";
     public static final String CHANGE_PASSWORD = DB_URL + "change_password.php";
+    public static final String GET_CURRENT_PASSWORD = DB_URL + "get_current_password.php";
 
 
     public static final String KEY_NAME = "name";

@@ -13,9 +13,6 @@ public class WelcomeActivity extends AppCompatActivity
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     private static final String PREF_NAME = "prefs";
-    private static final String KEY_REMEMBER = "remember";
-    private static final String KEY_USERNAME = "username";
-    private static final String KEY_PASS = "password";
     private static final String KEY_USER_TYPE = "User_Type";
 
     @Override
@@ -27,10 +24,10 @@ public class WelcomeActivity extends AppCompatActivity
         {
             sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
-            String value = "";
-            value = sharedPreferences.getString(KEY_USERNAME, "");
+            String currentUser = "";
+            currentUser = sharedPreferences.getString("Phone", "");
 
-            if (value.equals(""))
+            if (currentUser.equals(""))
             {
                 //System.out.println("no value");
                 Thread thread = new Thread()
@@ -87,10 +84,6 @@ public class WelcomeActivity extends AppCompatActivity
                     }
                 };
                 thread.start();
-
-                /*System.out.println("shared preference value : " + value);
-                Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
-                startActivity(intent);*/
             }
         }
         catch (Exception e)

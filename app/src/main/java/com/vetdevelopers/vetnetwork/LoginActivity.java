@@ -2,22 +2,16 @@ package com.vetdevelopers.vetnetwork;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,30 +29,20 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity implements TextWatcher,
-        CompoundButton.OnCheckedChangeListener
+public class LoginActivity extends AppCompatActivity
 {
 
     private EditText userID, password;
     private Button signInButton;
     private TextView needAccount, forgotPassword;
 
+    //custom popup
     private Dialog mDialogMsg, mDialogEmail;
     private TextView msgPopupTextView;
     private EditText popupGetEmail;
     private Button popupOKButton, popupConfirmButton;
 
     ProgressDialog progressDialog;
-
-
-    //autologin - part : 1
-    private CheckBox rem_userpass;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
-    private static final String PREF_NAME = "prefs";
-    private static final String KEY_REMEMBER = "remember";
-    private static final String KEY_USERNAME = "username";
-    private static final String KEY_PASS = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -98,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
 
 
         //autologin - part : 2
-        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        /*sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         rem_userpass = (CheckBox) findViewById(R.id.checkBox);
 
@@ -116,7 +100,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
 
         userID.addTextChangedListener(this);
         password.addTextChangedListener(this);
-        rem_userpass.setOnCheckedChangeListener(this);
+        rem_userpass.setOnCheckedChangeListener(this);*/
 
 
         needAccount.setOnClickListener(new View.OnClickListener()
@@ -315,7 +299,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
         else
         {
 
-            System.out.println("------------------------------------------ForgotPassEmail : " + ForgotPassEmail);
+            //System.out.println("------------------------------------------ForgotPassEmail : " + ForgotPassEmail);
 
             mDialogEmail.dismiss();
 
@@ -433,28 +417,16 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
         }
     }
 
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
-    {
-
-    }
-
-    @Override
+    /*@Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
     {
-        managePrefs();
-    }
-
-    @Override
-    public void afterTextChanged(Editable editable)
-    {
-
+        //managePrefs();
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b)
     {
-        managePrefs();
+        //managePrefs();
     }
 
     private void managePrefs()
@@ -473,5 +445,5 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
             editor.remove(KEY_USERNAME);//editor.putString(KEY_USERNAME, "");
             editor.apply();
         }
-    }
+    }*/
 } //Class

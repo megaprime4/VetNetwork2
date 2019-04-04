@@ -71,7 +71,6 @@ public class ProfileActivity extends AppCompatActivity
             sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
             String value = "";
-            String browseSearchedUserProfile = "false";
             value = sharedPreferences.getString("Phone", "");
 
             if (value.equals(""))

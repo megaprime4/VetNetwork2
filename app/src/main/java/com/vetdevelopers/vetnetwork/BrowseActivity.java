@@ -75,8 +75,6 @@ public class BrowseActivity extends AppCompatActivity
             {
 
                 System.out.println("ok");
-
-
             }
         });
     }
