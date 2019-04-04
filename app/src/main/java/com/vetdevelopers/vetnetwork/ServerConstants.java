@@ -15,6 +15,8 @@ public class ServerConstants
     public static final String FORGOT_PASSWORD = DB_URL + "forgotPassword.php";
     public static final String CHANGE_PASSWORD = DB_URL + "change_password.php";
     public static final String GET_CURRENT_PASSWORD = DB_URL + "get_current_password.php";
+    public static final String SEARCH_BVC_URL = DB_URL + "search_bvc.php";
+    public static final String PENDING_USER_REQUEST_URL = DB_URL + "pending_user_request.php";
 
 
     public static final String KEY_NAME = "name";

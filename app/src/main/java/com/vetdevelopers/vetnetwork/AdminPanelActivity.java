@@ -19,6 +19,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +50,8 @@ public class AdminPanelActivity extends AppCompatActivity
     private EditText getEmail, getUserID, showCurrentAdminEmail;
     private TextView currentAdminEmail;
     private Button emailChangeBtn, userSearchBtn, requestListBtn;
+    private RadioGroup radioGroupSearchType;
+    private RadioButton radioButtonSearchType;
 
     //custom popup
     private Dialog mDialogPass, mDialogMsg;
@@ -83,7 +88,140 @@ public class AdminPanelActivity extends AppCompatActivity
         userSearchBtn = (Button) findViewById(R.id.adminPanel_userSearchBtn);
         requestListBtn = (Button) findViewById(R.id.adminPanel_requestListBtn);
 
+        radioGroupSearchType = (RadioGroup) findViewById(R.id.adminPanel_radioGroup);
+
+
+
         //onClickListener
+
+        requestListBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.PENDING_USER_REQUEST_URL,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response)
+                            {
+                                if (response.contains("Connection failed!"))
+                                {
+                                    //popupTextView.setText(response);
+                                    //mDialog.show();
+                                    Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("Please check your ID & Password!"))
+                                {
+                                    //popupTextView.setText(response);
+                                    //mDialog.show();
+                                    Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("Improper request method!"))
+                                {
+                                    //popupTextView.setText(response);
+                                    //mDialog.show();
+                                    Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("Invalid platform!"))
+                                {
+                                    //popupTextView.setText(response);
+                                    //mDialog.show();
+                                    Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("sql error"))
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+
+                                    //Bundle bundle1 = jsonStringToBundle(response);
+
+                                    ArrayList<String> arrayListName = new ArrayList<String>();
+                                    ArrayList<String> arrayListPhone = new ArrayList<String>();
+
+                                    System.out.println("this is response : " + response);
+                                    try
+                                    {
+                                        System.out.println("this is response : " + response);
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        for (int i = 0; i < jsonArray.length(); i++)
+                                        {
+                                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                            String outputName = jsonObject.getString("name");
+                                            String outputPhone = jsonObject.getString("phone");
+
+                                            arrayListName.add(outputName);
+                                            arrayListPhone.add(outputPhone);
+                                        }
+
+                                        Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseActivity.class);
+                                        browseIntent.putStringArrayListExtra("name", arrayListName);
+                                        browseIntent.putStringArrayListExtra("phone", arrayListPhone);
+                                        startActivity(browseIntent);
+
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        //Toast.makeText(AdminPanelActivity.this,"No result found",Toast.LENGTH_SHORT).show();
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            }
+                        }, new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        if (error instanceof TimeoutError)
+                        {
+                            Toast.makeText(AdminPanelActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof NoConnectionError)
+                        {
+                            Toast.makeText(AdminPanelActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof AuthFailureError)
+                        {
+                            Toast.makeText(AdminPanelActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof NetworkError)
+                        {
+                            Toast.makeText(AdminPanelActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof ServerError)
+                        {
+                            Toast.makeText(AdminPanelActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof ParseError)
+                        {
+                            Toast.makeText(AdminPanelActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                {
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String, String> params = new HashMap<String, String>();
+                        return params;
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError
+                    {
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("User-Agent", "VetNetwork");  ////security purpose
+                        return headers;
+                    }
+                };
+
+                MySingleton.getInstance(AdminPanelActivity.this).addToRequestQueue(stringRequest);
+            }
+        });
+
         showCurrentAdminEmail.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -146,6 +284,401 @@ public class AdminPanelActivity extends AppCompatActivity
 
                 popupGetPassword.setText("");
                 mDialogPass.show();
+
+                //System.out.println("hi");
+                //radioGroup = (RadioGroup) findViewById(R.id.radio);
+                //btnDisplay = (Button) findViewById(R.id.btnDisplay);
+                int selectedId = 0;
+                selectedId = radioGroupSearchType.getCheckedRadioButtonId();
+                radioButtonSearchType = (RadioButton) findViewById(selectedId);
+                if (radioButtonSearchType != null) //must need this line or app crashes
+                {
+                    String selectedRadioButton=radioButtonSearchType.getText().toString();
+                    final String input = getUserID.getText().toString();
+                    if(selectedRadioButton.equals("Name"))
+                    {
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_URL,
+                                new Response.Listener<String>()
+                                {
+                                    @Override
+                                    public void onResponse(String response)
+                                    {
+                                        if (response.contains("Connection failed!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Please check your ID & Password!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Improper request method!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Invalid platform!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("sql error"))
+                                        {
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+
+                                            //Bundle bundle1 = jsonStringToBundle(response);
+
+                                            ArrayList<String> arrayListName = new ArrayList<String>();
+                                            ArrayList<String> arrayListPhone = new ArrayList<String>();
+
+                                            System.out.println("this is response : " + response);
+                                            try
+                                            {
+                                                System.out.println("this is response : " + response);
+                                                JSONArray jsonArray = new JSONArray(response);
+                                                for (int i = 0; i < jsonArray.length(); i++)
+                                                {
+                                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                                    String outputName = jsonObject.getString("name");
+                                                    String outputPhone = jsonObject.getString("phone");
+
+                                                    arrayListName.add(outputName);
+                                                    arrayListPhone.add(outputPhone);
+                                                }
+
+                                                Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseActivity.class);
+                                                browseIntent.putStringArrayListExtra("name", arrayListName);
+                                                browseIntent.putStringArrayListExtra("phone", arrayListPhone);
+                                                startActivity(browseIntent);
+
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                //Toast.makeText(AdminPanelActivity.this,"No result found",Toast.LENGTH_SHORT).show();
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }
+                                }, new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error)
+                            {
+                                if (error instanceof TimeoutError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof NoConnectionError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof AuthFailureError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof NetworkError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof ServerError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof ParseError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        {
+                            @Override
+                            protected Map<String, String> getParams()
+                            {
+                                Map<String, String> params = new HashMap<String, String>();
+
+                                params.put("name", input);
+                                params.put("phone", "N/A");
+                                params.put("postingArea", "N/A");
+                                params.put("district", "N/A");
+                                params.put("division", "N/A");
+                                return params;
+                            }
+
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError
+                            {
+                                Map<String, String> headers = new HashMap<String, String>();
+                                headers.put("User-Agent", "VetNetwork");  ////security purpose
+                                return headers;
+                            }
+                        };
+
+                        MySingleton.getInstance(AdminPanelActivity.this).addToRequestQueue(stringRequest);
+                    }
+                    else if (selectedRadioButton.equals("Phone"))
+                    {
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_URL,
+                                new Response.Listener<String>()
+                                {
+                                    @Override
+                                    public void onResponse(String response)
+                                    {
+                                        if (response.contains("Connection failed!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Please check your ID & Password!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Improper request method!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Invalid platform!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("sql error"))
+                                        {
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+
+                                            //Bundle bundle1 = jsonStringToBundle(response);
+
+                                            ArrayList<String> arrayListName = new ArrayList<String>();
+                                            ArrayList<String> arrayListPhone = new ArrayList<String>();
+
+                                            System.out.println("this is response : " + response);
+                                            try
+                                            {
+                                                System.out.println("this is response : " + response);
+                                                JSONArray jsonArray = new JSONArray(response);
+                                                for (int i = 0; i < jsonArray.length(); i++)
+                                                {
+                                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                                    String outputName = jsonObject.getString("name");
+                                                    String outputPhone = jsonObject.getString("phone");
+
+                                                    arrayListName.add(outputName);
+                                                    arrayListPhone.add(outputPhone);
+                                                }
+
+                                                Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseActivity.class);
+                                                browseIntent.putStringArrayListExtra("name", arrayListName);
+                                                browseIntent.putStringArrayListExtra("phone", arrayListPhone);
+                                                startActivity(browseIntent);
+
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                //Toast.makeText(AdminPanelActivity.this,"No result found",Toast.LENGTH_SHORT).show();
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }
+                                }, new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error)
+                            {
+                                if (error instanceof TimeoutError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof NoConnectionError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof AuthFailureError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof NetworkError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof ServerError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof ParseError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        {
+                            @Override
+                            protected Map<String, String> getParams()
+                            {
+                                Map<String, String> params = new HashMap<String, String>();
+
+                                params.put("name", "N/A");
+                                params.put("phone", input);
+                                params.put("postingArea", "N/A");
+                                params.put("district", "N/A");
+                                params.put("division", "N/A");
+                                return params;
+                            }
+
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError
+                            {
+                                Map<String, String> headers = new HashMap<String, String>();
+                                headers.put("User-Agent", "VetNetwork");  ////security purpose
+                                return headers;
+                            }
+                        };
+
+                        MySingleton.getInstance(AdminPanelActivity.this).addToRequestQueue(stringRequest);
+                    }
+                    else if(selectedRadioButton.equals("BVC"))
+                    {
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_BVC_URL,
+                                new Response.Listener<String>()
+                                {
+                                    @Override
+                                    public void onResponse(String response)
+                                    {
+                                        if (response.contains("Connection failed!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Please check your ID & Password!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Improper request method!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("Invalid platform!"))
+                                        {
+                                            //popupTextView.setText(response);
+                                            //mDialog.show();
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else if (response.contains("sql error"))
+                                        {
+                                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+
+                                            //Bundle bundle1 = jsonStringToBundle(response);
+
+                                            ArrayList<String> arrayListName = new ArrayList<String>();
+                                            ArrayList<String> arrayListPhone = new ArrayList<String>();
+
+                                            System.out.println("this is response : " + response);
+                                            try
+                                            {
+                                                System.out.println("this is response : " + response);
+                                                JSONArray jsonArray = new JSONArray(response);
+                                                for (int i = 0; i < jsonArray.length(); i++)
+                                                {
+                                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                                    String outputName = jsonObject.getString("name");
+                                                    String outputPhone = jsonObject.getString("phone");
+
+                                                    arrayListName.add(outputName);
+                                                    arrayListPhone.add(outputPhone);
+                                                }
+
+                                                Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseActivity.class);
+                                                browseIntent.putStringArrayListExtra("name", arrayListName);
+                                                browseIntent.putStringArrayListExtra("phone", arrayListPhone);
+                                                startActivity(browseIntent);
+
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                //Toast.makeText(AdminPanelActivity.this,"No result found",Toast.LENGTH_SHORT).show();
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }
+                                }, new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error)
+                            {
+                                if (error instanceof TimeoutError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof NoConnectionError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof AuthFailureError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof NetworkError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof ServerError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (error instanceof ParseError)
+                                {
+                                    Toast.makeText(AdminPanelActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        {
+                            @Override
+                            protected Map<String, String> getParams()
+                            {
+                                Map<String, String> params = new HashMap<String, String>();
+                                params.put("bvc",input);
+                                return params;
+                            }
+
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError
+                            {
+                                Map<String, String> headers = new HashMap<String, String>();
+                                headers.put("User-Agent", "VetNetwork");  ////security purpose
+                                return headers;
+                            }
+                        };
+
+                        MySingleton.getInstance(AdminPanelActivity.this).addToRequestQueue(stringRequest);
+                    }
+                }
+
             }
         });
 
