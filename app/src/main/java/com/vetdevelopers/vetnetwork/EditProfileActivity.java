@@ -462,10 +462,6 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
             Intent profileIntent = new Intent(EditProfileActivity.this, ProfileActivity.class);
             startActivity(profileIntent);
         }
-        else if (id == R.id.nav_search)
-        {
-
-        }
         else if (id == R.id.nav_editProfile)
         {
 

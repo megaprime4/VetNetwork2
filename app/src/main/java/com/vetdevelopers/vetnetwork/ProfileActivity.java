@@ -228,10 +228,6 @@ public class ProfileActivity extends AppCompatActivity
         {
             // Handle the camera action
         }
-        else if (id == R.id.nav_search)
-        {
-
-        }
         else if (id == R.id.nav_editProfile)
         {
             Intent editProfileIntent = new Intent(ProfileActivity.this, EditProfileActivity.class);

@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,10 +42,8 @@ import java.util.Map;
 public class RegistrationActivity extends AppCompatActivity
 {
 
-    private EditText name, email, phone, password, retypePassword, bvc_number, designation, posting_area, bvaNumber;
-    private Spinner userType_spinner, university_spinner, district_spinner, division_spinner, bva_member_spinner, bva_designation_spinner;
-    private TextView bvaDesignation_textview;
-    private LinearLayout linearLayout_bvaDesignation;
+    private EditText name, email, phone, password, retypePassword, bvc_number, designation, posting_area;
+    private Spinner userType_spinner, university_spinner, district_spinner, division_spinner;
     private Button signUpButton;
 
     private Dialog mDialog;
@@ -91,40 +90,9 @@ public class RegistrationActivity extends AppCompatActivity
         posting_area = (EditText) findViewById(R.id.reg_postingArea);
         district_spinner = (Spinner) findViewById(R.id.reg_district_spinner);
         division_spinner = (Spinner) findViewById(R.id.reg_division_spinner);
-        bva_member_spinner = (Spinner) findViewById(R.id.reg_bva_spinner);
-        bvaNumber = (EditText) findViewById(R.id.reg_bva_number);
-        bva_designation_spinner = (Spinner) findViewById(R.id.reg_bvaDesignation_spinner);
-
-
-        ////////////// object hiding //////////////
-        bvaDesignation_textview = (TextView) findViewById(R.id.reg_bvaDesignation_textView);
-        linearLayout_bvaDesignation = (LinearLayout) findViewById(R.id.reg_linearLayout_bvaDesignation);
-        //////////////////////////////////////////
-
 
         signUpButton = (Button) findViewById(R.id.reg_signupButton);
 
-        bva_member_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                if (bva_member_spinner.getSelectedItem().toString().equals("No") || bva_member_spinner.getSelectedItem().toString().equals("Select"))
-                {
-                    hideSlot1();
-                }
-                else
-                {
-                    showSlot1();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
-                hideSlot1();
-            }
-        });
 
         signUpButton.setOnClickListener(new View.OnClickListener()
         {
@@ -144,9 +112,6 @@ public class RegistrationActivity extends AppCompatActivity
                 final String Posting_area = posting_area.getText().toString().trim();
                 final String District = district_spinner.getSelectedItem().toString().trim();
                 final String Division = division_spinner.getSelectedItem().toString().trim();
-                final String BVA_member = bva_member_spinner.getSelectedItem().toString().trim();
-                final String BVANumber = bvaNumber.getText().toString().trim();
-                final String BVA_designation = bva_designation_spinner.getSelectedItem().toString().trim();
 
 
                 System.out.println(".........................................." + UserType);
@@ -161,9 +126,6 @@ public class RegistrationActivity extends AppCompatActivity
                 System.out.println(".........................................." + Posting_area);
                 System.out.println(".........................................." + District);
                 System.out.println(".........................................." + Division);
-                System.out.println(".........................................." + BVA_member);
-                System.out.println(".........................................." + BVANumber);
-                System.out.println(".........................................." + BVA_designation);
                 //debug purpose
 
 
@@ -181,7 +143,7 @@ public class RegistrationActivity extends AppCompatActivity
                 {
                     registerAccount(UserType, Name, Email, AdminEmail, Phone, BVC_number, Password,
                             RetypePassword, University, Designation, Posting_area,
-                            District, Division, BVA_member, BVANumber, BVA_designation);
+                            District, Division);
                 }
                 else
                 {
@@ -347,37 +309,40 @@ public class RegistrationActivity extends AppCompatActivity
     private void registerAccount(final String UserType, final String Name, final String Email, final String AdminEmail, final String Phone,
                                  final String BVC_number, final String Password, final String RetypePassword,
                                  final String University, final String Designation, final String Posting_area,
-                                 final String District, final String Division, final String BVA_member,
-                                 final String BVANumber, final String BVA_designation)
+                                 final String District, final String Division)
     {
         //data input checking
         if (UserType.equals("Select"))
         {
-            Toast.makeText(RegistrationActivity.this, "Please select user type!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistrationActivity.this, "Please select user type!", Toast.LENGTH_SHORT).show();
         }
-        else if (Name.equals("") && Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select"))
+        else if (TextUtils.isEmpty(Name))
         {
-            Toast.makeText(RegistrationActivity.this, "Please enter Name, Email, Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistrationActivity.this, "Your name is required!", Toast.LENGTH_SHORT).show();
         }
-        else if (Email.equals("") && Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select"))
+        else if (TextUtils.isEmpty(Email))
         {
-            Toast.makeText(RegistrationActivity.this, "Please enter Email, Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistrationActivity.this, "Your email address is required!", Toast.LENGTH_SHORT).show();
         }
-        else if (Phone.equals("") && Password.equals("") && RetypePassword.equals("") && University.equals("Select"))
+        else if (TextUtils.isEmpty(Phone))
         {
-            Toast.makeText(RegistrationActivity.this, "Please enter Phone, Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistrationActivity.this, "Your phone number is required!", Toast.LENGTH_SHORT).show();
         }
-        else if (Password.equals("") && RetypePassword.equals("") && University.equals("Select"))
+        else if(TextUtils.isEmpty(BVC_number))
         {
-            Toast.makeText(RegistrationActivity.this, "Please enter Password, Re-enter Password & University!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistrationActivity.this, "Your BVC registration number is required!", Toast.LENGTH_SHORT).show();
         }
-        else if (RetypePassword.equals("") && University.equals("Select"))
+        else if (TextUtils.isEmpty(Password))
         {
-            Toast.makeText(RegistrationActivity.this, "Please Re-enter Password & University!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistrationActivity.this, "Please set a password for your account!", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(RetypePassword))
+        {
+            Toast.makeText(RegistrationActivity.this, "Re-enter your password again!", Toast.LENGTH_SHORT).show();
         }
         else if (University.equals("Select"))
         {
-            Toast.makeText(RegistrationActivity.this, "Please select University!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistrationActivity.this, "Please select your university!", Toast.LENGTH_SHORT).show();
         }
         else if (!Password.equals(RetypePassword))
         {
@@ -385,7 +350,7 @@ public class RegistrationActivity extends AppCompatActivity
         }
         else if (Patterns.EMAIL_ADDRESS.matcher(Email).matches() == false)
         {
-            Toast.makeText(RegistrationActivity.this, "E-mail address is not valid!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistrationActivity.this, "Email address is not valid!", Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -496,9 +461,6 @@ public class RegistrationActivity extends AppCompatActivity
                     params.put(ServerConstants.KEY_POSTING_AREA, Posting_area);
                     params.put(ServerConstants.KEY_DISTRICT, District);
                     params.put(ServerConstants.KEY_DIVISION, Division);
-                    params.put(ServerConstants.KEY_BVA_MEMBER, BVA_member);
-                    params.put(ServerConstants.KEY_BVA_NUMBER, BVANumber);
-                    params.put(ServerConstants.KEY_BVA_DESIGNATION, BVA_designation);
 
                     return params;
                 }
@@ -526,21 +488,5 @@ public class RegistrationActivity extends AppCompatActivity
     public void showokbutton()
     {
         popupOKButton.setVisibility(View.VISIBLE);
-    }
-
-    private void hideSlot1()
-    {
-        bvaNumber.setVisibility(View.INVISIBLE);
-        linearLayout_bvaDesignation.setVisibility(View.INVISIBLE);
-        bvaDesignation_textview.setVisibility(View.INVISIBLE);
-        bva_designation_spinner.setVisibility(View.INVISIBLE);
-    }
-
-    private void showSlot1()
-    {
-        bvaNumber.setVisibility(View.VISIBLE);
-        linearLayout_bvaDesignation.setVisibility(View.VISIBLE);
-        bvaDesignation_textview.setVisibility(View.VISIBLE);
-        bva_designation_spinner.setVisibility(View.VISIBLE);
     }
 } //class

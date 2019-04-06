@@ -231,10 +231,6 @@ public class AdminProfileActivity extends AppCompatActivity
         {
             // Handle the camera action
         }
-        else if (id == R.id.nav_search)
-        {
-
-        }
         else if (id == R.id.nav_editProfile)
         {
             Intent editProfileIntent = new Intent(AdminProfileActivity.this, EditProfileActivity.class);

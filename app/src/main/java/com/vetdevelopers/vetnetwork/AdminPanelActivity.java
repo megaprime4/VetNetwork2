@@ -1037,10 +1037,6 @@ public class AdminPanelActivity extends AppCompatActivity
             Intent ProfileIntent = new Intent(AdminPanelActivity.this, AdminProfileActivity.class);
             startActivity(ProfileIntent);
         }
-        else if (id == R.id.nav_search)
-        {
-
-        }
         else if (id == R.id.nav_editProfile)
         {
             Intent editProfileIntent = new Intent(AdminPanelActivity.this, EditProfileActivity.class);
