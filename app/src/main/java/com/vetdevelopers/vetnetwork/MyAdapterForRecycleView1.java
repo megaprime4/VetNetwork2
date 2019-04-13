@@ -1,5 +1,6 @@
 package com.vetdevelopers.vetnetwork;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +57,8 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
 
         public TextView mTextView1;
         public TextView mTextView2;
+        Button accept,profileView,reject;
+
 
 
         public MyAdapterForRecycleView1ViewHolder(View itemView, final OnItemClickListener listener)
@@ -63,8 +67,12 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
 
             mTextView1 = itemView.findViewById(R.id.all_users_Name);
             mTextView2 = itemView.findViewById(R.id.all_users_Phone);
+            accept = itemView.findViewById(R.id.userReq_acceptButton);
+            profileView = itemView.findViewById(R.id.userReq_viewButton);
+            reject = itemView.findViewById(R.id.userReq_rejectButton);
 
 
+            /*
             itemView.setOnClickListener(new View.OnClickListener()
             {
                 @Override
@@ -201,7 +209,7 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
                         }
                     }
                 }
-            });
+            });*/
         }
     }
 
@@ -228,6 +236,31 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
 
         holder.mTextView1.setText(listItem.getName());
         holder.mTextView2.setText(listItem.getPhone());
+
+        holder.accept.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                System.out.println("accept");
+            }
+        });
+        holder.profileView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                System.out.println("view");
+            }
+        });
+        holder.reject.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                System.out.println("reject");
+            }
+        });
     }
 
     @Override
