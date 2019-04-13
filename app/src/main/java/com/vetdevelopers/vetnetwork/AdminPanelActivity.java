@@ -153,7 +153,7 @@ public class AdminPanelActivity extends AppCompatActivity
                                             arrayListPhone.add(outputPhone);
                                         }
 
-                                        Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseActivity.class);
+                                        Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseActivity2.class);
                                         browseIntent.putStringArrayListExtra("name", arrayListName);
                                         browseIntent.putStringArrayListExtra("phone", arrayListPhone);
                                         startActivity(browseIntent);

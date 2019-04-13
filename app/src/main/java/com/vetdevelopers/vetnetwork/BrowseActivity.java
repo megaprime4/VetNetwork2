@@ -35,7 +35,7 @@ public class BrowseActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     //private RecyclerView.Adapter adapter;
     private List<ListItemForRecycleView1> listItems;
-    MyAdapterForRecycleView1 myAdapterForRecycleView1;
+    MyAdapterForRecycleView2 myAdapterForRecycleView2;
 
     ArrayList<String> arrayListName = new ArrayList<String>();
     ArrayList<String> arrayListPhone = new ArrayList<String>();
@@ -64,19 +64,19 @@ public class BrowseActivity extends AppCompatActivity
                     arrayListName.get(i), arrayListPhone.get(i));
             listItems.add(listItem);
         }
-        myAdapterForRecycleView1 = new MyAdapterForRecycleView1(listItems, this);
-        recyclerView.setAdapter(myAdapterForRecycleView1);
+        myAdapterForRecycleView2 = new MyAdapterForRecycleView2(listItems, this);
+        recyclerView.setAdapter(myAdapterForRecycleView2);
 
-
-        myAdapterForRecycleView1.setOnItemClickListener(new MyAdapterForRecycleView1.OnItemClickListener()
+        myAdapterForRecycleView2.setOnItemClickListener(new MyAdapterForRecycleView2.OnItemClickListener()
         {
             @Override
             public void onItemClick(int position)
             {
-
                 System.out.println("ok");
             }
         });
+
+
     }
 }
 

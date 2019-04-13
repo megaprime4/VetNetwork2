@@ -57,8 +57,7 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
 
         public TextView mTextView1;
         public TextView mTextView2;
-        Button accept,profileView,reject;
-
+        Button accept, profileView, reject;
 
 
         public MyAdapterForRecycleView1ViewHolder(View itemView, final OnItemClickListener listener)
@@ -243,6 +242,7 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
             public void onClick(View v)
             {
                 System.out.println("accept");
+                Toast.makeText(context, "accept", Toast.LENGTH_SHORT).show();
             }
         });
         holder.profileView.setOnClickListener(new View.OnClickListener()
@@ -251,6 +251,7 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
             public void onClick(View v)
             {
                 System.out.println("view");
+                Toast.makeText(context, "view", Toast.LENGTH_SHORT).show();
             }
         });
         holder.reject.setOnClickListener(new View.OnClickListener()
@@ -259,6 +260,7 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
             public void onClick(View v)
             {
                 System.out.println("reject");
+                Toast.makeText(context, "reject", Toast.LENGTH_SHORT).show();
             }
         });
     }
