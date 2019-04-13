@@ -54,10 +54,9 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
     private Button popupConfirmButton, msgPopupOKButton;
     private TextView msgPopupTextView;
 
-    private EditText Name, Email, Phone, BVCRegNumber, PostingArea, BVANumber;
-    private Spinner University, District, Division, BVAMember, BVADesignation;
+    private EditText Name, Email, Phone, BVCRegNumber, PostingArea;
+    private Spinner University, District, Division;
     private Button changeButton;
-    private LinearLayout LinearLayout_BVADesignation;
 
     private ProgressDialog progressDialog;
 
@@ -66,7 +65,6 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
     private static final String PREF_NAME = "prefs";
     private static final String KEY_REMEMBER = "remember";
     private static final String KEY_USERNAME = "username";
-    private static final String KEY_PASS = "password";
 
     //spinner work - 1
     Resources resources;
@@ -139,13 +137,10 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         Phone = (EditText) findViewById(R.id.editProfile_phone);
         BVCRegNumber = (EditText) findViewById(R.id.editProfile_bvcNumber);
         PostingArea = (EditText) findViewById(R.id.editProfile_postingArea);
-        BVANumber = (EditText) findViewById(R.id.editProfile_bva_number);
 
         University = (Spinner) findViewById(R.id.editProfile_university_spinner);
         District = (Spinner) findViewById(R.id.editProfile_district_spinner);
         Division = (Spinner) findViewById(R.id.editProfile_division_spinner);
-        BVAMember = (Spinner) findViewById(R.id.editProfile_bva_spinner);
-        BVADesignation = (Spinner) findViewById(R.id.editProfile_bvaDesignation_spinner);
 
 
         Name.setText(sharedPreferences.getString("Name", ""));
@@ -153,11 +148,7 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         Phone.setText(sharedPreferences.getString("Phone", ""));
         BVCRegNumber.setText(sharedPreferences.getString("BVC_number", ""));
         PostingArea.setText(sharedPreferences.getString("Posting_Area", ""));
-        BVANumber.setText(sharedPreferences.getString("BVA_Number", ""));
 
-        //------------------object hiding-------------------//
-        LinearLayout_BVADesignation = (LinearLayout) findViewById(R.id.editProfile_linearLayout_bvaDesignation);
-        //--------------------------------------------------//
 
         //spinner dataset...
         //...code here...
@@ -174,36 +165,6 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         divisionArray = resources.getStringArray(R.array.division);
         int divisionIndex = Integer.parseInt("" + Arrays.asList(divisionArray).indexOf(sharedPreferences.getString("Division", "0")));
         Division.setSelection(divisionIndex);
-
-        bvaMemberArray = resources.getStringArray(R.array.bva);
-        int bvaMemberIndex = Integer.parseInt("" + Arrays.asList(bvaMemberArray).indexOf(sharedPreferences.getString("BVA_Member", "0")));
-        BVAMember.setSelection(bvaMemberIndex);
-
-        bvaDesignationArray = resources.getStringArray(R.array.bva_designation);
-        int bvaDesignationIndex = Integer.parseInt("" + Arrays.asList(bvaDesignationArray).indexOf(sharedPreferences.getString("BVA_Designation", "0")));
-        BVADesignation.setSelection(bvaDesignationIndex);
-
-        BVAMember.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                if (BVAMember.getSelectedItem().toString().equals("No"))
-                {
-                    hideBVA();
-                }
-                else
-                {
-                    showBVA();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
-                hideBVA();
-            }
-        });
 
     }
 
@@ -237,23 +198,20 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         String postingArea = PostingArea.getText().toString().trim();
         String district = District.getSelectedItem().toString().trim();
         String division = Division.getSelectedItem().toString().trim();
-        String bvaMember = BVAMember.getSelectedItem().toString().trim();
-        String bvaNumber = BVANumber.getText().toString().trim();
-        String bvaDesignation = BVADesignation.getSelectedItem().toString().trim();
 
 
         //checking data
         if (TextUtils.isEmpty(name))
         {
-            Toast.makeText(this, "Name cannot be empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sorry! Name is required!", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(email))
         {
-            Toast.makeText(this, "Email cannot be empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sorry! Email is required!", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(phone))
         {
-            Toast.makeText(this, "Phone cannot be empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sorry! Phone number must be given!", Toast.LENGTH_SHORT).show();
         }
         else if (university.equals("Select"))
         {
@@ -264,13 +222,12 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
             String prevPhone = sharedPreferences.getString("Phone", "");
 
             editProfle(name, email, phone, prevPhone, bvcRegNumber, university, postingArea,
-                    district, division, bvaMember, bvaNumber, bvaDesignation);
+                    district, division);
         }
     }
 
     private void editProfle(final String name, final String email, final String phone, final String prevPhone, final String bvcRegNumber, final String university,
-                            final String postingArea, final String district, final String division, final String bvaMember,
-                            final String bvaNumber, final String bvaDesignation)
+                            final String postingArea, final String district, final String division)
     {
         progressDialog.setTitle("Please Wait");
         progressDialog.setMessage("Changing your profile");
@@ -417,9 +374,6 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
                 params.put(ServerConstants.KEY_POSTING_AREA, postingArea);
                 params.put(ServerConstants.KEY_DISTRICT, district);
                 params.put(ServerConstants.KEY_DIVISION, division);
-                params.put(ServerConstants.KEY_BVA_MEMBER, bvaMember);
-                params.put(ServerConstants.KEY_BVA_NUMBER, bvaNumber);
-                params.put(ServerConstants.KEY_BVA_DESIGNATION, bvaDesignation);
                 return params;
             }
 
@@ -491,17 +445,5 @@ public class EditProfileActivity extends AppCompatActivity implements Navigation
         startPageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(startPageIntent);
         finish();
-    }
-
-    private void hideBVA()
-    {
-        BVANumber.setVisibility(View.INVISIBLE);
-        LinearLayout_BVADesignation.setVisibility(View.INVISIBLE);
-    }
-
-    private void showBVA()
-    {
-        BVANumber.setVisibility(View.VISIBLE);
-        LinearLayout_BVADesignation.setVisibility(View.VISIBLE);
     }
 }

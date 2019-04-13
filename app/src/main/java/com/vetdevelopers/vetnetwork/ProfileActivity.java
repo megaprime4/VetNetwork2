@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class ProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
-    private TextView name, address, email, phone, bvcRegNumber, university, designation, bvaNumber, bvaDesignation, accountStatus;
+    private TextView name, address, email, phone, bvcRegNumber, university, designation, accountStatus;
 
     String Name = "";
     String ID = "";
@@ -30,9 +30,6 @@ public class ProfileActivity extends AppCompatActivity
     String Posting_Area = "";
     String District = "";
     String Division = "";
-    String BVA_Member = "";
-    String BVA_Number = "";
-    String BVA_Designation = "";
     String Email_Confirm = "";
     String Rand_Code = "";
     String User_Request = "";
@@ -42,8 +39,6 @@ public class ProfileActivity extends AppCompatActivity
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     private static final String PREF_NAME = "prefs";
-    private static final String KEY_USERNAME = "username";
-    private static final String KEY_PASS = "password";
 
 
     @Override
@@ -60,8 +55,6 @@ public class ProfileActivity extends AppCompatActivity
         bvcRegNumber = (TextView) findViewById(R.id.profile_bvc);
         university = (TextView) findViewById(R.id.profile_university);
         designation = (TextView) findViewById(R.id.profile_designation);
-        bvaNumber = (TextView) findViewById(R.id.profile_bvaNumber);
-        bvaDesignation = (TextView) findViewById(R.id.profile_bvaDesignation);
         accountStatus = (TextView) findViewById(R.id.profile_accountStatus);
 
         Bundle bundle = new Bundle();
@@ -89,9 +82,6 @@ public class ProfileActivity extends AppCompatActivity
                 Posting_Area = bundle.getString("Posting_Area");
                 District = bundle.getString("District");
                 Division = bundle.getString("Division");
-                BVA_Member = bundle.getString("BVA_Member");
-                BVA_Number = bundle.getString("BVA_Number");
-                BVA_Designation = bundle.getString("BVA_Designation");
                 Email_Confirm = bundle.getString("Email_Confirm");
                 Rand_Code = bundle.getString("Rand_Code");
                 User_Request = bundle.getString("User_Request");
@@ -110,9 +100,6 @@ public class ProfileActivity extends AppCompatActivity
                 editor.putString("Posting_Area", Posting_Area);
                 editor.putString("District", District);
                 editor.putString("Division", Division);
-                editor.putString("BVA_Member", BVA_Member);
-                editor.putString("BVA_Number", BVA_Number);
-                editor.putString("BVA_Designation", BVA_Designation);
                 editor.putString("Email_Confirm", Email_Confirm);
                 editor.putString("Rand_Code", Rand_Code);
                 editor.putString("User_Request", User_Request);
@@ -136,9 +123,6 @@ public class ProfileActivity extends AppCompatActivity
                 Posting_Area = sharedPreferences.getString("Posting_Area", "");
                 District = sharedPreferences.getString("District", "");
                 Division = sharedPreferences.getString("Division", "");
-                BVA_Member = sharedPreferences.getString("BVA_Member", "");
-                BVA_Number = sharedPreferences.getString("BVA_Number", "");
-                BVA_Designation = sharedPreferences.getString("BVA_Designation", "");
                 Email_Confirm = sharedPreferences.getString("Email_Confirm", "");
                 Rand_Code = sharedPreferences.getString("Rand_Code", "");
                 User_Request = sharedPreferences.getString("User_Request", "");
@@ -165,9 +149,6 @@ public class ProfileActivity extends AppCompatActivity
         System.out.println(".........................................." + Posting_Area);
         System.out.println(".........................................." + District);
         System.out.println(".........................................." + Division);
-        System.out.println(".........................................." + BVA_Member);
-        System.out.println(".........................................." + BVA_Number);
-        System.out.println(".........................................." + BVA_Designation);
         System.out.println(".........................................." + Email_Confirm);
         System.out.println(".........................................." + Rand_Code);
         System.out.println(".........................................." + User_Request);
@@ -186,16 +167,6 @@ public class ProfileActivity extends AppCompatActivity
         bvcRegNumber.setText(BVC_number);
         university.setText(University);
         designation.setText(Designation);
-        if (BVA_Member.equals("No"))
-        {
-            bvaNumber.setText("Not available");
-            bvaDesignation.setText("Not available");
-        }
-        else if (BVA_Member.equals("Yes"))
-        {
-            bvaNumber.setText(BVA_Number);
-            bvaDesignation.setText(BVA_Designation);
-        }
         accountStatus.setText(User_Request);
 
 

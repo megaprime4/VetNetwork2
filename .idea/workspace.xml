@@ -2,7 +2,9 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="pixel" />
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
@@ -10,29 +12,83 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc2a320a-0d75-4968-8afc-e26be07b4fe9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v21/person.png" afterDir="false" />
+    <list default="true" id="fc2a320a-0d75-4968-8afc-e26be07b4fe9" name="Default Changelist" comment="AdminPanelActivity XML edit">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___C__Users_Touhid_Desktop_Android_works_VetNetwork2_app_libs_commons_io_2_5_jar_unspecified_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_style_green.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___C__Users_I_AndroidStudioProjects_VetNetwork2_app_libs_commons_io_2_5_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_volley_volley_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_volley_volley_1_1_1_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminPanelActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminPanelActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminProfileActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ChangePasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ChangePasswordActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BundleFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BundleFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/EditProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/EditProfileActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/MyAdapterForRecycleView1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/MyAdapterForRecycleView1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ProfileActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/RegistrationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/RegistrationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ServerConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ServerConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ViewProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ViewProfileActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_style_white.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_style_logout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_style_red.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_admin_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_admin_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_admin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_admin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_start_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_start_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/all_users_display_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/all_users_display_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_admin_panel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_admin_panel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_edit_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_edit_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custompopup_get_email.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custompopup_get_email.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custompopup_get_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custompopup_get_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custompopup_success.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custompopup_success.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,21 +152,22 @@
     <session id="-1592598085">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="59" />
+          <entry key="project.closed" value="64" />
           <entry key="project.open.time.0" value="4" />
-          <entry key="project.open.time.1" value="5" />
+          <entry key="project.open.time.1" value="6" />
           <entry key="project.open.time.10" value="2" />
-          <entry key="project.open.time.11" value="4" />
+          <entry key="project.open.time.11" value="6" />
           <entry key="project.open.time.12" value="8" />
           <entry key="project.open.time.13" value="6" />
           <entry key="project.open.time.14" value="6" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.16" value="3" />
+          <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="4" />
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.20" value="2" />
-          <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.21" value="2" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.3" value="1" />
@@ -118,38 +175,38 @@
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="60" />
+          <entry key="project.opened" value="66" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gradle" value="10" />
-          <entry key="java" value="176" />
-          <entry key="xml" value="238" />
+          <entry key="gradle" value="12" />
+          <entry key="java" value="207" />
+          <entry key="xml" value="252" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Groovy" value="10" />
-          <entry key="JAVA" value="176" />
-          <entry key="XML" value="238" />
+          <entry key="Groovy" value="12" />
+          <entry key="JAVA" value="207" />
+          <entry key="XML" value="252" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="4" />
           <entry key="gradle" value="5" />
-          <entry key="java" value="9244" />
+          <entry key="java" value="9875" />
           <entry key="txt" value="452" />
-          <entry key="xml" value="3268" />
+          <entry key="xml" value="3671" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="5" />
-          <entry key="JAVA" value="9244" />
+          <entry key="JAVA" value="9875" />
           <entry key="PLAIN_TEXT" value="456" />
-          <entry key="XML" value="3268" />
+          <entry key="XML" value="3671" />
         </counts>
       </usages-collector>
     </session>
@@ -221,30 +278,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/RegistrationActivity.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminPanelActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5544">
-              <caret line="324" column="73" selection-start-line="324" selection-start-column="73" selection-end-line="324" selection-end-column="73" />
-              <folding>
-                <element signature="e#23332#23348#0" expanded="true" />
-                <element signature="e#25021#25022#0" expanded="true" />
-                <element signature="e#25080#25081#0" expanded="true" />
-                <element signature="e#25118#25119#0" expanded="true" />
-                <element signature="e#25175#25176#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="76">
+              <caret line="98" column="125" selection-start-line="98" selection-start-column="101" selection-end-line="98" selection-end-column="125" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/all_users_display_layout.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="59" column="20" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/MyAdapterForRecycleView1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5986">
-              <caret line="287" column="30" selection-start-line="287" selection-start-column="30" selection-end-line="287" selection-end-column="30" />
+            <state relative-caret-position="30">
+              <caret line="61" column="22" lean-forward="true" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_style_green.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_style_red.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="1" selection-start-line="1" selection-end-line="11" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_start_page.xml">
           <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="40" selection-end-column="38" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -254,8 +350,8 @@
       <list>
         <option value="layoutResourceFile" />
         <option value="layoutResourceFile_vertical" />
-        <option value="resourceFile" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -277,6 +373,8 @@
       <find />
       <find>SharedPreferences</find>
       <find>putString</find>
+      <find>bva</find>
+      <find>searchBtn</find>
     </findStrings>
     <replaceStrings>
       <replace>MyAdapterForRecycleView1</replace>
@@ -2417,13 +2515,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_profile_setting.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ProfileSettingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_profile_setting.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custompopup_get_password.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_edit_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_admin_profile_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_admin_profile.xml" />
@@ -2432,50 +2528,52 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custompopup_success.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_admin_control_panel.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_admin_profile_drawer_admin.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_admin_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_start_page.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_browse.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/all_users_display_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BundleFunctions.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/SearchActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/StartPageActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ViewProfileActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/MyAdapterForRecycleView1.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/grad_change_password.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/WelcomeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ServerConstants.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_admin_panel.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BrowseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/Utils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ChangePasswordActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminPanelActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_admin.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_user.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminProfileActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/EditProfileActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header_admin_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/RegistrationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BundleFunctions.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_edit_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/EditProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/MyAdapterForRecycleView1.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ViewProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ServerConstants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminPanelActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_admin_panel.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/button_style_green.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/all_users_display_layout.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-4" />
+    <option name="y" value="2" />
+    <option name="width" value="1378" />
+    <option name="height" value="733" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -2496,8 +2594,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2525,7 +2624,25 @@
               <item name="VetNetwork2" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="VetNetwork2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="VetNetwork2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="menu" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="VetNetwork2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="VetNetwork2" type="1abcf292:AndroidViewProjectNode" />
@@ -2535,7 +2652,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2543,7 +2659,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553962318252" />
     <property name="device.picker.selection" value="Nexus_5X_API_24" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-v21" />
-    <property name="last_opened_file_path" value="$USER_HOME$/CustomAlertDialogTutorial-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CompanyCommunity" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.17452136" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.3.0" />
@@ -2789,7 +2905,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19894099" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19894099" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" weight="0.15204236" />
@@ -2814,7 +2930,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24962178" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.24357034" />
+      <window_info active="true" anchor="right" id="Preview" order="4" visible="true" weight="0.24357034" />
       <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" />
       <window_info anchor="right" id="Gradle" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -2844,17 +2960,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="AdminPanelActivity XML edit" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/admin_profile.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/admin_control_panel.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_admin_control_panel_drawer.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_admin_control_panel.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_search.xml" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.volley/volley/1.1.1/3fb00d0da53c4e9f35a519da6e22bc2de7463816/volley-1.1.1-sources.jar!/com/android/volley/Response.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2871,18 +2976,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-368" />
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_profile.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="741">
           <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_people_white_24dp.xml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -2897,61 +3002,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_style.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_style_white.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/all_users_display_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_profile.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
           <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/StartPageActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ViewProfileActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/MyAdapterForRecycleView1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="227" column="97" lean-forward="true" selection-start-line="227" selection-start-column="97" selection-end-line="227" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ListItemForRecycleView1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BundleFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -2963,20 +3025,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2121">
           <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custompopup_success.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10">
           <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://C:/Android/Sdk/sources/android-28/android/content/SharedPreferences.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2985,70 +3047,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/WelcomeActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_browse.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/Utils.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_admin_panel.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_user.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+        <state relative-caret-position="189">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_admin.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_admin_profile.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="67" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ServerConstants.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ChangePasswordActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        <state relative-caret-position="-1365">
+          <caret line="92" column="29" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1596">
+          <caret line="250" column="28" selection-start-line="250" selection-start-column="28" selection-end-line="250" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3276">
+          <caret line="168" column="41" selection-start-line="168" selection-start-column="41" selection-end-line="168" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="56" column="19" lean-forward="true" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BundleFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2331">
+          <caret line="118" column="60" selection-start-line="118" selection-start-column="60" selection-end-line="118" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_profile.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/EditProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2937">
+          <caret line="447" column="5" selection-start-line="447" selection-start-column="5" selection-end-line="447" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_edit_profile.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2426" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ListItemForRecycleView1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/RegistrationActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2544">
+          <caret line="324" column="73" selection-start-line="324" selection-start-column="73" selection-end-line="324" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/SearchActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="89" column="33" lean-forward="true" selection-start-line="89" selection-start-column="33" selection-end-line="89" selection-end-column="33" />
+        <state relative-caret-position="-4149">
+          <caret line="115" column="39" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BrowseActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/StartPageActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
+        <state relative-caret-position="-105">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_browse.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_admin_panel.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ViewProfileActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-380">
-          <caret line="194" column="66" selection-start-line="194" selection-start-column="66" selection-end-line="194" selection-end-column="66" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/Utils.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="250" column="28" selection-start-line="250" selection-start-column="28" selection-end-line="250" selection-end-column="74" />
+        <state relative-caret-position="2373">
+          <caret line="113" column="41" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ChangePasswordActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/WelcomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="109" column="28" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
+        <state relative-caret-position="525">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -3059,111 +3201,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_admin_panel.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/BrowseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml">
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_user.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        <state relative-caret-position="66">
+          <caret line="230" column="38" selection-start-line="230" selection-start-column="38" selection-end-line="230" selection-end-column="38" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_admin_panel.xml">
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer_admin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminPanelActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="505" column="9" selection-start-line="505" selection-start-column="9" selection-end-line="505" selection-end-column="9" />
+        <state relative-caret-position="127">
+          <caret line="250" column="7" lean-forward="true" selection-start-line="250" selection-start-column="7" selection-end-line="250" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminProfileActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ServerConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="232" column="9" selection-start-line="232" selection-start-column="9" selection-end-line="232" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/EditProfileActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="463" column="9" selection-start-line="463" selection-start-column="9" selection-end-line="463" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/ProfileActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-129">
-          <caret line="229" column="9" selection-start-line="229" selection-start-column="9" selection-end-line="229" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_admin_profile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="67" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
+        <state relative-caret-position="336">
+          <caret line="16" column="52" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
+        <state relative-caret-position="74">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        <state relative-caret-position="693">
+          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_start_page.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+        <state relative-caret-position="169">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="40" selection-end-column="38" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_style_red.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5986">
-          <caret line="287" column="30" selection-start-line="287" selection-start-column="30" selection-end-line="287" selection-end-column="30" />
+        <state relative-caret-position="21">
+          <caret line="1" selection-start-line="1" selection-end-line="11" selection-end-column="8" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/RegistrationActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5544">
-          <caret line="324" column="73" selection-start-line="324" selection-start-column="73" selection-end-line="324" selection-end-column="73" />
-          <folding>
-            <element signature="e#23332#23348#0" expanded="true" />
-            <element signature="e#25021#25022#0" expanded="true" />
-            <element signature="e#25080#25081#0" expanded="true" />
-            <element signature="e#25118#25119#0" expanded="true" />
-            <element signature="e#25175#25176#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_style_green.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/MyAdapterForRecycleView1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="61" column="22" lean-forward="true" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/vetdevelopers/vetnetwork/AdminPanelActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="98" column="125" selection-start-line="98" selection-start-column="101" selection-end-line="98" selection-end-column="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/all_users_display_layout.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="59" column="20" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
         </state>
       </provider>
     </entry>

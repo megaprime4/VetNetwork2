@@ -51,7 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -131,7 +132,7 @@
                                 android:textSize="18sp"
                                 android:textAllCaps="false"
                                 android:textColor="@color/white"
-                                android:background="@drawable/button_style_logout"/>
+                                android:background="@drawable/button_style_red"/>
 
                         </LinearLayout>
 
@@ -189,7 +190,7 @@
                                 android:textSize="18sp"
                                 android:textAllCaps="false"
                                 android:textColor="@color/white"
-                                android:background="@drawable/button_style_logout"/>
+                                android:background="@drawable/button_style_red"/>
 
                         </LinearLayout>
 
@@ -197,9 +198,8 @@
                             android:id="@+id/adminPanel_radioGroup"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal"
                             android:layout_gravity="left">
-
-
 
                                 <RadioButton
                                     android:id="@+id/adminPanel_radioButton_name"
@@ -216,7 +216,7 @@
                                     android:text="Phone"
                                     android:textColor="@color/white"
                                     android:textSize="14sp"
-                                    android:layout_marginLeft="35dp"/>
+                                    android:layout_marginLeft="30dp"/>
 
                                 <RadioButton
                                     android:id="@+id/adminPanel_radioButton_bvc"
@@ -225,7 +225,7 @@
                                     android:text="BVC"
                                     android:textColor="@color/white"
                                     android:textSize="14sp"
-                                    android:layout_marginLeft="35dp"/>
+                                    android:layout_marginLeft="30dp"/>
 
 
                         </RadioGroup>
@@ -255,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:text="User Request"
                             android:textSize="22sp"
-                            android:layout_marginBottom="5dp"/>
+                            android:layout_marginBottom="10dp"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -270,7 +270,7 @@
                                 android:textAllCaps="false"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                android:background="@drawable/button_style"/>
+                                android:background="@drawable/button_style_white"/>
 
                         </LinearLayout>
 

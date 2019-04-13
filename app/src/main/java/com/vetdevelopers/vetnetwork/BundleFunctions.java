@@ -51,9 +51,6 @@ public class BundleFunctions
             bundle.putString("Posting_Area", jsonObject.getString("posting_area"));
             bundle.putString("District", jsonObject.getString("district"));
             bundle.putString("Division", jsonObject.getString("division"));
-            bundle.putString("BVA_Member", jsonObject.getString("bva_member"));
-            bundle.putString("BVA_Number", jsonObject.getString("bva_number"));
-            bundle.putString("BVA_Designation", jsonObject.getString("bva_designation"));
             bundle.putString("Email_Confirm", jsonObject.getString("email_confirm"));
             bundle.putString("Rand_Code", jsonObject.getString("rand_code"));
             bundle.putString("User_Request", jsonObject.getString("user_request"));
@@ -88,9 +85,6 @@ public class BundleFunctions
             al.add(jsonObject.getString("posting_area"));
             al.add(jsonObject.getString("district"));
             al.add(jsonObject.getString("division"));
-            al.add(jsonObject.getString("bva_member"));
-            al.add(jsonObject.getString("bva_number"));
-            al.add(jsonObject.getString("bva_designation"));
             al.add(jsonObject.getString("email_confirm"));
             al.add(jsonObject.getString("rand_code"));
             al.add(jsonObject.getString("user_request"));
@@ -123,9 +117,6 @@ public class BundleFunctions
             al.add(jsonObject.getString("posting_area" + "\n"));
             al.add(jsonObject.getString("district" + "\n"));
             al.add(jsonObject.getString("division" + "\n"));
-            al.add(jsonObject.getString("bva_member" + "\n"));
-            al.add(jsonObject.getString("bva_number" + "\n"));
-            al.add(jsonObject.getString("bva_designation" + "\n"));
             al.add(jsonObject.getString("email_confirm" + "\n"));
             al.add(jsonObject.getString("rand_code" + "\n"));
             al.add(jsonObject.getString("user_request" + "\n"));

@@ -14,13 +14,11 @@ public class ServerConstants
     public static final String SEARCH_FOR_DISPLAY_PROFILE = DB_URL + "searchForDisplayProfile.php";
     public static final String FORGOT_PASSWORD = DB_URL + "forgotPassword.php";
     public static final String CHANGE_PASSWORD = DB_URL + "change_password.php";
-    public static final String GET_CURRENT_PASSWORD = DB_URL + "get_current_password.php";
-    public static final String SEARCH_BVC_URL = DB_URL + "search_bvc.php";
+    public static final String SEARCH_FOR_DELETE_URL = DB_URL + "search_for_delete.php";
     public static final String PENDING_USER_REQUEST_URL = DB_URL + "pending_user_request.php";
 
 
     public static final String KEY_NAME = "name";
-    public static final String KEY_USER_ID = "id";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PHONE = "phone";
     public static final String KEY_PREV_PHONE = "prevPhone";
@@ -31,9 +29,6 @@ public class ServerConstants
     public static final String KEY_POSTING_AREA = "posting_area";
     public static final String KEY_DISTRICT = "district";
     public static final String KEY_DIVISION = "division";
-    public static final String KEY_BVA_MEMBER = "bva_member";
-    public static final String KEY_BVA_NUMBER = "bva_number";
-    public static final String KEY_BVA_DESIGNATION = "bva_designation";
     public static final String KEY_EMAIL_CONFIRM = "email_confirm";
     public static final String KEY_RAND_CODE = "rand_code";
     public static final String KEY_USER_REQUEST = "user_request";
@@ -43,5 +38,9 @@ public class ServerConstants
     public static final String KEY_ADMIN_NAME = "admin_name";
     public static final String KEY_ADMIN_PHONE = "admin_phone";
     public static final String KEY_ADMIN_EMAIL = "admin_email";
+
+    //adminPanel
+    public static final String KEY_SELECTED_RADIO_BUTTON = "radio_button";
+    public static final String KEY_USER_ID = "user_id";
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,10 +13,11 @@
         android:id="@+id/registration_page_toolbar"></include>
 
     <ScrollView
+        android:layout_below="@+id/registration_page_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/registration_page_toolbar"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:orientation="vertical"
@@ -220,88 +221,27 @@
 
             </LinearLayout>
 
-
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-
-                <EditText
-                    android:id="@+id/reg_bvaMember_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:clickable="false"
-                    android:editable="false"
-                    android:linksClickable="false"
-                    android:longClickable="false"
-                    android:text="@string/bva_member"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/reg_bva_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:entries="@array/bva" />
-
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/reg_bva_number"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="sans-serif"
-                android:hint="@string/bva_number"
-                android:inputType="text"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/regTextColor" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:id="@+id/reg_linearLayout_bvaDesignation">
-
-                <EditText
-                    android:id="@+id/reg_bvaDesignation_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:clickable="false"
-                    android:editable="false"
-                    android:linksClickable="false"
-                    android:longClickable="false"
-                    android:text="@string/bva_designation"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/reg_bvaDesignation_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:entries="@array/bva_designation" />
-
-            </LinearLayout>-->
-
         </LinearLayout>
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/reg_signupButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/button_style"
-        android:text="Sign Up"
-        android:textColor="@color/black"
-        android:textAllCaps="false"
-        android:textAlignment="center"
-        android:padding="16dp"
-        android:textSize="18sp"/>
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/reg_signupButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style_white"
+            android:text="Sign Up"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:padding="16dp"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

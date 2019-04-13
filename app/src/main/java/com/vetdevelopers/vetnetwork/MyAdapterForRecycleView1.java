@@ -128,9 +128,6 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
                                                     bundle.putString("Posting_Area", jsonObject.getString("posting_area"));
                                                     bundle.putString("District", jsonObject.getString("district"));
                                                     bundle.putString("Division", jsonObject.getString("division"));
-                                                    bundle.putString("BVA_Member", "");
-                                                    bundle.putString("BVA_Number", jsonObject.getString("bva_number"));
-                                                    bundle.putString("BVA_Designation", jsonObject.getString("bva_designation"));
                                                     bundle.putString("Email_Confirm", "");
                                                     bundle.putString("Rand_Code", "");
                                                     bundle.putString("User_Request", jsonObject.getString("user_request"));
