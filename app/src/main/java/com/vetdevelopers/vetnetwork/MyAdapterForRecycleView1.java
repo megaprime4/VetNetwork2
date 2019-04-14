@@ -1,11 +1,11 @@
 package com.vetdevelopers.vetnetwork;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +28,6 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,10 +35,12 @@ import java.util.Map;
 
 public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForRecycleView1.MyAdapterForRecycleView1ViewHolder>
 {
-    String PREF_NAME = "prefs";
     List<ListItemForRecycleView1> listItems;
     OnItemClickListener mListener;
     Context context;
+    String allUserPhoneGet="";
+
+    //public TextView allUserName, allUserPhone;
 
 
     public interface OnItemClickListener
@@ -55,24 +56,42 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
     public class MyAdapterForRecycleView1ViewHolder extends RecyclerView.ViewHolder
     {
 
-        public TextView mTextView1;
-        public TextView mTextView2;
-        Button accept, profileView, reject;
+        public TextView allUserName, allUserPhone;
+        public Button accept, profileView, reject;
 
 
         public MyAdapterForRecycleView1ViewHolder(View itemView, final OnItemClickListener listener)
         {
             super(itemView);
 
-            mTextView1 = itemView.findViewById(R.id.all_users_Name);
-            mTextView2 = itemView.findViewById(R.id.all_users_Phone);
+            allUserName = itemView.findViewById(R.id.all_users_Name);
+            allUserPhone = itemView.findViewById(R.id.all_users_Phone);
             accept = itemView.findViewById(R.id.userReq_acceptButton);
             profileView = itemView.findViewById(R.id.userReq_viewButton);
             reject = itemView.findViewById(R.id.userReq_rejectButton);
 
+            allUserPhone.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            /*
-            itemView.setOnClickListener(new View.OnClickListener()
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    //Toast.makeText(context,allUserPhone.getText().toString(),Toast.LENGTH_SHORT).show();
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+
+
+
+            /*itemView.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
@@ -84,7 +103,7 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
                         {
                             listener.onItemClick(position);
 
-                            System.out.println(mTextView2.getText().toString());
+                            System.out.println(allUserPhone.getText().toString());
 
 
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_FOR_DISPLAY_PROFILE,
@@ -190,7 +209,7 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
                                 {
                                     Map<String, String> params = new HashMap<String, String>();
 
-                                    params.put("phone", mTextView2.getText().toString());
+                                    params.put("phone", allUserPhone.getText().toString());
                                     return params;
                                 }
 
@@ -233,15 +252,16 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
 
         ListItemForRecycleView1 listItem = listItems.get(position);
 
-        holder.mTextView1.setText(listItem.getName());
-        holder.mTextView2.setText(listItem.getPhone());
+        holder.allUserName.setText(listItem.getName());
+        holder.allUserPhone.setText(listItem.getPhone());
+
+        allUserPhoneGet = holder.allUserPhone.getText().toString();
 
         holder.accept.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                System.out.println("accept");
                 Toast.makeText(context, "accept", Toast.LENGTH_SHORT).show();
             }
         });
@@ -250,8 +270,125 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
             @Override
             public void onClick(View v)
             {
-                System.out.println("view");
-                Toast.makeText(context, "view", Toast.LENGTH_SHORT).show();
+                /*StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_FOR_DISPLAY_PROFILE,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response)
+                            {
+                                if (response.contains("Connection failed!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("Please check your ID & Password!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("Improper request method!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("Invalid platform!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("sql error"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+
+                                    System.out.println("this is response : " + response);
+
+                                    Bundle bundle = new Bundle();
+                                    try
+                                    {
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                        bundle.putString("Name", jsonObject.getString("name"));
+                                        bundle.putString("ID", "");
+                                        bundle.putString("Email", jsonObject.getString("email"));
+                                        bundle.putString("Phone", jsonObject.getString("phone"));
+                                        bundle.putString("BVC_Number", jsonObject.getString("bvc_reg"));
+                                        bundle.putString("Password", "");
+                                        bundle.putString("University", jsonObject.getString("university"));
+                                        bundle.putString("Designation", jsonObject.getString("designation"));
+                                        bundle.putString("Posting_Area", jsonObject.getString("posting_area"));
+                                        bundle.putString("District", jsonObject.getString("district"));
+                                        bundle.putString("Division", jsonObject.getString("division"));
+                                        bundle.putString("Email_Confirm", "");
+                                        bundle.putString("Rand_Code", "");
+                                        bundle.putString("User_Request", jsonObject.getString("user_request"));
+                                        bundle.putString("User_Type", "");
+                                        bundle.putString("Admin_Email", "");
+
+                                        Intent profileIntent = new Intent(context, ViewProfileActivity.class);
+                                        profileIntent.putExtra("browseSearchedUserProfile", "true");
+                                        profileIntent.putExtras(bundle);
+                                        context.startActivity(profileIntent);
+
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }, new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        if (error instanceof TimeoutError)
+                        {
+                            Toast.makeText(context, "Timeout error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof NoConnectionError)
+                        {
+                            Toast.makeText(context, "No connection error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof AuthFailureError)
+                        {
+                            Toast.makeText(context, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof NetworkError)
+                        {
+                            Toast.makeText(context, "Network error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof ServerError)
+                        {
+                            Toast.makeText(context, "Server error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof ParseError)
+                        {
+                            Toast.makeText(context, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                {
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String, String> params = new HashMap<String, String>();
+
+                        params.put("phone", allUserPhone.getText().toString());
+                        return params;
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError
+                    {
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("User-Agent", "VetNetwork");  ////security purpose
+                        return headers;
+                    }
+                };
+
+                MySingleton.getInstance(context).addToRequestQueue(stringRequest);*/
+
+                //Toast.makeText(context,allUserPhoneGet,Toast.LENGTH_SHORT).show();
             }
         });
         holder.reject.setOnClickListener(new View.OnClickListener()
@@ -259,7 +396,6 @@ public class MyAdapterForRecycleView1 extends RecyclerView.Adapter<MyAdapterForR
             @Override
             public void onClick(View v)
             {
-                System.out.println("reject");
                 Toast.makeText(context, "reject", Toast.LENGTH_SHORT).show();
             }
         });
