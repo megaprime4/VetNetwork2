@@ -12,7 +12,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.MenuItem;
@@ -108,7 +107,7 @@ public class AdminPanelActivity extends AppCompatActivity
                                     //mDialog.show();
                                     Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                else if (response.contains("Please check your ID & Password!"))
+                                else if (response.contains("Invalid platform!"))
                                 {
                                     //popupTextView.setText(response);
                                     //mDialog.show();
@@ -120,13 +119,13 @@ public class AdminPanelActivity extends AppCompatActivity
                                     //mDialog.show();
                                     Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                else if (response.contains("Invalid platform!"))
+                                else if (response.contains("SQL (select) query error!"))
                                 {
                                     //popupTextView.setText(response);
                                     //mDialog.show();
                                     Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                else if (response.contains("sql error"))
+                                else if (response.contains("No user request found!"))
                                 {
                                     Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
@@ -153,7 +152,7 @@ public class AdminPanelActivity extends AppCompatActivity
                                             arrayListPhone.add(outputPhone);
                                         }
 
-                                        Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseActivity2.class);
+                                        Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseForAdminActivity.class);
                                         browseIntent.putStringArrayListExtra("name", arrayListName);
                                         browseIntent.putStringArrayListExtra("phone", arrayListPhone);
                                         startActivity(browseIntent);

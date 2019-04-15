@@ -16,6 +16,8 @@ public class ServerConstants
     public static final String CHANGE_PASSWORD = DB_URL + "change_password.php";
     public static final String SEARCH_FOR_DELETE_URL = DB_URL + "search_for_delete.php";
     public static final String PENDING_USER_REQUEST_URL = DB_URL + "pending_user_request.php";
+    public static final String ADMIN_VIEW_URL = DB_URL + "admin_view.php";
+    public static final String ADMIN_ACCEPT_URL = DB_URL + "admin_accept.php";
 
 
     public static final String KEY_NAME = "name";
@@ -42,5 +44,6 @@ public class ServerConstants
     //adminPanel
     public static final String KEY_SELECTED_RADIO_BUTTON = "radio_button";
     public static final String KEY_USER_ID = "user_id";
+    public static final String KEY_ALL_USER_PHONE = "all_user_phone";
 
 }
