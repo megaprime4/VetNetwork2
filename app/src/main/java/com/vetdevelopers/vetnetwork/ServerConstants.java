@@ -18,6 +18,7 @@ public class ServerConstants
     public static final String PENDING_USER_REQUEST_URL = DB_URL + "pending_user_request.php";
     public static final String ADMIN_VIEW_URL = DB_URL + "admin_view.php";
     public static final String ADMIN_ACCEPT_URL = DB_URL + "admin_accept.php";
+    public static final String ADMIN_REJECT_URL = DB_URL + "admin_reject.php";
 
 
     public static final String KEY_NAME = "name";

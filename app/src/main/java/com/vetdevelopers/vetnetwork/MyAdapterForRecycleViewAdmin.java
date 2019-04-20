@@ -1,5 +1,6 @@
 package com.vetdevelopers.vetnetwork;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -204,6 +205,11 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
                 };
 
                 MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+                //maybe correct code - for restart activity
+                Activity activity = (Activity) context;
+                activity.finish();
+                Intent i = new Intent(context,context.getClass());
+                context.startActivity(i);
             }
         });
         holder.profileView.setOnClickListener(new View.OnClickListener()
@@ -338,7 +344,102 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(context, "reject", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "reject", Toast.LENGTH_SHORT).show();
+
+                final String allUserPhone = holder.allUserPhone.getText().toString();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.ADMIN_REJECT_URL,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response)
+                            {
+                                if (response.contains("Connection failed!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("Invalid platform!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("Improper request method!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("SQL (select) query error!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("No row selected! Please debug!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("SQL (update) query error!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.contains("User rejected!"))
+                                {
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        if (error instanceof TimeoutError)
+                        {
+                            Toast.makeText(context, "Timeout error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof NoConnectionError)
+                        {
+                            Toast.makeText(context, "No connection error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof AuthFailureError)
+                        {
+                            Toast.makeText(context, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof NetworkError)
+                        {
+                            Toast.makeText(context, "Network error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof ServerError)
+                        {
+                            Toast.makeText(context, "Server error!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (error instanceof ParseError)
+                        {
+                            Toast.makeText(context, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                {
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String, String> params = new HashMap<String, String>();
+
+                        params.put(ServerConstants.KEY_ALL_USER_PHONE, allUserPhone);
+                        return params;
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError
+                    {
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("User-Agent", "VetNetwork");  ////security purpose
+                        return headers;
+                    }
+                };
+
+                MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+                //maybe correct code - for restart activity
+                Activity activity = (Activity) context;
+                activity.finish();
+                Intent i = new Intent(context,context.getClass());
+                context.startActivity(i);
+
             }
         });
     }
