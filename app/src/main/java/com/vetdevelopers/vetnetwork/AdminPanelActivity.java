@@ -690,7 +690,7 @@ public class AdminPanelActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_editProfile)
         {
-            Intent editProfileIntent = new Intent(AdminPanelActivity.this, EditProfileActivity.class);
+            Intent editProfileIntent = new Intent(AdminPanelActivity.this, EditProfileUserActivity.class);
             startActivity(editProfileIntent);
         }
         else if (id == R.id.nav_changePassword)

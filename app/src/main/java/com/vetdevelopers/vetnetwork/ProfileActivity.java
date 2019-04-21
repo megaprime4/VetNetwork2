@@ -8,10 +8,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity
@@ -197,11 +194,11 @@ public class ProfileActivity extends AppCompatActivity
 
         if (id == R.id.nav_profile)
         {
-            // Handle the camera action
+            // nothing to do here
         }
         else if (id == R.id.nav_editProfile)
         {
-            Intent editProfileIntent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+            Intent editProfileIntent = new Intent(ProfileActivity.this, EditProfileUserActivity.class);
             startActivity(editProfileIntent);
         }
         else if (id == R.id.nav_changePassword)
@@ -220,6 +217,9 @@ public class ProfileActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_deleteAccount)
         {
+
+            Intent deleteAccountUserIntent = new Intent(ProfileActivity.this, DeleteAccountUserActivity.class);
+            startActivity(deleteAccountUserIntent);
 
         }
 

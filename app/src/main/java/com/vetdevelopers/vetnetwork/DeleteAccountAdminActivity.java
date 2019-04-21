@@ -59,7 +59,7 @@ public class DeleteAccountAdminActivity extends AppCompatActivity
 
         progressDialog = new ProgressDialog(DeleteAccountAdminActivity.this);
 
-        sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
         currentPassword = (EditText) findViewById(R.id.deleteAccountAdmin_currentPassword);
         confirmPassword = (EditText) findViewById(R.id.deleteAccountAdmin_confirmPassword);
@@ -280,7 +280,7 @@ public class DeleteAccountAdminActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_editProfile) {
 
-            Intent editProfileIntent = new Intent(DeleteAccountAdminActivity.this, EditProfileActivity.class);
+            Intent editProfileIntent = new Intent(DeleteAccountAdminActivity.this, EditProfileUserActivity.class);
             startActivity(editProfileIntent);
 
         } else if (id == R.id.nav_changePassword) {
