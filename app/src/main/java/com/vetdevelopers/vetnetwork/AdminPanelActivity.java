@@ -708,7 +708,8 @@ public class AdminPanelActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_deleteAccount)
         {
-
+            Intent deleteAccountAdminIntent = new Intent(AdminPanelActivity.this, DeleteAccountAdminActivity.class);
+            startActivity(deleteAccountAdminIntent);
         }
         else if (id == R.id.nav_adminPanel)
         {

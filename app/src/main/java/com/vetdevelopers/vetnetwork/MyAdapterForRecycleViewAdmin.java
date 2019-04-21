@@ -48,16 +48,6 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
     }
 
 
-    public interface OnItemClickListener
-    {
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener)
-    {
-        mListener = listener;
-    }
-
     public class MyAdapterForRecycleView1ViewHolder extends RecyclerView.ViewHolder
     {
 
@@ -68,6 +58,9 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
         {
 
             super(itemView);
+
+
+
 
             //view1=itemView;
 
@@ -90,6 +83,7 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
         }
     }
 
+
     @Override
     public MyAdapterForRecycleView1ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
@@ -101,9 +95,9 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
     @Override
     public void onBindViewHolder(final MyAdapterForRecycleView1ViewHolder holder, int position)
     {
-        //MyAdapterForRecycleView1Item currentItem = mMyAdapterForRecycleView1List.get(position);
+        ListItemForRecycleView1 currentItem = listItems.get(position);
 
-        ListItemForRecycleView1 listItem = listItems.get(position);
+        final ListItemForRecycleView1 listItem = listItems.get(position);
 
         holder.allUserName.setText(listItem.getName());
         holder.allUserPhone.setText(listItem.getPhone());
@@ -117,7 +111,14 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
             {
                 //Toast.makeText(context, "accept", Toast.LENGTH_SHORT).show();
 
+
                 final String allUserPhone = holder.allUserPhone.getText().toString();
+
+                int position = holder.getAdapterPosition();
+                System.out.println("holder position : "+position);
+                listItems.remove(position);
+                notifyItemRemoved(position);
+
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.ADMIN_ACCEPT_URL,
                         new Response.Listener<String>()
@@ -153,6 +154,7 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
                                 {
                                     Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                                 }
+
                             }
                         }, new Response.ErrorListener()
                 {
@@ -205,11 +207,7 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
                 };
 
                 MySingleton.getInstance(context).addToRequestQueue(stringRequest);
-                //maybe correct code - for restart activity
-                Activity activity = (Activity) context;
-                activity.finish();
-                Intent i = new Intent(context,context.getClass());
-                context.startActivity(i);
+
             }
         });
         holder.profileView.setOnClickListener(new View.OnClickListener()
@@ -348,6 +346,11 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
 
                 final String allUserPhone = holder.allUserPhone.getText().toString();
 
+                int position = holder.getAdapterPosition();
+                System.out.println("holder position : "+position);
+                listItems.remove(position);
+                notifyItemRemoved(position);
+
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.ADMIN_REJECT_URL,
                         new Response.Listener<String>()
                         {
@@ -434,19 +437,26 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
                 };
 
                 MySingleton.getInstance(context).addToRequestQueue(stringRequest);
-                //maybe correct code - for restart activity
-                Activity activity = (Activity) context;
-                activity.finish();
-                Intent i = new Intent(context,context.getClass());
-                context.startActivity(i);
-
             }
         });
     }
 
+
     @Override
+
     public int getItemCount()
     {
         return listItems.size();
     }
+
+    public interface OnItemClickListener
+    {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener)
+    {
+        mListener = listener;
+    }
+
 }
