@@ -204,7 +204,7 @@ public class AdminProfileActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_editProfile)
         {
-            Intent editProfileIntent = new Intent(AdminProfileActivity.this, EditProfileUserActivity.class);
+            Intent editProfileIntent = new Intent(AdminProfileActivity.this, EditProfileAdminActivity.class);
             startActivity(editProfileIntent);
         }
         else if (id == R.id.nav_changePassword)

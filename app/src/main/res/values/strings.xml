@@ -47,6 +47,7 @@
         <item>Khulna</item>
         <item>Mymensingh</item>
         <item>Rajshahi</item>
+        <item>Sylhet</item>
         <item>Rangpur</item>
     </string-array>
 
@@ -151,4 +152,5 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_delete_account">DeleteAccountActivity</string>
     <string name="title_activity_delete_account_user">DeleteAccountUserActivity</string>
+    <string name="title_activity_edit_profile_admin">EditProfileAdminActivity</string>
 </resources>

@@ -416,10 +416,13 @@ public class EditProfileUserActivity extends AppCompatActivity implements Naviga
         }
         else if (id == R.id.nav_editProfile)
         {
-
+            //nothing to do
         }
         else if (id == R.id.nav_changePassword)
         {
+
+            Intent changePasswordIntent = new Intent(EditProfileUserActivity.this, ChangePasswordActivity.class);
+            startActivity(changePasswordIntent);
 
         }
         else if (id == R.id.nav_logout)
@@ -429,6 +432,9 @@ public class EditProfileUserActivity extends AppCompatActivity implements Naviga
         }
         else if (id == R.id.nav_deleteAccount)
         {
+
+            Intent deleteAccountUserIntent = new Intent(EditProfileUserActivity.this, DeleteAccountUserActivity.class);
+            startActivity(deleteAccountUserIntent);
 
         }
 

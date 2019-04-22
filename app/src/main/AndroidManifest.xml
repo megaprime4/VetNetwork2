@@ -14,14 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".DeleteAccountUserActivity"
-            android:parentActivityName=".ProfileActivity"
-            android:label="@string/title_activity_delete_account_user"
+            android:name=".EditProfileAdminActivity"
+            android:parentActivityName=".AdminProfileActivity"
+            android:label="@string/title_activity_edit_profile_admin"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".DeleteAccountUserActivity"
+            android:label="@string/title_activity_delete_account_user"
+            android:parentActivityName=".ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".DeleteAccountAdminActivity"
-            android:parentActivityName=".AdminProfileActivity"
             android:label="@string/title_activity_delete_account"
+            android:parentActivityName=".AdminProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".BrowseForAdminActivity" />
         <activity android:name=".ChangePasswordActivity" />
@@ -29,6 +34,7 @@
         <activity android:name=".SearchActivity" />
         <activity
             android:name=".AdminPanelActivity"
+            android:parentActivityName=".AdminProfileActivity"
             android:label="@string/title_activity_admin_control_panel"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -37,6 +43,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditProfileUserActivity"
+            android:parentActivityName=".ProfileActivity"
             android:label="@string/title_activity_profile_setting"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

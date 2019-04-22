@@ -86,7 +86,7 @@ public class RegistrationActivity extends AppCompatActivity
         password = (EditText) findViewById(R.id.reg_pass1);
         retypePassword = (EditText) findViewById(R.id.reg_pass2);
         university_spinner = (Spinner) findViewById(R.id.reg_university_spinner);
-        designation = (EditText) findViewById(R.id.reg_designation);
+        //designation = (EditText) findViewById(R.id.reg_designation);
         posting_area = (EditText) findViewById(R.id.reg_postingArea);
         district_spinner = (Spinner) findViewById(R.id.reg_district_spinner);
         division_spinner = (Spinner) findViewById(R.id.reg_division_spinner);
@@ -108,7 +108,7 @@ public class RegistrationActivity extends AppCompatActivity
                 final String Password = password.getText().toString().trim();
                 String RetypePassword = retypePassword.getText().toString().trim();
                 final String University = university_spinner.getSelectedItem().toString().trim();
-                final String Designation = designation.getText().toString().trim();
+                final String Designation = "Dr.";
                 final String Posting_area = posting_area.getText().toString().trim();
                 final String District = district_spinner.getSelectedItem().toString().trim();
                 final String Division = division_spinner.getSelectedItem().toString().trim();
