@@ -1,6 +1,5 @@
 package com.vetdevelopers.vetnetwork;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,17 +35,12 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
     List<ListItemForRecycleView1> listItems;
     OnItemClickListener mListener;
     Context context;
-    //String allUserPhoneGet="";
-    //View view1;
-
-    //public TextView allUserName, allUserPhone;
 
     public MyAdapterForRecycleViewAdmin(List<ListItemForRecycleView1> listItems, Context context)
     {
         this.listItems = listItems;
         this.context = context;
     }
-
 
     public class MyAdapterForRecycleView1ViewHolder extends RecyclerView.ViewHolder
     {
@@ -56,12 +50,7 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
 
         public MyAdapterForRecycleView1ViewHolder(View itemView, final OnItemClickListener listener)
         {
-
             super(itemView);
-
-
-
-
             //view1=itemView;
 
             allUserName = itemView.findViewById(R.id.all_users_Name);
@@ -78,11 +67,8 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
                     //allUserPhoneGet = allUserPhone.getText().toString();
                 }
             });
-
-
         }
     }
-
 
     @Override
     public MyAdapterForRecycleView1ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
