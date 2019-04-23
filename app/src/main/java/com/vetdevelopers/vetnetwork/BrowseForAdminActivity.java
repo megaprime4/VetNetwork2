@@ -1,7 +1,6 @@
 package com.vetdevelopers.vetnetwork;
 
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -51,19 +50,6 @@ public class BrowseForAdminActivity extends AppCompatActivity
         setContentView(R.layout.activity_browse_for_admin);
 
         recyclerView = (RecyclerView) findViewById(R.id.browse_recyclerView);
-
-        //lets test here
-        /*
-        getString(new VolleyCallback()
-        {
-            @Override
-            public void onSuccess(String result)
-            {
-                createExampleList(result);
-            }
-        });
-        buildRecyclerView();
-        */
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.PENDING_USER_REQUEST_URL,
                 new Response.Listener<String>()

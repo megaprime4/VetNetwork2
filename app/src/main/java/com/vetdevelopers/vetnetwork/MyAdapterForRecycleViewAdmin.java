@@ -105,7 +105,6 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
                 listItems.remove(position);
                 notifyItemRemoved(position);
 
-
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.ADMIN_ACCEPT_URL,
                         new Response.Listener<String>()
                         {
@@ -140,7 +139,6 @@ public class MyAdapterForRecycleViewAdmin extends RecyclerView.Adapter<MyAdapter
                                 {
                                     Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                                 }
-
                             }
                         }, new Response.ErrorListener()
                 {

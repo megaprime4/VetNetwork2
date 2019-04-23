@@ -20,6 +20,7 @@ public class ServerConstants
     public static final String ADMIN_ACCEPT_URL = DB_URL + "admin_accept.php";
     public static final String ADMIN_REJECT_URL = DB_URL + "admin_reject.php";
     public static final String DELETE_ACCOUNT_URL = DB_URL + "delete_account.php";
+    public static final String ADMIN_DELETE_URL = DB_URL + "admin_delete.php";
 
 
     public static final String KEY_NAME = "name";

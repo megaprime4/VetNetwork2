@@ -13,11 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".BrowseForAdminDeleteActivity"
+            android:parentActivityName=".AdminPanelActivity"></activity>
         <activity
             android:name=".EditProfileAdminActivity"
-            android:parentActivityName=".AdminProfileActivity"
             android:label="@string/title_activity_edit_profile_admin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".AdminProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DeleteAccountUserActivity"
             android:label="@string/title_activity_delete_account_user"
@@ -34,8 +36,8 @@
         <activity android:name=".SearchActivity" />
         <activity
             android:name=".AdminPanelActivity"
-            android:parentActivityName=".AdminProfileActivity"
             android:label="@string/title_activity_admin_control_panel"
+            android:parentActivityName=".AdminProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdminProfileActivity"
@@ -43,8 +45,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditProfileUserActivity"
-            android:parentActivityName=".ProfileActivity"
             android:label="@string/title_activity_profile_setting"
+            android:parentActivityName=".ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ProfileActivity"

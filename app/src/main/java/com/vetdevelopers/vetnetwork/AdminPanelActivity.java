@@ -396,6 +396,8 @@ public class AdminPanelActivity extends AppCompatActivity
             final String selectedRadioButton = radioButtonSearchType.getText().toString();
             final String inputUserID = getUserID.getText().toString().trim();
 
+            System.out.println("------------entering volley checkuser--------------------------");
+
             ///volley code
             StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.SEARCH_FOR_DELETE_URL,
                     new Response.Listener<String>()
@@ -480,7 +482,9 @@ public class AdminPanelActivity extends AppCompatActivity
                                         arrayListPhone.add(outputPhone);
                                     }
 
-                                    Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseActivity.class);
+                                    System.out.println("------------------------------------adminpanel inten---------------");
+
+                                    Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseForAdminDeleteActivity.class);
                                     browseIntent.putStringArrayListExtra("name", arrayListName);
                                     browseIntent.putStringArrayListExtra("phone", arrayListPhone);
                                     startActivity(browseIntent);
