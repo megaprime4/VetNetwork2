@@ -1,29 +1,26 @@
 package com.vetdevelopers.vetnetwork;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class StartPageActivity extends AppCompatActivity
-{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button signUpButton, signInButton, searchButton;
     private ImageView logo;
-    //Dialog mDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_page);
-
-        //mDialog = new Dialog(this);  //custom popup window
 
         signUpButton = (Button) findViewById(R.id.start_signUpButton);
         signInButton = (Button) findViewById(R.id.start_signInButton);
@@ -59,5 +56,38 @@ public class StartPageActivity extends AppCompatActivity
                 startActivity(searchIntent);
             }
         });
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_reportActivity) {
+
+            Intent reportForBrowsersIntent = new Intent(StartPageActivity.this, ReportForBrowsersActivity.class);
+            startActivity(reportForBrowsersIntent);
+
+        } else if (id == R.id.nav_aboutUs) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

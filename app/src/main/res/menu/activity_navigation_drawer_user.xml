@@ -33,4 +33,17 @@
         </menu>
     </item>
 
+    <item android:title="Application">
+        <menu>
+            <item
+                android:id="@+id/nav_reportActivity"
+                android:icon="@drawable/ic_report_problem_white_24dp"
+                android:title="Report" />
+
+            <item
+                android:id="@+id/nav_aboutUs"
+                android:icon="@drawable/ic_info_white_24dp"
+                android:title="About" />
+        </menu>
+    </item>
 </menu>

@@ -153,4 +153,6 @@
     <string name="title_activity_delete_account">DeleteAccountActivity</string>
     <string name="title_activity_delete_account_user">DeleteAccountUserActivity</string>
     <string name="title_activity_edit_profile_admin">EditProfileAdminActivity</string>
+    <string name="title_activity_start_page">StartPageActivity</string>
+    <string name="title_activity_report_for_browsers">ReportForBrowsersActivity</string>
 </resources>

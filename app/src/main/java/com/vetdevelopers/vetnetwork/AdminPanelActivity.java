@@ -110,7 +110,7 @@ public class AdminPanelActivity extends AppCompatActivity
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
 
-                String AdminEmail = getAdminEmail();
+                /*String AdminEmail = getAdminEmail();
                 currentAdminEmail.setText(AdminEmail);
                 progressDialog.dismiss();
                 System.out.println(".........................................adminEmail (onCreate) = " + AdminEmail);
@@ -120,7 +120,35 @@ public class AdminPanelActivity extends AppCompatActivity
                 editor = sharedPreferences.edit();
                 editor.remove("admin_email_verify");
                 editor.apply();
-                System.out.println("Admin email is cleared : " + sharedPreferences.getString("admin_email_verify", "key cleared"));
+                System.out.println("Admin email is cleared : " + sharedPreferences.getString("admin_email_verify", "key cleared"));*/
+
+                getAdminEamil(new VolleyCallback()
+                {
+                    @Override
+                    public void onSuccess(String response)
+                    {
+                        try
+                        {
+                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+                            String AdminEmail = jsonObject.getString("admin_email");
+                            currentAdminEmail.setText(AdminEmail);
+                            progressDialog.dismiss();
+
+                            //System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
+                            //System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
+
+                        }
+                        catch (JSONException e)
+                        {
+                            progressDialog.dismiss();
+                            e.printStackTrace();
+                            System.out.println("-----------------------json response error occured ------------!!!");
+                        }
+                        //System.out.println("---------------------------------------------------Volley captured : " + AdminEmail + "--"+getAdminEmail);
+                        //return k;
+                    }
+                });
             }
         });
 
@@ -216,7 +244,7 @@ public class AdminPanelActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private String getAdminEmail()
+    /*private String getAdminEmail()
     {
         final String[] AdminEmail = {""};
 
@@ -350,6 +378,139 @@ public class AdminPanelActivity extends AppCompatActivity
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         System.out.println("-------------------------------------------------------adminEmail (return) (sharedPreferences)= " + sharedPreferences.getString("admin_email_verify", ""));
         return sharedPreferences.getString("admin_email_verify", "");
+    }*/
+
+    public void getAdminEamil(final AdminPanelActivity.VolleyCallback callback)
+    {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.GET_ADMIN_EMAIL_URL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        if (response.equals("Registration complete! Request sent to admin!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("Please check your e-mail!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("Connection failed!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("sql (select) query error!-outer"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("Improper request method!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("Invalid platform!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("sql (select) query error!-inner"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("No row selected! Please debug!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            callback.onSuccess(response);
+
+                            /*try
+                            {
+
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                AdminEmail[0] = jsonObject.getString("admin_email");
+                                //set email
+                                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+                                editor = sharedPreferences.edit();
+                                editor.putString("admin_email_verify", AdminEmail[0]);
+                                editor.apply();
+
+                                System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
+                                System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
+
+                            }
+                            catch (JSONException e)
+                            {
+                                e.printStackTrace();
+                                System.out.println("-----------------------json response error occured ------------!!!");
+                            }*/
+                        }
+                    }
+                }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                if (error instanceof TimeoutError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(AdminPanelActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof NoConnectionError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(AdminPanelActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof AuthFailureError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(AdminPanelActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof NetworkError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(AdminPanelActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof ServerError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(AdminPanelActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof ParseError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(AdminPanelActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String> params = new HashMap<String, String>();
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError
+            {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("User-Agent", "VetNetwork"); ////security purpose
+                return headers;
+            }
+        };
+
+        MySingleton.getInstance(AdminPanelActivity.this).addToRequestQueue(stringRequest);
     }
 
     private void checkPassword()
@@ -731,5 +892,10 @@ public class AdminPanelActivity extends AppCompatActivity
         startPageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(startPageIntent);
         finish();
+    }
+
+    public interface VolleyCallback
+    {
+        void onSuccess(String result);
     }
 }

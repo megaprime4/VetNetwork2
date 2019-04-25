@@ -140,6 +140,11 @@ public class LoginActivity extends AppCompatActivity
                 else
                 {
 
+                    progressDialog.setTitle("Please Wait");
+                    progressDialog.setMessage("We are logging you into the system");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.show();
+
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.LOGIN_URL,
                             new Response.Listener<String>()
                             {
@@ -148,32 +153,38 @@ public class LoginActivity extends AppCompatActivity
                                 {
                                     if (response.contains("Connection failed!"))
                                     {
+                                        progressDialog.dismiss();
                                         msgPopupTextView.setText(response);
                                         mDialogMsg.show();
                                     }
                                     else if (response.contains("Please check your ID & Password!"))
                                     {
+                                        progressDialog.dismiss();
                                         msgPopupTextView.setText(response);
                                         mDialogMsg.show();
                                     }
                                     else if (response.contains("Improper request method!"))
                                     {
+                                        progressDialog.dismiss();
                                         msgPopupTextView.setText(response);
                                         mDialogMsg.show();
                                     }
                                     else if (response.contains("Invalid platform!"))
                                     {
+                                        progressDialog.dismiss();
                                         msgPopupTextView.setText(response);
                                         mDialogMsg.show();
                                     }
                                     else if (response.contains("sql error"))
                                     {
+                                        progressDialog.dismiss();
                                         Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
                                     }
 
                                     //server data  retrieve code below...
                                     else
                                     {
+                                        //progressDialog.dismiss();
 
                                         try
                                         {
@@ -183,6 +194,7 @@ public class LoginActivity extends AppCompatActivity
                                                 Intent profileIntent = new Intent(LoginActivity.this, ProfileActivity.class);
                                                 profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
                                                 profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                progressDialog.dismiss();
                                                 startActivity(profileIntent);
                                                 finish();
                                             }
@@ -194,19 +206,21 @@ public class LoginActivity extends AppCompatActivity
                                                     Intent profileIntent = new Intent(LoginActivity.this, AdminProfileActivity.class);
                                                     profileIntent.putExtras(bundleFunctions.MakeBundleFromJSON(response));
                                                     profileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    progressDialog.dismiss();
                                                     startActivity(profileIntent);
                                                     finish();
                                                 }
                                                 else if (bundleFunctions.MakeBundleFromJSON(response).getString("User_Type").equals("pending"))
                                                 {
+                                                    progressDialog.dismiss();
                                                     msgPopupTextView.setText("Please activate your admin account!");
                                                     mDialogMsg.show();
                                                 }
                                             }
-
                                         }
                                         catch (Exception e)
                                         {
+                                            progressDialog.dismiss();
                                             e.printStackTrace();
                                             System.out.println("-----------LoginActivity : --------string response error occured------------!!!");
                                         }
@@ -219,26 +233,32 @@ public class LoginActivity extends AppCompatActivity
                         {
                             if (error instanceof TimeoutError)
                             {
+                                progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
                             }
                             else if (error instanceof NoConnectionError)
                             {
+                                progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
                             }
                             else if (error instanceof AuthFailureError)
                             {
+                                progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
                             }
                             else if (error instanceof NetworkError)
                             {
+                                progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
                             }
                             else if (error instanceof ServerError)
                             {
+                                progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
                             }
                             else if (error instanceof ParseError)
                             {
+                                progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
                             }
                         }

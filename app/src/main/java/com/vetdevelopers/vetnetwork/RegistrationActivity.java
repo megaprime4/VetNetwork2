@@ -59,6 +59,7 @@ public class RegistrationActivity extends AppCompatActivity
     Toolbar mToolbar;
 
     private boolean getAdminEmail = false;
+    private String AdminEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -92,6 +93,32 @@ public class RegistrationActivity extends AppCompatActivity
         division_spinner = (Spinner) findViewById(R.id.reg_division_spinner);
 
         signUpButton = (Button) findViewById(R.id.reg_signupButton);
+
+        getAdminEamil(new VolleyCallback()
+        {
+            @Override
+            public void onSuccess(String response)
+            {
+                try
+                {
+                    JSONArray jsonArray = new JSONArray(response);
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    AdminEmail = jsonObject.getString("admin_email");
+                    getAdminEmail = true;
+
+                    //System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
+                    //System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
+
+                }
+                catch (JSONException e)
+                {
+                    e.printStackTrace();
+                    System.out.println("-----------------------json response error occured ------------!!!");
+                }
+                System.out.println("---------------------------------------------------Volley captured : " + AdminEmail + "--"+getAdminEmail);
+                //return k;
+            }
+        });
 
 
         signUpButton.setOnClickListener(new View.OnClickListener()
@@ -129,15 +156,15 @@ public class RegistrationActivity extends AppCompatActivity
                 //debug purpose
 
 
-                String AdminEmail = getAdminEamil(); //get the latest admin email from the server
-                System.out.println(".........................................admin email = " + AdminEmail);
+//                String AdminEmail = getAdminEamil(); //get the latest admin email from the server
+//                System.out.println(".........................................admin email = " + AdminEmail);
 
                 ///destroy here...
-                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+                /*sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
                 editor = sharedPreferences.edit();
                 editor.remove("admin_email_verify");
                 editor.apply();
-                System.out.println("this is cleared : " + sharedPreferences.getString("admin_email_verify", "key cleared"));
+                System.out.println("this is cleared : " + sharedPreferences.getString("admin_email_verify", "key cleared"));*/
 
                 if (getAdminEmail == true)
                 {
@@ -168,7 +195,7 @@ public class RegistrationActivity extends AppCompatActivity
 
     } //onCreate
 
-    private String getAdminEamil()
+    /*private String getAdminEamil()
     {
         final String[] AdminEmail = {""};
 
@@ -304,7 +331,7 @@ public class RegistrationActivity extends AppCompatActivity
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         System.out.println("-------------------------------------------------------mail (sharedPreferences)= " + sharedPreferences.getString("admin_email_verify", ""));
         return sharedPreferences.getString("admin_email_verify", "");
-    }
+    }*/
 
     private void registerAccount(final String UserType, final String Name, final String Email, final String AdminEmail, final String Phone,
                                  final String BVC_number, final String Password, final String RetypePassword,
@@ -479,6 +506,128 @@ public class RegistrationActivity extends AppCompatActivity
         }
     }
 
+    public void getAdminEamil(final RegistrationActivity.VolleyCallback callback)
+    {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.GET_ADMIN_EMAIL_URL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        if (response.equals("Registration complete! Request sent to admin!"))
+                        {
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("Please check your e-mail!"))
+                        {
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("Connection failed!"))
+                        {
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("sql (select) query error!-outer"))
+                        {
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("Improper request method!"))
+                        {
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("Invalid platform!"))
+                        {
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("sql (select) query error!-inner"))
+                        {
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.equals("No row selected! Please debug!"))
+                        {
+                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            callback.onSuccess(response);
+
+                                /*try
+                            {
+
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                AdminEmail = jsonObject.getString("admin_email");
+                                //set email
+                                *//*sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+                                editor = sharedPreferences.edit();
+                                editor.putString("admin_email_verify", AdminEmail[0]);
+                                editor.apply();*//*
+
+                                System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
+                                System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
+
+                            }
+                            catch (JSONException e)
+                            {
+                                e.printStackTrace();
+                                System.out.println("-----------------------json response error occured ------------!!!");
+                            }*/
+                        }
+                    }
+                }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                if (error instanceof TimeoutError)
+                {
+                    Toast.makeText(RegistrationActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof NoConnectionError)
+                {
+                    Toast.makeText(RegistrationActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof AuthFailureError)
+                {
+                    Toast.makeText(RegistrationActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof NetworkError)
+                {
+                    Toast.makeText(RegistrationActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof ServerError)
+                {
+                    Toast.makeText(RegistrationActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof ParseError)
+                {
+                    Toast.makeText(RegistrationActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String> params = new HashMap<String, String>();
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError
+            {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("User-Agent", "VetNetwork"); ////security purpose
+                return headers;
+            }
+        };
+
+        MySingleton.getInstance(RegistrationActivity.this).addToRequestQueue(stringRequest);
+    }
+
+    public interface VolleyCallback{
+        void onSuccess(String result);
+    }
 
     public void hideokbutton()
     {

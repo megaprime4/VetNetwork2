@@ -21,6 +21,7 @@ public class ServerConstants
     public static final String ADMIN_REJECT_URL = DB_URL + "admin_reject.php";
     public static final String DELETE_ACCOUNT_URL = DB_URL + "delete_account.php";
     public static final String ADMIN_DELETE_URL = DB_URL + "admin_delete.php";
+    public static final String REPORT_BROWSERS_URL = DB_URL + "report_browsers.php";
 
 
     public static final String KEY_NAME = "name";
@@ -49,4 +50,9 @@ public class ServerConstants
     public static final String KEY_USER_ID = "user_id";
     public static final String KEY_ALL_USER_PHONE = "all_user_phone";
 
+    //report
+    public static final String KEY_TOPIC = "topic";
+    public static final String KEY_DESCRIPTION = "description";
+    public static final String KEY_DATE = "date";
+    public static final String KEY_TIME = "time";
 }

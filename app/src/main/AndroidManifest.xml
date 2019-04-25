@@ -13,8 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BrowseForAdminDeleteActivity"
-            android:parentActivityName=".AdminPanelActivity"></activity>
+        <activity
+            android:name=".ReportForBrowsersActivity"
+            android:parentActivityName=".StartPageActivity"
+            android:label="@string/title_activity_report_for_browsers"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".StartPageActivity"
+            android:label="@string/title_activity_start_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BrowseForAdminDeleteActivity"
+            android:parentActivityName=".AdminPanelActivity" />
         <activity
             android:name=".EditProfileAdminActivity"
             android:label="@string/title_activity_edit_profile_admin"
@@ -60,7 +70,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartPageActivity" />
         <activity
             android:name=".RegistrationActivity"
             android:parentActivityName=".StartPageActivity" />
