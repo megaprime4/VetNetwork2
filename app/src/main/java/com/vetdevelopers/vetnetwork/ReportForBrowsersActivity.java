@@ -54,6 +54,7 @@ public class ReportForBrowsersActivity extends AppCompatActivity
     private Button popupOKButton;
 
     private String AdminEmail;
+    private boolean getAdminEmail = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +97,7 @@ public class ReportForBrowsersActivity extends AppCompatActivity
                 String Topic = topic.getText().toString().trim();
                 String Description = description.getText().toString().trim();
 
-                checkDataAndSubmit(Name, Phone, Email, Topic, Description);
+                checkDataAndDateTime(Name, Phone, Email, Topic, Description);
             }
         });
 
@@ -110,6 +111,7 @@ public class ReportForBrowsersActivity extends AppCompatActivity
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     AdminEmail = jsonObject.getString("admin_email");
+                    getAdminEmail = true;
 
                     //System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
                     //System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
@@ -117,6 +119,7 @@ public class ReportForBrowsersActivity extends AppCompatActivity
                 }
                 catch (JSONException e)
                 {
+                    getAdminEmail = false;
                     e.printStackTrace();
                     System.out.println("-----------------------json response error occured ------------!!!");
                 }
@@ -129,7 +132,7 @@ public class ReportForBrowsersActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void checkDataAndSubmit(final String Name, final String Phone, final String Email, final String Topic, final String Description)
+    private void checkDataAndDateTime(String Name, String Phone, String Email, String Topic, String Description)
     {
         if(TextUtils.isEmpty(Name))
         {
@@ -155,127 +158,139 @@ public class ReportForBrowsersActivity extends AppCompatActivity
             String[] tempArray;
             String splitter = "@";
             tempArray = dateTime.split(splitter);
-            final String Date = tempArray[0];
-            final String Time = tempArray[1];
+            String Date = tempArray[0];
+            String Time = tempArray[1];
 
-            progressDialog.setTitle("Please Wait");
-            progressDialog.setMessage("We are sending your problem to admin panel");
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();
-
-
-            //volley code
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.REPORT_BROWSERS_URL,
-                    new Response.Listener<String>()
-                    {
-                        @Override
-                        public void onResponse(String response)
-                        {
-                            if (response.contains("Connection failed!"))
-                            {
-                                progressDialog.dismiss();
-                                Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
-                            }
-                            else if (response.contains("Invalid platform!"))
-                            {
-                                progressDialog.dismiss();
-                                Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
-                            }
-                            else if (response.contains("Data insertion failed!"))
-                            {
-                                progressDialog.dismiss();
-                                Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
-                            }
-                            else if (response.contains("Improper request method!"))
-                            {
-                                progressDialog.dismiss();
-                                Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
-                            }
-                            else if (response.contains("SQL (insert) query error!"))
-                            {
-                                progressDialog.dismiss();
-                                msgPopupTextView.setText(response);
-                                mDialogMsg.show();
-                                //Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
-                            }
-                            else if (response.contains("Sending failed!"))
-                            {
-                                progressDialog.dismiss();
-                                msgPopupTextView.setText(response);
-                                mDialogMsg.show();
-                            }
-                            //server data  retrieve code below...
-                            else if(response.contains("Thank you for your cooperation! We will review your problem as soon as possible!"))
-                            {
-                                progressDialog.dismiss();
-                                msgPopupTextView.setText(response);
-                                mDialogMsg.show();
-                            }
-                        }
-                    }, new Response.ErrorListener()
+            if(getAdminEmail == true)
             {
-                @Override
-                public void onErrorResponse(VolleyError error)
-                {
-                    if (error instanceof TimeoutError)
-                    {
-                        progressDialog.dismiss();
-                        Toast.makeText(ReportForBrowsersActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof NoConnectionError)
-                    {
-                        progressDialog.dismiss();
-                        Toast.makeText(ReportForBrowsersActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof AuthFailureError)
-                    {
-                        progressDialog.dismiss();
-                        Toast.makeText(ReportForBrowsersActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof NetworkError)
-                    {
-                        progressDialog.dismiss();
-                        Toast.makeText(ReportForBrowsersActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof ServerError)
-                    {
-                        progressDialog.dismiss();
-                        Toast.makeText(ReportForBrowsersActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (error instanceof ParseError)
-                    {
-                        progressDialog.dismiss();
-                        Toast.makeText(ReportForBrowsersActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            })
+                submitReport(Name, Phone, Email, Topic, Description, Time, Date);
+            }
+            else
             {
-                @Override
-                protected Map<String, String> getParams()
-                {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put(ServerConstants.KEY_ADMIN_EMAIL, AdminEmail);
-                    params.put(ServerConstants.KEY_NAME, Name);
-                    params.put(ServerConstants.KEY_PHONE, Phone);
-                    params.put(ServerConstants.KEY_EMAIL, Email);
-                    params.put(ServerConstants.KEY_TOPIC, Topic);
-                    params.put(ServerConstants.KEY_DESCRIPTION, Description);
-                    params.put(ServerConstants.KEY_DATE, Date);
-                    params.put(ServerConstants.KEY_TIME, Time);
-                    return params;
-                }
-
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError
-                {
-                    Map<String, String> headers = new HashMap<String, String>();
-                    headers.put("User-Agent", "VetNetwork");  ////security purpose
-                    return headers;
-                }
-            };
-
-            MySingleton.getInstance(ReportForBrowsersActivity.this).addToRequestQueue(stringRequest);
+                Toast.makeText(ReportForBrowsersActivity.this,"Could not get mail instance!", Toast.LENGTH_SHORT).show();
+            }
         }
+    }
+
+    private void submitReport(final String Name, final String Phone, final String Email, final String Topic, final String Description, final String Time, final String Date)
+    {
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setMessage("We are sending your problem to admin panel");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+
+
+        //volley code
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.REPORT_BROWSERS_URL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        if (response.contains("Connection failed!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.contains("Invalid platform!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.contains("Data insertion failed!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.contains("Improper request method!"))
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.contains("SQL (insert) query error!"))
+                        {
+                            progressDialog.dismiss();
+                            msgPopupTextView.setText(response);
+                            mDialogMsg.show();
+                            //Toast.makeText(ReportForBrowsersActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (response.contains("Sending failed!"))
+                        {
+                            progressDialog.dismiss();
+                            msgPopupTextView.setText(response);
+                            mDialogMsg.show();
+                        }
+                        //server data  retrieve code below...
+                        else if(response.contains("Thank you for your cooperation! We will review your problem as soon as possible!"))
+                        {
+                            progressDialog.dismiss();
+                            msgPopupTextView.setText(response);
+                            mDialogMsg.show();
+                        }
+                    }
+                }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                if (error instanceof TimeoutError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReportForBrowsersActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof NoConnectionError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReportForBrowsersActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof AuthFailureError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReportForBrowsersActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof NetworkError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReportForBrowsersActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof ServerError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReportForBrowsersActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof ParseError)
+                {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReportForBrowsersActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(ServerConstants.KEY_ADMIN_EMAIL, AdminEmail);
+                params.put(ServerConstants.KEY_NAME, Name);
+                params.put(ServerConstants.KEY_PHONE, Phone);
+                params.put(ServerConstants.KEY_EMAIL, Email);
+                params.put(ServerConstants.KEY_TOPIC, Topic);
+                params.put(ServerConstants.KEY_DESCRIPTION, Description);
+                params.put(ServerConstants.KEY_DATE, Date);
+                params.put(ServerConstants.KEY_TIME, Time);
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError
+            {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("User-Agent", "VetNetwork");  ////security purpose
+                return headers;
+            }
+        };
+
+        MySingleton.getInstance(ReportForBrowsersActivity.this).addToRequestQueue(stringRequest);
     }
 
     private String getDateTime()
