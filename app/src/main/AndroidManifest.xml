@@ -14,10 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ReportForAdminActivity"
-            android:parentActivityName=".AdminProfileActivity"
-            android:label="@string/title_activity_report_for_admin"
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ReportForAdminActivity"
+            android:label="@string/title_activity_report_for_admin"
+            android:parentActivityName=".AdminProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ReportForUsersActivity"
             android:label="@string/title_activity_report_for_users"
@@ -61,7 +65,6 @@
         <activity android:name=".BrowseForAdminActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".BrowseActivity" />
-        <activity android:name=".SearchActivity" />
         <activity
             android:name=".AdminPanelActivity"
             android:label="@string/title_activity_admin_control_panel"
