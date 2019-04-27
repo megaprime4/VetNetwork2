@@ -62,7 +62,7 @@ public class RegistrationActivity extends AppCompatActivity
 
     ProgressDialog progressDialog;
 
-    Toolbar mToolbar;
+    //Toolbar mToolbar;
 
     private boolean getAdminEmail = false;
 
@@ -71,9 +71,9 @@ public class RegistrationActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        mToolbar = (Toolbar) findViewById(R.id.registration_page_toolbar);
+        /*mToolbar = (Toolbar) findViewById(R.id.registration_page_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Sign Up");
+        getSupportActionBar().setTitle("Sign Up");*/
 
         progressDialog = new ProgressDialog(this);
 
