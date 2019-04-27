@@ -3,6 +3,7 @@ package com.vetdevelopers.vetnetwork;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -51,7 +52,7 @@ public class ReportForAdminActivity extends AppCompatActivity
 
     private Context context;
 
-    private Toolbar mToolbar;
+    //private Toolbar mToolbar;
 
     private EditText topic, description;
     private Button submitButton;
@@ -73,9 +74,9 @@ public class ReportForAdminActivity extends AppCompatActivity
         context = ReportForAdminActivity.this;
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
-        mToolbar = (Toolbar) findViewById(R.id.report_page_forAdmin_toolbar);
+        /*mToolbar = (Toolbar) findViewById(R.id.report_page_forAdmin_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Report");
+        getSupportActionBar().setTitle("Report");*/
 
         mDialogMsg = new Dialog(context);
         mDialogMsg.setContentView(R.layout.custompopup_success);
@@ -431,7 +432,40 @@ public class ReportForAdminActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_reportActivity) {
+        if (id == R.id.nav_adminProfile)
+        {
+            Intent ProfileIntent = new Intent(ReportForAdminActivity.this, AdminProfileActivity.class);
+            startActivity(ProfileIntent);
+        }
+        else if (id == R.id.nav_editProfile)
+        {
+            Intent editProfileIntent = new Intent(ReportForAdminActivity.this, EditProfileUserActivity.class);
+            startActivity(editProfileIntent);
+        }
+        else if (id == R.id.nav_changePassword)
+        {
+            Intent changePasswordIntent = new Intent(ReportForAdminActivity.this, ChangePasswordActivity.class);
+            startActivity(changePasswordIntent);
+        }
+        else if (id == R.id.nav_logout)
+        {
+            //firebaseAuth.signOut();
+            //stop auto login
+            getApplicationContext().getSharedPreferences("prefs", 0).edit().clear().commit();
+            //exit intent - clear previous flags of intent
+            logoutUser();
+        }
+        else if (id == R.id.nav_deleteAccount)
+        {
+            Intent deleteAccountAdminIntent = new Intent(ReportForAdminActivity.this, DeleteAccountAdminActivity.class);
+            startActivity(deleteAccountAdminIntent);
+        }
+        else if (id == R.id.nav_adminPanel)
+        {
+            Intent AdminPanelIntent = new Intent(ReportForAdminActivity.this, AdminPanelActivity.class);
+            startActivity(AdminPanelIntent);
+        }
+        else if (id == R.id.nav_reportActivity) {
             //nothing to do
 
         } else if (id == R.id.nav_aboutUs) {
@@ -441,5 +475,13 @@ public class ReportForAdminActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logoutUser()
+    {
+        Intent startPageIntent = new Intent(ReportForAdminActivity.this, StartPageActivity.class);
+        startPageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(startPageIntent);
+        finish();
     }
 }

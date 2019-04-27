@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity
                 {
 
                     progressDialog.setTitle("Please Wait");
-                    progressDialog.setMessage("We are logging you into the system");
+                    progressDialog.setMessage("Logging in");
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
 

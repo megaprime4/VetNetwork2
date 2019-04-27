@@ -122,7 +122,7 @@ public class AdminPanelActivity extends AppCompatActivity
                 editor.apply();
                 System.out.println("Admin email is cleared : " + sharedPreferences.getString("admin_email_verify", "key cleared"));*/
 
-                getAdminEamil(new VolleyCallback()
+                getAdminEmail(new VolleyCallback()
                 {
                     @Override
                     public void onSuccess(String response)
@@ -380,7 +380,7 @@ public class AdminPanelActivity extends AppCompatActivity
         return sharedPreferences.getString("admin_email_verify", "");
     }*/
 
-    public void getAdminEamil(final AdminPanelActivity.VolleyCallback callback)
+    public void getAdminEmail(final AdminPanelActivity.VolleyCallback callback)
     {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.GET_ADMIN_EMAIL_URL,
                 new Response.Listener<String>()

@@ -43,7 +43,7 @@ import java.util.TimeZone;
 public class ReportForBrowsersActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar mToolbar;
+    //private Toolbar mToolbar;
 
     private EditText name, phone, email, topic, description;
     private Button submitButton;
@@ -59,9 +59,10 @@ public class ReportForBrowsersActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_for_browsers);
-        mToolbar = (Toolbar) findViewById(R.id.report_page_forBrowsers_toolbar);
+
+        /*mToolbar = (Toolbar) findViewById(R.id.report_page_forBrowsers_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Report");
+        getSupportActionBar().setTitle("Report");*/
 
         mDialogMsg = new Dialog(ReportForBrowsersActivity.this);
         mDialogMsg.setContentView(R.layout.custompopup_success);

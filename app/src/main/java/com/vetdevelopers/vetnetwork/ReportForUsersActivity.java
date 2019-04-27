@@ -3,6 +3,7 @@ package com.vetdevelopers.vetnetwork;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -47,7 +48,7 @@ public class ReportForUsersActivity extends AppCompatActivity
 
     private Context context;
 
-    private Toolbar mToolbar;
+    //private Toolbar mToolbar;
 
     private EditText topic, description;
     private Button submitButton;
@@ -69,9 +70,9 @@ public class ReportForUsersActivity extends AppCompatActivity
         context = ReportForUsersActivity.this;
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
-        mToolbar = (Toolbar) findViewById(R.id.report_page_forUsers_toolbar);
+        /*mToolbar = (Toolbar) findViewById(R.id.report_page_forUsers_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Report");
+        getSupportActionBar().setTitle("Report");*/
 
         mDialogMsg = new Dialog(context);
         mDialogMsg.setContentView(R.layout.custompopup_success);
@@ -427,15 +428,57 @@ public class ReportForUsersActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_reportActivity) {
+        if (id == R.id.nav_profile)
+        {
+            Intent ProfileIntent = new Intent(ReportForUsersActivity.this, ProfileActivity.class);
+            startActivity(ProfileIntent);
+        }
+        else if (id == R.id.nav_editProfile)
+        {
+            Intent editProfileIntent = new Intent(ReportForUsersActivity.this, EditProfileUserActivity.class);
+            startActivity(editProfileIntent);
+        }
+        else if (id == R.id.nav_changePassword)
+        {
+            Intent changePasswordIntent = new Intent(ReportForUsersActivity.this, ChangePasswordActivity.class);
+            startActivity(changePasswordIntent);
+
+        }
+        else if (id == R.id.nav_logout)
+        {
+            //firebaseAuth.signOut();
+            //stop auto login
+            getApplicationContext().getSharedPreferences("prefs", 0).edit().clear().commit();
+            //exit intent - clear previous flags of intent
+            logoutUser();
+        }
+        else if (id == R.id.nav_deleteAccount)
+        {
+
+            Intent deleteAccountUserIntent = new Intent(ReportForUsersActivity.this, DeleteAccountUserActivity.class);
+            startActivity(deleteAccountUserIntent);
+
+        }
+        else if (id == R.id.nav_reportActivity)
+        {
             //nothing to do
 
-        } else if (id == R.id.nav_aboutUs) {
+        }
+        else if (id == R.id.nav_aboutUs)
+        {
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logoutUser()
+    {
+        Intent startPageIntent = new Intent(ReportForUsersActivity.this, StartPageActivity.class);
+        startPageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(startPageIntent);
+        finish();
     }
 }
