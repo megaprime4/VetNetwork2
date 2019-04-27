@@ -303,6 +303,15 @@ public class DeleteAccountAdminActivity extends AppCompatActivity
             startActivity(adminPanelIntent);
 
         }
+        else if (id == R.id.nav_reportActivity)
+        {
+            Intent reportForAdminIntent = new Intent(DeleteAccountAdminActivity.this, ReportForAdminActivity.class);
+            startActivity(reportForAdminIntent);
+        }
+        else if (id == R.id.nav_aboutUs)
+        {
+
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -158,4 +158,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_report_for_users">ReportForUsersActivity</string>
+    <string name="title_activity_report_for_admin">ReportForAdminActivity</string>
 </resources>

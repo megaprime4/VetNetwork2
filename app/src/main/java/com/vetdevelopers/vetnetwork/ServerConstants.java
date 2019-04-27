@@ -23,6 +23,7 @@ public class ServerConstants
     public static final String ADMIN_DELETE_URL = DB_URL + "admin_delete.php";
     public static final String REPORT_BROWSERS_URL = DB_URL + "report_browsers.php";
     public static final String REPORT_USERS_URL = DB_URL + "report_users.php";
+    public static final String REPORT_ADMIN_URL = DB_URL + "report_admin.php";
 
 
     public static final String KEY_NAME = "name";

@@ -16,7 +16,7 @@ public class AdminProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
 
-    private TextView name, address, email, phone, bvcRegNumber, university, designation, accountStatus, navName, navEmail;
+    private TextView name, address, email, phone, bvcRegNumber, university, designation, accountStatus, navName, navPhone, navEmail;
 
     String Name = "";
     String ID = "";
@@ -168,11 +168,13 @@ public class AdminProfileActivity extends AppCompatActivity
         accountStatus.setText(User_Request);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.adminProfile_nav_view);
-        View hView = navigationView.getHeaderView(0);
+        /*View hView = navigationView.getHeaderView(0);
         navName = (TextView) hView.findViewById(R.id.name_navHeader);
+        navPhone = (TextView) hView.findViewById(R.id.phone_navHeader);
         navEmail = (TextView) hView.findViewById(R.id.email_navHeader);
         navName.setText(Name);
-        navEmail.setText(Email);
+        navPhone.setText(Phone);
+        navEmail.setText(Email);*/
 
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -234,8 +236,8 @@ public class AdminProfileActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_reportActivity)
         {
-            Intent reportForUsersIntent = new Intent(AdminProfileActivity.this, ReportForUsersActivity.class);
-            startActivity(reportForUsersIntent);
+            Intent reportForAdminIntent = new Intent(AdminProfileActivity.this, ReportForAdminActivity.class);
+            startActivity(reportForAdminIntent);
         }
         else if (id == R.id.nav_aboutUs)
         {

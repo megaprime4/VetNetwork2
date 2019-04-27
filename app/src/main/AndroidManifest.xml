@@ -14,10 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ReportForUsersActivity"
-            android:parentActivityName=".ProfileActivity"
-            android:label="@string/title_activity_report_for_users"
+            android:name=".ReportForAdminActivity"
+            android:parentActivityName=".AdminProfileActivity"
+            android:label="@string/title_activity_report_for_admin"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ReportForUsersActivity"
+            android:label="@string/title_activity_report_for_users"
+            android:parentActivityName=".ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegistrationActivity"
             android:label="@string/title_activity_registration"

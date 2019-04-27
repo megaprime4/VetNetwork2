@@ -882,8 +882,8 @@ public class AdminPanelActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_reportActivity)
         {
-            Intent reportForUsersIntent = new Intent(AdminPanelActivity.this, ReportForUsersActivity.class);
-            startActivity(reportForUsersIntent);
+            Intent reportForAdminIntent = new Intent(AdminPanelActivity.this, ReportForAdminActivity.class);
+            startActivity(reportForAdminIntent);
         }
         else if (id == R.id.nav_aboutUs)
         {
