@@ -14,9 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ReportForUsersActivity"
+            android:parentActivityName=".ProfileActivity"
+            android:label="@string/title_activity_report_for_users"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"

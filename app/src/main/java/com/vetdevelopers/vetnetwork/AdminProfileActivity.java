@@ -232,6 +232,15 @@ public class AdminProfileActivity extends AppCompatActivity
             Intent adminControlPanel = new Intent(AdminProfileActivity.this, AdminPanelActivity.class);
             startActivity(adminControlPanel);
         }
+        else if (id == R.id.nav_reportActivity)
+        {
+            Intent reportForUsersIntent = new Intent(AdminProfileActivity.this, ReportForUsersActivity.class);
+            startActivity(reportForUsersIntent);
+        }
+        else if (id == R.id.nav_aboutUs)
+        {
+
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

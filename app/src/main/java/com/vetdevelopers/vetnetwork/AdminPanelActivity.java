@@ -880,6 +880,15 @@ public class AdminPanelActivity extends AppCompatActivity
         {
             //nothing will happen
         }
+        else if (id == R.id.nav_reportActivity)
+        {
+            Intent reportForUsersIntent = new Intent(AdminPanelActivity.this, ReportForUsersActivity.class);
+            startActivity(reportForUsersIntent);
+        }
+        else if (id == R.id.nav_aboutUs)
+        {
+
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

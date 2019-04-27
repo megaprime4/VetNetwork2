@@ -437,6 +437,15 @@ public class EditProfileUserActivity extends AppCompatActivity implements Naviga
             startActivity(deleteAccountUserIntent);
 
         }
+        else if (id == R.id.nav_reportActivity)
+        {
+            Intent reportForUsersIntent = new Intent(EditProfileUserActivity.this, ReportForUsersActivity.class);
+            startActivity(reportForUsersIntent);
+        }
+        else if (id == R.id.nav_aboutUs)
+        {
+
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
