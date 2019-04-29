@@ -209,23 +209,19 @@
 
     </ScrollView>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/reportBrowser_submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/reportBrowser_submitButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_style_white"
-            android:text="Submit"
-            android:textColor="@color/black"
-            android:textAllCaps="false"
-            android:textAlignment="center"
-            android:padding="16dp"
-            android:textSize="18sp"/>
-
-    </LinearLayout>
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_style_white"
+        android:text="Submit"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:padding="16dp"
+        android:textSize="18sp"/>
 
 </LinearLayout>

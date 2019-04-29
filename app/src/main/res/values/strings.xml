@@ -18,7 +18,7 @@
     <string name="bva_member">BVA Member :</string>
     <string name="bva_designation">BVA Designation :</string>
 
-    <string-array name="bva_designation">
+    <!--<string-array name="bva_designation">
         <item>Select</item>
         <item>President</item>
         <item>Sr. Vice President</item>
@@ -33,7 +33,7 @@
         <item>Sports and Cultural Secretary</item>
         <item>Social Welfare Secretary</item>
         <item>Member</item>
-    </string-array>
+    </string-array>-->
 
     <string-array name="posting_area">
         <item>Select</item>
@@ -125,18 +125,30 @@
         <item>Admin</item>
     </string-array>
 
-    <string-array name="bva">
+    <!--<string-array name="bva">
         <item>No</item>
         <item>Yes</item>
-    </string-array>
+    </string-array>-->
 
     <string-array name="university">
         <item>Select</item>
-        <item>Sylhet Agricultural University</item>
-        <item>Bangladesh Agricultural University</item>
+
         <item>Bangabandhu Sheikh Mujibur Rahman Agricultural University</item>
+        <item>Bangabandhu Sheikh Mujibur Rahman Science and Technology University</item>
+        <item>Chattogram Veterinary and Animal Sciences University</item>
+        <item>Bangladesh Agricultural University</item>
+        <item>Gono University</item>
+        <item>Hajee Mohammad Danesh Science and Technology University</item>
+        <item>Jhenidah Government Veterinary College</item>
+        <item>Khulna Agricultural University</item>
+        <item>Patuakhali Science and Technology University</item>
+        <item>Rajshahi University</item>
         <item>Sher-e-Bangla Agricultural University</item>
+        <item>Sirajganj Government Veterinary College</item>
+        <item>Sylhet Agricultural University</item>
     </string-array>
+
+
     <string name="title_activity_navtest">NavtestActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

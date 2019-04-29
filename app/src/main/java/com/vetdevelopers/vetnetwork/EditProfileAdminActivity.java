@@ -44,7 +44,7 @@ import java.util.Map;
 public class EditProfileAdminActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar mToolbar;
+    //private Toolbar mToolbar;
 
     //custom popup
     private Dialog mDialogPass, mDialogMsg;
@@ -74,9 +74,9 @@ public class EditProfileAdminActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_admin);
 
-        mToolbar = (Toolbar) findViewById(R.id.editProfileAdmin_page_toolbar);
+        /*mToolbar = (Toolbar) findViewById(R.id.editProfileAdmin_page_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Edit Profile");
+        getSupportActionBar().setTitle("Edit Profile");*/
 
         progressDialog = new ProgressDialog(EditProfileAdminActivity.this);
 
@@ -178,7 +178,6 @@ public class EditProfileAdminActivity extends AppCompatActivity
 
     private void checkData()
     {
-
         //getting data
         String name = Name.getText().toString().trim();
         String email = Email.getText().toString().trim();

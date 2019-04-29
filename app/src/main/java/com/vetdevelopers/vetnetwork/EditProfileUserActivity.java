@@ -44,7 +44,7 @@ import java.util.Map;
 public class EditProfileUserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
 
-    private Toolbar mToolbar;
+    //private Toolbar mToolbar;
 
     //custom popup
     private Dialog mDialogPass, mDialogMsg;
@@ -75,14 +75,13 @@ public class EditProfileUserActivity extends AppCompatActivity implements Naviga
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_user);
 
+        /*mToolbar = (Toolbar) findViewById(R.id.editProfile_page_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("Edit Profile");*/
+
         progressDialog = new ProgressDialog(EditProfileUserActivity.this);
 
         sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
-
-
-        mToolbar = (Toolbar) findViewById(R.id.editProfile_page_toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Edit Profile");
 
         //custom popup
         mDialogPass = new Dialog(this);  //custom popup window
