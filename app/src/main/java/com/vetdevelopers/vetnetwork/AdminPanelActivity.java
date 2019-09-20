@@ -48,7 +48,7 @@ public class AdminPanelActivity extends AppCompatActivity
 
     private EditText getEmail, getUserID, showCurrentAdminEmail;
     private TextView currentAdminEmail;
-    private Button emailChangeBtn, userSearchBtn, requestListBtn;
+    private Button emailChangeBtn, userSearchBtn, requestListBtn, addBVABtn, editBVABtn;
     private RadioGroup radioGroupSearchType;
     private RadioButton radioButtonSearchType;
 
@@ -74,7 +74,7 @@ public class AdminPanelActivity extends AppCompatActivity
 
         progressDialog = new ProgressDialog(this);
 
-        sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
         showCurrentAdminEmail = (EditText) findViewById(R.id.admin_panel_showCurrentEmail);
         currentAdminEmail = (TextView) findViewById(R.id.admin_panel_currentEmail);
@@ -83,6 +83,8 @@ public class AdminPanelActivity extends AppCompatActivity
         getUserID = (EditText) findViewById(R.id.adminPanel_getUserID);
         userSearchBtn = (Button) findViewById(R.id.adminPanel_userSearchBtn);
         requestListBtn = (Button) findViewById(R.id.adminPanel_requestListBtn);
+        addBVABtn = (Button) findViewById(R.id.adminPanel_addBvaBtn);
+        editBVABtn = (Button) findViewById(R.id.adminPanel_editBvaBtn);
 
         radioGroupSearchType = (RadioGroup) findViewById(R.id.adminPanel_radioGroup);
 
@@ -97,6 +99,22 @@ public class AdminPanelActivity extends AppCompatActivity
             {
                 Intent browseIntent = new Intent(AdminPanelActivity.this, BrowseForAdminActivity.class);
                 startActivity(browseIntent);
+            }
+        });
+
+        addBVABtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addBvaIntent = new Intent(AdminPanelActivity.this, AddBVAActivity.class);
+                startActivity(addBvaIntent);
+            }
+        });
+
+        editBVABtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editBvaIntent = new Intent(AdminPanelActivity.this, EditBVAActivity.class);
+                startActivity(editBvaIntent);
             }
         });
 

@@ -24,6 +24,7 @@ public class ServerConstants
     public static final String REPORT_BROWSERS_URL = DB_URL + "report_browsers.php";
     public static final String REPORT_USERS_URL = DB_URL + "report_users.php";
     public static final String REPORT_ADMIN_URL = DB_URL + "report_admin.php";
+    public static final String ADD_BVA_URL = DB_URL + "add_bva.php";
 
 
     public static final String KEY_NAME = "name";

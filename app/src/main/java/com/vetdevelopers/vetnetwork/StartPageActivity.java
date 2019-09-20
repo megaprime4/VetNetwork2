@@ -14,7 +14,7 @@ import android.widget.ImageView;
 public class StartPageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button signUpButton, signInButton, searchButton;
+    private Button signUpButton, signInButton, BVA, doctorSearchButton;
     private ImageView logo;
 
     @Override
@@ -24,7 +24,8 @@ public class StartPageActivity extends AppCompatActivity
 
         signUpButton = (Button) findViewById(R.id.start_signUpButton);
         signInButton = (Button) findViewById(R.id.start_signInButton);
-        searchButton = (Button) findViewById(R.id.start_searchButton);
+        BVA = (Button) findViewById(R.id.start_bvaButton);
+        doctorSearchButton = (Button) findViewById(R.id.start_doctorSearchButton);
         logo = (ImageView) findViewById(R.id.login_logo);
 
         signUpButton.setOnClickListener(new View.OnClickListener()
@@ -47,7 +48,17 @@ public class StartPageActivity extends AppCompatActivity
             }
         });
 
-        searchButton.setOnClickListener(new View.OnClickListener()
+        BVA.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent BVAIntent = new Intent(StartPageActivity.this, BVAActivity.class);
+                startActivity(BVAIntent);
+            }
+        });
+
+        doctorSearchButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)

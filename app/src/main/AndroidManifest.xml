@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.vetdevelopers.vetnetwork">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
+        android:debuggable="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:testOnly="false"
+        android:theme="@style/AppTheme"
+        tools:ignore="HardcodedDebugMode">
+        <activity
+            android:name=".AddBVAActivity"
+            android:label="@string/title_activity_add_bva"
+            android:parentActivityName=".AdminPanelActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".EditBVAActivity"
+            android:label="@string/title_activity_edit_bva"
+            android:parentActivityName=".AdminPanelActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BVAActivity"
+            android:label="@string/title_activity_bva"
+            android:parentActivityName=".StartPageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_search"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ReportForAdminActivity"
             android:label="@string/title_activity_report_for_admin"
@@ -29,13 +49,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegistrationActivity"
-            android:parentActivityName=".StartPageActivity"
             android:label="@string/title_activity_registration"
+            android:parentActivityName=".StartPageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".StartPageActivity"
             android:label="@string/title_activity_login"
+            android:parentActivityName=".StartPageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ReportForBrowsersActivity"

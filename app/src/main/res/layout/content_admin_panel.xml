@@ -33,26 +33,26 @@
     </LinearLayout>
 
     <View
-        android:layout_width="5dp"
-        android:layout_height="10dp"></View>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -260,13 +260,38 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
                             <Button
                                 android:id="@+id/adminPanel_requestListBtn"
                                 android:layout_width="240dp"
                                 android:layout_height="wrap_content"
                                 android:text="Request List"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:background="@drawable/button_style_white"/>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="10dp"></View>
+
+                            <Button
+                                android:id="@+id/adminPanel_addBvaBtn"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:text="Add BVA Members"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:background="@drawable/button_style_white"/>
+
+                            <Button
+                                android:id="@+id/adminPanel_editBvaBtn"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:text="Edit BVA Committee"
                                 android:textAllCaps="false"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"

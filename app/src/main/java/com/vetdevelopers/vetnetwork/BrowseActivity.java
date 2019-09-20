@@ -39,8 +39,7 @@ public class BrowseActivity extends AppCompatActivity
 
         for (int i = 0; i < arrayListName.size(); i++)
         {
-            ListItemForRecycleView1 listItem = new ListItemForRecycleView1(
-                    arrayListName.get(i), arrayListPhone.get(i));
+            ListItemForRecycleView1 listItem = new ListItemForRecycleView1(arrayListName.get(i), arrayListPhone.get(i));
             listItems.add(listItem);
         }
         myAdapterForRecycleViewForAll = new MyAdapterForRecycleViewForAll(listItems, this);

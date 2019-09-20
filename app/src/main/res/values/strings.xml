@@ -18,7 +18,7 @@
     <string name="bva_member">BVA Member :</string>
     <string name="bva_designation">BVA Designation :</string>
 
-    <!--<string-array name="bva_designation">
+    <string-array name="bva_designation">
         <item>Select</item>
         <item>President</item>
         <item>Sr. Vice President</item>
@@ -33,7 +33,7 @@
         <item>Sports and Cultural Secretary</item>
         <item>Social Welfare Secretary</item>
         <item>Member</item>
-    </string-array>-->
+    </string-array>
 
     <string-array name="posting_area">
         <item>Select</item>
@@ -171,4 +171,7 @@
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_report_for_users">ReportForUsersActivity</string>
     <string name="title_activity_report_for_admin">ReportForAdminActivity</string>
+    <string name="title_activity_bva">BVAActivity</string>
+    <string name="title_activity_edit_bva">EditBVAActivity</string>
+    <string name="title_activity_add_bva">AddBVAActivity</string>
 </resources>
