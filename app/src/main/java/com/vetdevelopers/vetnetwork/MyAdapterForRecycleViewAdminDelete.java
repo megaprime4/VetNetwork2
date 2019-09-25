@@ -1,5 +1,6 @@
 package com.vetdevelopers.vetnetwork;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ public class MyAdapterForRecycleViewAdminDelete extends RecyclerView.Adapter<MyA
     List<ListItemForRecycleView1> listItems;
     OnItemClickListener mListener;
     Context context;
+
+    ProgressDialog progressDialog;
 
     public MyAdapterForRecycleViewAdminDelete(List<ListItemForRecycleView1> listItems, Context context)
     {
@@ -87,6 +90,7 @@ public class MyAdapterForRecycleViewAdminDelete extends RecyclerView.Adapter<MyA
         holder.allUserPhone.setText(listItem.getPhone());
 
         //allUserPhoneGet = holder.allUserPhone.getText().toString();
+        progressDialog =  new ProgressDialog(context);
 
         holder.delete.setOnClickListener(new View.OnClickListener()
         {
@@ -95,10 +99,10 @@ public class MyAdapterForRecycleViewAdminDelete extends RecyclerView.Adapter<MyA
             {
                 final String allUserPhone = holder.allUserPhone.getText().toString();
 
-                int position = holder.getAdapterPosition();
-                System.out.println("holder position : "+position);
-                listItems.remove(position);
-                notifyItemRemoved(position);
+                progressDialog.setTitle("Please Wait");
+                progressDialog.setMessage("Operation in progress");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.ADMIN_DELETE_URL,
                         new Response.Listener<String>()
@@ -106,6 +110,8 @@ public class MyAdapterForRecycleViewAdminDelete extends RecyclerView.Adapter<MyA
                             @Override
                             public void onResponse(String response)
                             {
+                                progressDialog.dismiss();
+
                                 if (response.contains("Connection failed!"))
                                 {
                                     Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
@@ -132,6 +138,10 @@ public class MyAdapterForRecycleViewAdminDelete extends RecyclerView.Adapter<MyA
                                 }
                                 else if (response.contains("Warning : User deleted!"))
                                 {
+                                    int position = holder.getAdapterPosition();
+                                    System.out.println("holder position : " + position);
+                                    listItems.remove(position);
+                                    notifyItemRemoved(position);
                                     Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -140,6 +150,8 @@ public class MyAdapterForRecycleViewAdminDelete extends RecyclerView.Adapter<MyA
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
+                        progressDialog.dismiss();
+
                         if (error instanceof TimeoutError)
                         {
                             Toast.makeText(context, "Timeout error!", Toast.LENGTH_SHORT).show();

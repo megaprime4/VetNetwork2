@@ -18,11 +18,15 @@
         android:testOnly="false"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
+        <activity android:name=".EditBVAProfileActivity"></activity>
+        <activity
+            android:name=".BVAViewProfileActivity"
+            android:parentActivityName=".BVAActivity" />
         <activity
             android:name=".AddBVAActivity"
             android:label="@string/title_activity_add_bva"
             android:parentActivityName=".AdminPanelActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditBVAActivity"
             android:label="@string/title_activity_edit_bva"
@@ -113,6 +117,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewProfileActivity" />
+        <activity
+            android:name=".EditBVAmemberRecyclerViewActivity"
+            android:label="@string/title_activity_edit_bvamember_recycler_view"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".DisplayBVAmemberRecyclerViewActivity"
+            android:label="@string/title_activity_display_bvamember_recycler_view"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

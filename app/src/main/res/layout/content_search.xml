@@ -125,7 +125,7 @@
                     android:editable="false"
                     android:linksClickable="false"
                     android:longClickable="false"
-                    android:text="@string/district"
+                    android:text="District :"
                     android:textSize="18sp" />
 
                 <Spinner
@@ -156,7 +156,7 @@
                     android:editable="false"
                     android:linksClickable="false"
                     android:longClickable="false"
-                    android:text="Division"
+                    android:text="Division :"
                     android:textSize="18sp" />
 
                 <Spinner

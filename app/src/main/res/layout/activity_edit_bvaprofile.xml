@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditBVAProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/grad_profile">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+
+        <TextView
+            android:id="@+id/editBVAProfile_Designation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/editBVAProfile_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:hint="Name"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/regTextColor"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editBVAProfile_phone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:hint="Phone"
+                android:inputType="text|number"
+                android:textAlignment="textStart"
+                android:textColor="@color/regTextColor"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editBVAProfile_email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textAlignment="textStart"
+                android:textColor="@color/regTextColor"
+                android:textSize="18sp" />
+
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:editable="false"
+                    android:linksClickable="false"
+                    android:longClickable="false"
+                    android:text="Designation :"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/editBVAProfile_Designation_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:entries="@array/bva_designation" />
+
+            </LinearLayout>-->
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/editBVAProfile_changeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_style_white"
+        android:text="Change"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:padding="16dp"
+        android:layout_marginTop="24dp"
+        android:textSize="18sp"/>
+
+</LinearLayout>

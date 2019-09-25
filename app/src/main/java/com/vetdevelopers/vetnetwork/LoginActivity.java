@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity
     private EditText popupGetEmail;
     private Button popupOKButton, popupConfirmButton;
 
-    ProgressDialog progressDialog;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -66,7 +66,7 @@ public class EditProfileAdminActivity extends AppCompatActivity
 
     //spinner work - 1
     Resources resources;
-    String[] universityArray, districtArray, divisionArray, bvaMemberArray, bvaDesignationArray;
+    private String[] universityArray, districtArray, divisionArray, bvaMemberArray, bvaDesignationArray;
     //String prevPhone = sharedPreferences.getString("Phone", "");
 
     @Override
@@ -317,34 +317,30 @@ public class EditProfileAdminActivity extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error)
             {
+                progressDialog.dismiss();
+
                 if (error instanceof TimeoutError)
                 {
-                    progressDialog.dismiss();
                     Toast.makeText(EditProfileAdminActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
                 }
                 else if (error instanceof NoConnectionError)
                 {
-                    progressDialog.dismiss();
                     Toast.makeText(EditProfileAdminActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
                 }
                 else if (error instanceof AuthFailureError)
                 {
-                    progressDialog.dismiss();
                     Toast.makeText(EditProfileAdminActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
                 }
                 else if (error instanceof NetworkError)
                 {
-                    progressDialog.dismiss();
                     Toast.makeText(EditProfileAdminActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
                 }
                 else if (error instanceof ServerError)
                 {
-                    progressDialog.dismiss();
                     Toast.makeText(EditProfileAdminActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
                 }
                 else if (error instanceof ParseError)
                 {
-                    progressDialog.dismiss();
                     Toast.makeText(EditProfileAdminActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -70,6 +70,26 @@ public class ViewProfileActivity extends AppCompatActivity
                 User_Type = bundle.getString("User_Type");
                 Admin_Email = bundle.getString("Admin_Email");
 
+                /*///debug purpose
+                System.out.println(".........................................." + Name);
+                System.out.println(".........................................." + ID);
+                System.out.println(".........................................." + Email);
+                System.out.println(".........................................." + Phone);
+                System.out.println(".........................................." + BVC_number);
+                System.out.println(".........................................." + Password);
+                System.out.println(".........................................." + University);
+                System.out.println(".........................................." + Designation);
+                System.out.println(".........................................." + Posting_Area);
+                System.out.println(".........................................." + District);
+                System.out.println(".........................................." + Division);
+                System.out.println(".........................................." + Email_Confirm);
+                System.out.println(".........................................." + Rand_Code);
+                System.out.println(".........................................." + User_Request);
+                System.out.println(".........................................." + User_Type);
+                System.out.println(".........................................." + Admin_Email);
+                //System.out.println(dd);
+                ///debug purpose*/
+
             }
             else if (browseSearchedUserProfile.equals("false"))
             {
@@ -79,32 +99,13 @@ public class ViewProfileActivity extends AppCompatActivity
         catch (Exception e)
         {
             e.printStackTrace();
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
 
-        ////debug purpose
-        System.out.println(".........................................." + Name);
-        System.out.println(".........................................." + ID);
-        System.out.println(".........................................." + Email);
-        System.out.println(".........................................." + Phone);
-        System.out.println(".........................................." + BVC_number);
-        System.out.println(".........................................." + Password);
-        System.out.println(".........................................." + University);
-        System.out.println(".........................................." + Designation);
-        System.out.println(".........................................." + Posting_Area);
-        System.out.println(".........................................." + District);
-        System.out.println(".........................................." + Division);
-        System.out.println(".........................................." + Email_Confirm);
-        System.out.println(".........................................." + Rand_Code);
-        System.out.println(".........................................." + User_Request);
-        System.out.println(".........................................." + User_Type);
-        System.out.println(".........................................." + Admin_Email);
-        //System.out.println(dd);
-        ///debug purpose
+
 
 
         //code below
-
         name.setText(Name);
         address.setText(Posting_Area + ", " + District + ", " + Division);
         email.setText(Email);

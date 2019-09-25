@@ -1,22 +1,5 @@
 <resources>
     <string name="app_name">VetNetwork</string>
-    <string name="browse">Browse</string>
-    <string name="signIn">Sign In</string>
-    <string name="signUp">Sign Up</string>
-    <string name="name">Name</string>
-    <string name="e_mail">E-mail</string>
-    <string name="phone">Phone</string>
-    <string name="password">Password</string>
-    <string name="re_enter_password">Re-enter Password</string>
-    <string name="university">University</string>
-    <string name="bva_number">BVA Number</string>
-    <string name="posting_area">Posting Area</string>
-    <string name="designation">Designation</string>
-    <string name="bvc_registration_number">BVC Registration Number</string>
-    <string name="district">District :</string>
-    <string name="division">Division :</string>
-    <string name="bva_member">BVA Member :</string>
-    <string name="bva_designation">BVA Designation :</string>
 
     <string-array name="bva_designation">
         <item>Select</item>
@@ -174,4 +157,9 @@
     <string name="title_activity_bva">BVAActivity</string>
     <string name="title_activity_edit_bva">EditBVAActivity</string>
     <string name="title_activity_add_bva">AddBVAActivity</string>
+    <string name="title_activity_edit_bvamember_recycler_view">EditBVAmemberRecyclerViewActivity
+    </string>
+    <string name="title_activity_display_bvamember_recycler_view">
+        DisplayBVAmemberRecyclerViewActivity
+    </string>
 </resources>

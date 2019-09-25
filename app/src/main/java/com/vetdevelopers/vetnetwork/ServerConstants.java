@@ -25,8 +25,13 @@ public class ServerConstants
     public static final String REPORT_USERS_URL = DB_URL + "report_users.php";
     public static final String REPORT_ADMIN_URL = DB_URL + "report_admin.php";
     public static final String ADD_BVA_URL = DB_URL + "add_bva.php";
+    public static final String SEARCH_BVA_DESIGNATION = DB_URL + "search_bva_designation.php";
+    public static final String VIEW_BVA_PROFILE_URL = DB_URL + "view_bva_profile.php";
+    public static final String ADMIN_BVA_DELETE_URL = DB_URL + "admin_bva_delete.php";
+    public static final String UPDATE_BVA_PROFILE_URL = DB_URL + "update_bva_profile.php";
 
 
+    public static final String KEY_ID = "id";
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PHONE = "phone";

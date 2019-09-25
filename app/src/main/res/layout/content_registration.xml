@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
-                android:hint="@string/name"
+                android:hint="Name"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="textStart"
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
-                android:hint="@string/e_mail"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:textAlignment="textStart"
                 android:textColor="@color/regTextColor"
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
-                android:hint="@string/phone"
+                android:hint="Phone"
                 android:inputType="text"
                 android:textAlignment="textStart"
                 android:textColor="@color/regTextColor"
@@ -112,7 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
-                android:hint="@string/bvc_registration_number"
+                android:hint="BVC Registration Number"
                 android:inputType="text"
                 android:textAlignment="textStart"
                 android:textColor="@color/regTextColor"
@@ -125,7 +125,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif"
-                android:hint="@string/password"
+                android:hint="Password"
 
                 android:inputType="textPassword"
                 android:textAlignment="textStart"
@@ -138,7 +138,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif"
-                android:hint="@string/re_enter_password"
+                android:hint="Re-enter Password"
                 android:inputType="textPassword"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
@@ -186,7 +186,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
-                android:hint="@string/posting_area"
+                android:hint="Posting Area"
                 android:inputType="text"
                 android:textAlignment="textStart"
                 android:textColor="@color/regTextColor"
@@ -206,7 +206,7 @@
                     android:editable="false"
                     android:linksClickable="false"
                     android:longClickable="false"
-                    android:text="@string/district"
+                    android:text="District :"
                     android:textSize="18sp" />
 
                 <Spinner
@@ -232,7 +232,7 @@
                     android:editable="false"
                     android:linksClickable="false"
                     android:longClickable="false"
-                    android:text="@string/division"
+                    android:text="Division :"
                     android:textSize="18sp" />
 
                 <Spinner
