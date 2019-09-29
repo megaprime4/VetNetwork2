@@ -51,7 +51,6 @@ public class AddBVAActivity extends AppCompatActivity
     private EditText popupGetPassword;
     private Button popupConfirmButton, msgPopupOKButton;
     private TextView msgPopupTextView;
-    //custom popup
 
     private ProgressDialog progressDialog;
 
