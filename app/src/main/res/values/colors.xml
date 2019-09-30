@@ -3,17 +3,22 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#1fbbbe</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="regTextColor">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="yellow">#FFFF00</color>
     <color name="green">#32CD32</color>
 
     <!--profile colors-->
-    <color name="gradEnd">#78ffd6</color>
-    <color name="gradStart">#007991</color>
-    <color name="headings">#3797CF</color>
+    <color name="gradEnd">#a1d9f0</color>
+    <color name="gradStart">#1064AC</color>
+
+    <!--<color name="gradEnd">#78ffd6</color>
+    <color name="gradStart">#007991</color>-->
+
+    <color name="headings">#1064AC</color>
 
     <!--setting colors-->
     <color name="red">#FF2400</color>
+
+    <color name="BVA_deafult_color">#1064AC</color>
 </resources>

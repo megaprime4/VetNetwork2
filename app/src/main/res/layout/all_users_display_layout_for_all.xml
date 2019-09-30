@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:clickable="false"
                     android:text="Name"
-                    android:textSize="18sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:clickable="false"
                     android:text="Phone"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

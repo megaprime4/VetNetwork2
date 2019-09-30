@@ -8,9 +8,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".EditProfileUserActivity">
 
-    <!--<include
-        layout="@layout/app_toolbar_layout"
-        android:id="@+id/editProfile_page_toolbar"></include>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +16,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +28,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
     </LinearLayout>
 
@@ -57,7 +54,7 @@
                 android:maxLines="1"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
-                android:textColor="@color/regTextColor"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <EditText
@@ -68,7 +65,7 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:textAlignment="textStart"
-                android:textColor="@color/regTextColor"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <EditText
@@ -79,7 +76,7 @@
                 android:hint="Phone"
                 android:inputType="text"
                 android:textAlignment="textStart"
-                android:textColor="@color/regTextColor"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <EditText
@@ -90,7 +87,7 @@
                 android:hint="BVC Registration Number"
                 android:inputType="text"
                 android:textAlignment="textStart"
-                android:textColor="@color/regTextColor"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -127,7 +124,7 @@
                 android:hint="Posting Area"
                 android:inputType="text"
                 android:textAlignment="textStart"
-                android:textColor="@color/regTextColor"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -194,9 +191,9 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/button_style_white"
+        android:background="@drawable/button_style_blue_bva"
         android:text="Change"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textAlignment="center"
         android:padding="16dp"

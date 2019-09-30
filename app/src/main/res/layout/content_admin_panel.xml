@@ -16,7 +16,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
     </LinearLayout>
 
@@ -71,6 +71,7 @@
                             android:layout_height="wrap_content"
                             android:text="Change email"
                             android:textSize="22sp"
+                            android:textColor="@color/black"
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="5dp"/>
 
@@ -87,7 +88,7 @@
                                 android:text="Current email :"
                                 android:textSize="18sp"
                                 android:textStyle="normal"
-                                android:textColor="@color/yellow"
+                                android:textColor="@color/black"
                                 android:editable="false"
                                 android:layout_marginBottom="5dp"
                                 android:layout_marginTop="5dp"/>
@@ -117,7 +118,7 @@
                                 android:layout_height="wrap_content"
                                 android:hint="Enter the new email here.."
                                 android:inputType="textEmailAddress"
-                                android:textColor="@color/white"
+                                android:textColor="@color/black"
                                 android:textSize="18sp" />
 
                             <View
@@ -161,6 +162,7 @@
                             android:layout_height="wrap_content"
                             android:text="Delete User Account"
                             android:textSize="22sp"
+                            android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
 
                         <LinearLayout
@@ -174,7 +176,7 @@
                                 android:layout_height="wrap_content"
                                 android:hint="Name / Phone / BVC number"
                                 android:textSize="18sp"
-                                android:textColor="@color/white"/>
+                                android:textColor="@color/black"/>
 
                             <View
                                 android:layout_width="10dp"
@@ -206,7 +208,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Name"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/black"
                                     android:textSize="14sp"/>
 
                                 <RadioButton
@@ -214,7 +216,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Phone"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:layout_marginLeft="30dp"/>
 
@@ -223,7 +225,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="BVC"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:layout_marginLeft="30dp"/>
 
@@ -255,6 +257,7 @@
                             android:layout_height="wrap_content"
                             android:text="User Request"
                             android:textSize="22sp"
+                            android:textColor="@color/black"
                             android:layout_marginBottom="10dp"/>
 
                         <LinearLayout
@@ -268,9 +271,9 @@
                                 android:layout_height="wrap_content"
                                 android:text="Request List"
                                 android:textAllCaps="false"
-                                android:textColor="@color/black"
+                                android:textColor="@color/white"
                                 android:textSize="18sp"
-                                android:background="@drawable/button_style_white"/>
+                                android:background="@drawable/button_style_blue_bva"/>
 
                             <View
                                 android:layout_width="1dp"
@@ -283,9 +286,9 @@
                                 android:layout_marginBottom="10dp"
                                 android:text="Add BVA Members"
                                 android:textAllCaps="false"
-                                android:textColor="@color/black"
+                                android:textColor="@color/white"
                                 android:textSize="18sp"
-                                android:background="@drawable/button_style_white"/>
+                                android:background="@drawable/button_style_blue_bva"/>
 
                             <Button
                                 android:id="@+id/adminPanel_editBvaBtn"
@@ -293,9 +296,9 @@
                                 android:layout_height="wrap_content"
                                 android:text="Edit BVA Committee"
                                 android:textAllCaps="false"
-                                android:textColor="@color/black"
+                                android:textColor="@color/white"
                                 android:textSize="18sp"
-                                android:background="@drawable/button_style_white"/>
+                                android:background="@drawable/button_style_blue_bva"/>
 
                         </LinearLayout>
 

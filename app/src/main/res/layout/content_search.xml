@@ -17,7 +17,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
     </LinearLayout>
 
@@ -49,18 +49,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_person_white_24dp"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="Name"
                 android:inputType="text"
                 android:padding="8dp"
-                android:textColorHint="#fff" />
+                android:textColorHint="@color/black" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#f9d7db" />
+                android:background="@color/black" />
 
             <EditText
                 android:id="@+id/search_phone"
@@ -68,18 +68,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_phone_white_24dp"
+                android:drawableLeft="@drawable/ic_phone_black_24dp"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="Phone"
                 android:inputType="text"
                 android:padding="8dp"
-                android:textColorHint="#fff" />
+                android:textColorHint="@color/black" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#f9d7db" />
+                android:background="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#f9d7db" />
+                android:background="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#f9d7db" />
+                android:background="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -171,7 +171,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#f9d7db" />
+                android:background="@color/black" />
 
         </LinearLayout>
 
@@ -184,12 +184,12 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/button_style_white"
+        android:background="@drawable/button_style_blue_bva"
         android:padding="16dp"
         android:text="Search"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
 </LinearLayout>

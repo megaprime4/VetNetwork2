@@ -25,40 +25,43 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="70dp" />
+                    android:layout_height="50dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Sign In"
+                    android:text="Login"
                     android:textColor="@color/white"
                     android:textSize="32sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="70dp" />
+                    android:layout_height="50dp" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
             <EditText
                 android:id="@+id/login_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_person_white_24dp"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="Phone/BVC number"
                 android:inputType="text|number"
                 android:padding="8dp"
-                android:textColorHint="#fff" />
+                android:textColorHint="@color/black"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#f9d7db" />
+                android:background="@color/black" />
 
             <EditText
                 android:id="@+id/login_password"
@@ -69,25 +72,15 @@
                 android:drawablePadding="12dp"
                 android:padding="8dp"
                 android:hint="Password"
-                android:textColorHint="#fff"
+                android:textColorHint="@color/black"
                 android:background="@android:color/transparent"
                 android:layout_marginTop="4dp"
-                android:drawableLeft="@drawable/ic_lock_white_24dp"/>
+                android:drawableLeft="@drawable/ic_lock_black_24dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#f9d7db" />
-
-            <!--<CheckBox
-                android:layout_above="@+id/LoginPageSignInButton"
-                android:text="Remember me"
-                android:textSize="14sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/checkBox"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"/>-->
+                android:background="@color/black" />
 
             <Button
                 android:id="@+id/login_signInButton"
@@ -96,13 +89,13 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/button_style_white"
-                android:text="Sign In"
-                android:textColor="@color/black"
+                android:background="@drawable/button_style_blue_bva"
+                android:text="Login"
+                android:textColor="@color/white"
                 android:textAllCaps="false"
                 android:padding="16dp"
                 android:clickable="true"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="30dp"
                 android:textSize="18sp"/>
 
             <LinearLayout
@@ -116,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Need an account? "
-                    android:textColor="#fff"
+                    android:textColor="@color/black"
                     android:padding="16dp"
                     android:clickable="true"/>
 
@@ -124,8 +117,8 @@
                     android:id="@+id/login_forgotPassword_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Forgot password? "
-                    android:textColor="#fff"
+                    android:text="Forgot password?"
+                    android:textColor="@color/black"
                     android:padding="16dp"
                     android:clickable="true"/>
 

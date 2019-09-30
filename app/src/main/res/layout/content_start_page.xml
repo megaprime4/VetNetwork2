@@ -16,7 +16,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_account_box_white_24dp"/>
+        android:src="@drawable/ic_account_circle_black_24dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:id="@+id/start_signUpButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_style_white"
+            android:background="@drawable/button_style_blue_bva"
             android:padding="16dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -37,14 +37,14 @@
             android:text="Registration"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/start_signInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_style_white"
+            android:background="@drawable/button_style_blue_bva"
             android:padding="16dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -52,13 +52,13 @@
             android:text="Login"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
         <Button
             android:id="@+id/start_bvaButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_style_white"
+            android:background="@drawable/button_style_blue_bva"
             android:padding="16dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -66,14 +66,14 @@
             android:text="BVA Executive Committee"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/start_doctorSearchButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_style_white"
+            android:background="@drawable/button_style_blue_bva"
             android:padding="16dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -81,7 +81,7 @@
             android:text="Doctor Search"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </LinearLayout>

@@ -52,7 +52,7 @@ public class AddBVAActivity extends AppCompatActivity
     private Button popupConfirmButton, msgPopupOKButton;
     private TextView msgPopupTextView;
     //custom popup
-    
+
     private ProgressDialog progressDialog;
 
     private Button addBtn;

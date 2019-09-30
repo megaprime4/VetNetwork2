@@ -16,7 +16,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
     </LinearLayout>
 
@@ -95,7 +95,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textAlignment="textStart"/>
 
@@ -126,7 +126,7 @@
                     android:inputType="text|number"
                     android:maxLines="1"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textAlignment="textStart"/>
 
@@ -157,7 +157,7 @@
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textAlignment="textStart"/>
 
@@ -174,9 +174,9 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/button_style_white"
+        android:background="@drawable/button_style_blue_bva"
         android:text="Add"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textAlignment="center"
         android:padding="16dp"

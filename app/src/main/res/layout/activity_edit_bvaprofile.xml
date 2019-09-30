@@ -15,19 +15,20 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/editBVAProfile_Designation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:text="Edit BVA Profile"
             android:textColor="@color/white"
             android:textSize="32sp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
     </LinearLayout>
 
@@ -53,7 +54,7 @@
                 android:maxLines="1"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
-                android:textColor="@color/regTextColor"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <EditText
@@ -64,7 +65,7 @@
                 android:hint="Phone"
                 android:inputType="text|number"
                 android:textAlignment="textStart"
-                android:textColor="@color/regTextColor"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <EditText
@@ -75,33 +76,9 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:textAlignment="textStart"
-                android:textColor="@color/regTextColor"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:clickable="false"
-                    android:editable="false"
-                    android:linksClickable="false"
-                    android:longClickable="false"
-                    android:text="Designation :"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/editBVAProfile_Designation_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:entries="@array/bva_designation" />
-
-            </LinearLayout>-->
 
         </LinearLayout>
 
@@ -114,9 +91,9 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/button_style_white"
+        android:background="@drawable/button_style_blue_bva"
         android:text="Change"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textAlignment="center"
         android:padding="16dp"

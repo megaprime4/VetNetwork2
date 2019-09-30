@@ -16,7 +16,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="50dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,24 +32,27 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
     <EditText
         android:id="@+id/deleteAccountAdmin_currentPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/ic_lock_white_24dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="Current Password"
         android:inputType="textPassword"
         android:padding="8dp"
-        android:textColorHint="#fff" />
+        android:textColorHint="@color/black" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#f9d7db" />
+        android:background="@color/black" />
 
     <EditText
         android:id="@+id/deleteAccountAdmin_confirmPassword"
@@ -61,14 +64,14 @@
         android:padding="8dp"
         android:layout_marginTop="4dp"
         android:hint="Confirm Password"
-        android:textColorHint="#fff"
+        android:textColorHint="@color/black"
         android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/ic_lock_white_24dp"/>
+        android:drawableLeft="@drawable/ic_lock_black_24dp"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#f9d7db" />
+        android:background="@color/black" />
 
     <Button
         android:id="@+id/deleteAccountAdmin_deleteButton"
@@ -79,11 +82,11 @@
         android:layout_marginBottom="5dp"
         android:background="@drawable/button_style_red"
         android:text="Delete"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:padding="16dp"
         android:clickable="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         android:textSize="18sp"/>
 
 </LinearLayout>
