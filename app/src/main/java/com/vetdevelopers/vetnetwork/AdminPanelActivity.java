@@ -202,9 +202,31 @@ public class AdminPanelActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 String userID = getUserID.getText().toString().trim();
-                if(TextUtils.isEmpty(userID))
+
+                int selectedId = 0;
+                selectedId = radioGroupSearchType.getCheckedRadioButtonId();
+                radioButtonSearchType = (RadioButton) findViewById(selectedId);
+
+                if(radioButtonSearchType == null)
                 {
-                    Toast.makeText(AdminPanelActivity.this, "Enter the selected type user ID!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminPanelActivity.this, "Please select a category!", Toast.LENGTH_SHORT).show();
+                }
+                else if(radioButtonSearchType != null && TextUtils.isEmpty(userID))
+                {
+                    String selectedRadioButton = radioButtonSearchType.getText().toString();
+                    
+                    if(selectedRadioButton.equals("Name") && TextUtils.isEmpty(userID))
+                    {
+                        Toast.makeText(AdminPanelActivity.this, "Please enter a name to search!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (selectedRadioButton.equals("Phone") && TextUtils.isEmpty(userID))
+                    {
+                        Toast.makeText(AdminPanelActivity.this, "Please enter a phone number to search!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (selectedRadioButton.equals("BVC") && TextUtils.isEmpty(userID))
+                    {
+                        Toast.makeText(AdminPanelActivity.this, "Please enter a BVC number to search!", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
@@ -261,142 +283,6 @@ public class AdminPanelActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
-    /*private String getAdminEmail()
-    {
-        final String[] AdminEmail = {""};
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.GET_ADMIN_EMAIL_URL,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        if (response.equals("Registration complete! Request sent to admin!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("Please check your e-mail!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("Connection failed!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("sql (select) query error!-outer"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("Improper request method!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("Invalid platform!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("sql (select) query error!-inner"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("No row selected! Please debug!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-
-                        try
-                        {
-
-                            JSONArray jsonArray = new JSONArray(response);
-                            JSONObject jsonObject = jsonArray.getJSONObject(0);
-                            AdminEmail[0] = jsonObject.getString("admin_email");
-                            //set email
-                            sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                            editor = sharedPreferences.edit();
-                            editor.putString("admin_email_verify", AdminEmail[0]);
-                            editor.apply();
-
-                            System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
-                            System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
-
-                        }
-                        catch (JSONException e)
-                        {
-                            e.printStackTrace();
-                            System.out.println("-----------------------json response error occured ------------!!!");
-                        }
-                    }
-                }, new Response.ErrorListener()
-        {
-            @Override
-            public void onErrorResponse(VolleyError error)
-            {
-                if (error instanceof TimeoutError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(AdminPanelActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof NoConnectionError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(AdminPanelActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof AuthFailureError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(AdminPanelActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof NetworkError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(AdminPanelActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof ServerError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(AdminPanelActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof ParseError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(AdminPanelActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String> params = new HashMap<String, String>();
-
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError
-            {
-                Map<String, String> headers = new HashMap<String, String>();
-                headers.put("User-Agent", "VetNetwork"); ////security purpose
-                return headers;
-            }
-        };
-
-        MySingleton.getInstance(AdminPanelActivity.this).addToRequestQueue(stringRequest);
-
-        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        System.out.println("-------------------------------------------------------adminEmail (return) (sharedPreferences)= " + sharedPreferences.getString("admin_email_verify", ""));
-        return sharedPreferences.getString("admin_email_verify", "");
-    }*/
 
     public void getAdminEmail(final AdminPanelActivity.VolleyCallback callback)
     {
@@ -732,7 +618,7 @@ public class AdminPanelActivity extends AppCompatActivity
         }
         else
         {
-            Toast.makeText(AdminPanelActivity.this, "Please select a search category!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(AdminPanelActivity.this, "Please select a search category!", Toast.LENGTH_SHORT).show();
         }
     }
 

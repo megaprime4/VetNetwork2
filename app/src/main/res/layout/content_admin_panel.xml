@@ -58,7 +58,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:background="#ccffe6">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -98,7 +100,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text=""
-                                android:textColor="@color/yellow"
+                                android:textColor="@color/black"
                                 android:textSize="18sp"
                                 android:textStyle="normal"
                                 android:layout_marginBottom="5dp"
@@ -129,6 +131,7 @@
                                 android:id="@+id/adminPanel_emailChangeBtn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
                                 android:text="Change"
                                 android:textSize="18sp"
                                 android:textAllCaps="false"
@@ -149,7 +152,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_gravity="center_horizontal"
+                    android:background="#ccffe6"
+                    android:layout_margin="5dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -188,6 +193,7 @@
                                 android:id="@+id/adminPanel_userSearchBtn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
                                 android:text="Search"
                                 android:textSize="18sp"
                                 android:textAllCaps="false"
@@ -244,7 +250,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_gravity="center_horizontal"
+                    android:background="#ccffe6">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -277,18 +284,21 @@
 
                             <View
                                 android:layout_width="1dp"
-                                android:layout_height="10dp"></View>
+                                android:layout_height="5dp"></View>
 
                             <Button
                                 android:id="@+id/adminPanel_addBvaBtn"
                                 android:layout_width="240dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
                                 android:text="Add BVA Members"
                                 android:textAllCaps="false"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:background="@drawable/button_style_blue_bva"/>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="5dp"></View>
 
                             <Button
                                 android:id="@+id/adminPanel_editBvaBtn"
