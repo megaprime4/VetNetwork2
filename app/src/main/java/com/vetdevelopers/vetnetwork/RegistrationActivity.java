@@ -111,9 +111,6 @@ public class RegistrationActivity extends AppCompatActivity
                     AdminEmail = jsonObject.getString("admin_email");
                     getAdminEmail = true;
 
-                    //System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
-                    //System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
-
                 }
                 catch (JSONException e)
                 {
@@ -122,7 +119,6 @@ public class RegistrationActivity extends AppCompatActivity
                     System.out.println("-----------------------json response error occured ------------!!!");
                 }
                 //System.out.println("---------------------------------------------------Volley captured : " + AdminEmail + "--"+getAdminEmail);
-                //return k;
             }
         });
 
@@ -160,17 +156,6 @@ public class RegistrationActivity extends AppCompatActivity
                 System.out.println(".........................................." + District);
                 System.out.println(".........................................." + Division);
                 //debug purpose
-
-
-                //String AdminEmail = getAdminEamil(); //get the latest admin email from the server
-                /*System.out.println(".........................................admin email = " + AdminEmail);
-
-                ///destroy here...
-                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                editor = sharedPreferences.edit();
-                editor.remove("admin_email_verify");
-                editor.apply();
-                System.out.println("this is cleared : " + sharedPreferences.getString("admin_email_verify", "key cleared"));*/
 
                 if (getAdminEmail == true)
                 {
@@ -231,144 +216,6 @@ public class RegistrationActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    /*private String getAdminEamil()
-    {
-        final String[] AdminEmail = {""};
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerConstants.GET_ADMIN_EMAIL_URL,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        if (response.equals("Registration complete! Request sent to admin!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("Please check your e-mail!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("Connection failed!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("sql (select) query error!-outer"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("Improper request method!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("Invalid platform!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("sql (select) query error!-inner"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        else if (response.equals("No row selected! Please debug!"))
-                        {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-
-                        try
-                        {
-
-                            JSONArray jsonArray = new JSONArray(response);
-                            JSONObject jsonObject = jsonArray.getJSONObject(0);
-                            AdminEmail[0] = jsonObject.getString("admin_email");
-                            //set email
-                            sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                            editor = sharedPreferences.edit();
-                            editor.putString("admin_email_verify", AdminEmail[0]);
-                            editor.apply();
-
-                            System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
-                            System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
-
-                        }
-                        catch (JSONException e)
-                        {
-                            e.printStackTrace();
-                            System.out.println("-----------------------json response error occured ------------!!!");
-                        }
-                    }
-                }, new Response.ErrorListener()
-        {
-            @Override
-            public void onErrorResponse(VolleyError error)
-            {
-                if (error instanceof TimeoutError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(RegistrationActivity.this, "Timeout error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof NoConnectionError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(RegistrationActivity.this, "No connection error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof AuthFailureError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(RegistrationActivity.this, "Authentication failure error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof NetworkError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(RegistrationActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof ServerError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(RegistrationActivity.this, "Server error!", Toast.LENGTH_SHORT).show();
-                }
-                else if (error instanceof ParseError)
-                {
-                    progressDialog.dismiss();
-                    Toast.makeText(RegistrationActivity.this, "JSON parse error!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String> params = new HashMap<String, String>();
-
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError
-            {
-                Map<String, String> headers = new HashMap<String, String>();
-                headers.put("User-Agent", "VetNetwork"); ////security purpose
-                return headers;
-            }
-        };
-
-        MySingleton.getInstance(RegistrationActivity.this).addToRequestQueue(stringRequest);
-
-
-        getAdminEmail = true;
-        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        System.out.println("-------------------------------------------------------mail (sharedPreferences)= " + sharedPreferences.getString("admin_email_verify", ""));
-        return sharedPreferences.getString("admin_email_verify", "");
-    }*/
 
     private void registerAccount(final String UserType, final String Name, final String Email, final String AdminEmail, final String Phone,
                                  final String BVC_number, final String Password, final String RetypePassword,
@@ -586,7 +433,7 @@ public class RegistrationActivity extends AppCompatActivity
                             progressDialog.dismiss();
                             Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
                         }
-                        else if (response.equals("No row selected! Please debug!"))
+                        else if (response.equals("No email found!"))
                         {
                             progressDialog.dismiss();
                             Toast.makeText(RegistrationActivity.this, response, Toast.LENGTH_SHORT).show();
@@ -594,27 +441,6 @@ public class RegistrationActivity extends AppCompatActivity
                         else
                         {
                             callback.onSuccess(response);
-                            /*try
-                            {
-
-                                JSONArray jsonArray = new JSONArray(response);
-                                JSONObject jsonObject = jsonArray.getJSONObject(0);
-                                AdminEmail[0] = jsonObject.getString("admin_email");
-                                //set email
-                                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                                editor = sharedPreferences.edit();
-                                editor.putString("admin_email_verify", AdminEmail[0]);
-                                editor.apply();
-
-                                System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
-                                System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
-
-                            }
-                            catch (JSONException e)
-                            {
-                                e.printStackTrace();
-                                System.out.println("-----------------------json response error occured ------------!!!");
-                            }*/
                         }
                     }
                 }, new Response.ErrorListener()

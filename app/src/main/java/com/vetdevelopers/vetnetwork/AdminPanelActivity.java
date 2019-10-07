@@ -128,18 +128,6 @@ public class AdminPanelActivity extends AppCompatActivity
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
 
-                /*String AdminEmail = getAdminEmail();
-                currentAdminEmail.setText(AdminEmail);
-                progressDialog.dismiss();
-                System.out.println(".........................................adminEmail (onCreate) = " + AdminEmail);
-
-                ///destroy here...
-                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                editor = sharedPreferences.edit();
-                editor.remove("admin_email_verify");
-                editor.apply();
-                System.out.println("Admin email is cleared : " + sharedPreferences.getString("admin_email_verify", "key cleared"));*/
-
                 getAdminEmail(new VolleyCallback()
                 {
                     @Override
@@ -327,7 +315,7 @@ public class AdminPanelActivity extends AppCompatActivity
                             progressDialog.dismiss();
                             Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
                         }
-                        else if (response.equals("No row selected! Please debug!"))
+                        else if (response.equals("No email found!"))
                         {
                             progressDialog.dismiss();
                             Toast.makeText(AdminPanelActivity.this, response, Toast.LENGTH_SHORT).show();
@@ -335,28 +323,6 @@ public class AdminPanelActivity extends AppCompatActivity
                         else
                         {
                             callback.onSuccess(response);
-
-                            /*try
-                            {
-
-                                JSONArray jsonArray = new JSONArray(response);
-                                JSONObject jsonObject = jsonArray.getJSONObject(0);
-                                AdminEmail[0] = jsonObject.getString("admin_email");
-                                //set email
-                                sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-                                editor = sharedPreferences.edit();
-                                editor.putString("admin_email_verify", AdminEmail[0]);
-                                editor.apply();
-
-                                System.out.println("-----------------------------------------------admin email[0] = " + AdminEmail[0]);
-                                System.out.println("-----------------------------------------------admin email[1] = " + sharedPreferences.getString("admin_email_verify", ""));
-
-                            }
-                            catch (JSONException e)
-                            {
-                                e.printStackTrace();
-                                System.out.println("-----------------------json response error occured ------------!!!");
-                            }*/
                         }
                     }
                 }, new Response.ErrorListener()
